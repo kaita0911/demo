@@ -1,0 +1,141 @@
+.wrap-top {
+  display: flex;
+  gap: 1.5rem;
+}
+@media (max-width: 767px) {
+  .wrap-top {
+    flex-direction: column;
+  }
+}
+@media (min-width: 768px) {
+  .wrap-top .col-bnr {
+    width: 30%;
+  }
+}
+.wrap-top .col-bnr {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  .wrap-top .col-bnr {
+    flex-direction: column;
+  }
+}
+.wrap-top .col-bnr .item {
+  height: 12rem;
+}
+@media (min-width: 768px) {
+  .wrap-top .col-bnr .item {
+    height: 22rem;
+  }
+}
+.wrap-top .col-bnr .item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.p-mv {
+  position: relative;
+}
+@media (min-width: 768px) {
+  .p-mv {
+    width: 70%;
+  }
+}
+.p-mv .img {
+  width: 100%;
+  height: 20rem;
+  object-fit: cover;
+}
+@media (min-width: 768px) {
+  .p-mv .img {
+    height: 45rem;
+  }
+}
+.p-mv .slick-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  right: 0;
+  gap: 0.5rem;
+}
+@media (min-width: 768px) {
+  .p-mv .slick-dots {
+    gap: 1rem;
+  }
+}
+.p-mv .slick-dots li {
+  width: 1rem;
+  height: 1rem;
+}
+.p-mv .slick-dots li.slick-active button {
+  background: #b31d29;
+}
+.p-mv .slick-dots li button {
+  width: 100%;
+  padding: 0;
+  height: 100%;
+  border-radius: 50%;
+  color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.product-home {
+  margin: 3rem 0;
+  position: relative;
+}
+.product-home .slick-list {
+  margin: 0 -0.5rem;
+}
+@media (min-width: 768px) {
+  .product-home .slick-list {
+    margin: 0 -1.5rem;
+  }
+}
+
+.home-category {
+  margin-bottom: 5rem;
+}
+.home-category__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.home-category__head .ttl02 {
+  text-transform: uppercase;
+  border-left: 0.4rem solid #b31d29;
+  line-height: 1;
+  padding-left: 1rem;
+}
+.home-category .cate-sub {
+  display: flex;
+  gap: 2rem;
+}
+.home-category .cate-sub ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.home-category .cate-sub ul li a {
+  text-transform: capitalize;
+}
+.home-category .cate-sub ul li a:hover {
+  color: #b31d29;
+}
+.home-category .view-all {
+  background: #eee;
+  padding: 0.5rem 2rem;
+  border-radius: 2rem;
+}
+.home-category .view-all:hover {
+  background: #b31d29;
+  color: #FFF;
+}
