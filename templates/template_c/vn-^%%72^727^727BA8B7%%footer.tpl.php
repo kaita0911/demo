@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2026-01-08 14:24:40
+<?php /* Smarty version 2.6.30, created on 2026-01-29 09:48:42
          compiled from ./footer.tpl */ ?>
 <footer class="p-footer">
   <div class="container">
@@ -49,7 +49,7 @@
           <a class="services-item hover" href="<?php echo $this->_tpl_vars['path_url']; ?>
 /<?php echo $this->_tpl_vars['lang_prefix']; ?>
 <?php echo $this->_tpl_vars['item']['unique_key']; ?>
-" title="<?php echo $this->_tpl_vars['item']['name_detail']; ?>
+.html" title="<?php echo $this->_tpl_vars['item']['name_detail']; ?>
 ">
             <i class="fa-solid fa-caret-right"></i> <?php echo $this->_tpl_vars['item']['name_detail']; ?>
 

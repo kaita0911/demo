@@ -109,7 +109,22 @@ $smarty->assign("ListMenuLeft", $listMenuLeft);
 //           </div>";
 // 	exit;
 // }
+$new_register = $GLOBALS['sp']->getRow("
+    SELECT COUNT(*) AS total
+    FROM {$GLOBALS['db_sp']}.register_info
+    WHERE is_read = 0
+");
 
+$smarty->assign('new_register_count', (int)$new_register['total']);
+
+///đơn hàng
+// Đơn hàng
+$r2 = $GLOBALS['sp']->getRow("
+    SELECT COUNT(*) AS total
+    FROM {$GLOBALS['db_sp']}.orders
+    WHERE is_read = 0
+");
+$smarty->assign('new_order_count', (int)$r2['total']);
 // -----------------------------
 // 📄 Xử lý router trang admin
 // -----------------------------

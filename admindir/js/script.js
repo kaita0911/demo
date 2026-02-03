@@ -1235,3 +1235,10 @@ document.addEventListener("change", function (e) {
       if (!r.success) alert(r.message);
     });
 });
+
+window.addEventListener("pageshow", function (event) {
+  if (event.persisted) {
+    // Trang được load từ BFCache
+    window.location.reload();
+  }
+});

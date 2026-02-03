@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2026-01-07 09:49:08
+<?php /* Smarty version 2.6.30, created on 2026-02-03 11:29:00
          compiled from orders/list.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'orders/list.tpl', 76, false),array('modifier', 'number_format', 'orders/list.tpl', 80, false),)), $this); ?>
@@ -50,7 +50,7 @@ unset($_smarty_tpl_vars);
     foreach ($_from as $this->_tpl_vars['i'] => $this->_tpl_vars['item']):
 ?>
                      <tr data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
-" <?php if ($this->_tpl_vars['item']['status'] == 'Chờ duyệt'): ?>class="highlight" <?php endif; ?>>
+" class="<?php if ($this->_tpl_vars['item']['is_read'] == 0): ?>unread<?php endif; ?> <?php if ($this->_tpl_vars['item']['status'] == 'Chờ duyệt'): ?>highlight<?php endif; ?> ">
                         <td class="brbottom" align="center">
                            <input class="c-item" type="checkbox" name="cid[]" value="<?php echo $this->_tpl_vars['item']['id']; ?>
 " />

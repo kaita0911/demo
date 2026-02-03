@@ -10,7 +10,7 @@ switch ($act) {
                 FROM {$GLOBALS['db_sp']}.articlelist AS a
                 LEFT JOIN {$GLOBALS['db_sp']}.articlelist_detail AS d
                     ON d.articlelist_id = a.id AND d.languageid = {$langid}
-                WHERE d.unique_key = '{$cat1}'";
+                WHERE d.unique_key = '{$unique_key}'";
         $rs = $GLOBALS["sp"]->getRow($sql);
 
         /////xem bai viet chi tiet/////

@@ -39,7 +39,7 @@
 
                   <tbody>
                      {foreach from=$view key=i item=item}
-                     <tr data-id="{$item.id}" {if $item.status=='Chờ duyệt' }class="highlight" {/if}>
+                     <tr data-id="{$item.id}" class="{if $item.is_read == 0}unread{/if} {if $item.status=='Chờ duyệt' }highlight{/if} ">
                         <td class="brbottom" align="center">
                            <input class="c-item" type="checkbox" name="cid[]" value="{$item.id}" />
                         </td>

@@ -24,14 +24,14 @@
                         <th class="width-del">STT</th>
 
                         <th class="width-ttl">Tiêu đề</th>
-                        <th class="width-image">Ngày tháng</th>
+                        <th class="width-date">Ngày tháng</th>
                         <th class="width-action">Action</th>
                      </tr>
                   </thead>
 
                   <tbody>
                      {foreach from=$articlelist item=item name=loop}
-                     <tr data-id="{$item.id}">
+                     <tr data-id="{$item.id}" class="{if $item.is_read == 0}unread{/if}">
 
                         <td class="text-center">
                            <input type="checkbox" class="c-item" name="cid[]" value="{$item.id}">
@@ -46,7 +46,7 @@
                         <td class=" text-left linkblack">
                            {$item.fullname}
                         </td>
-                        <td class=" text-center linkblack">
+                        <td align="center" class=" text-center linkblack">
                            {$item.created_at}
                         </td>
                         <td align="center">

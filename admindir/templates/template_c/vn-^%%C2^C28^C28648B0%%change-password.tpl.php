@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2026-01-21 11:58:56
+<?php /* Smarty version 2.6.30, created on 2026-02-03 11:15:24
          compiled from change-password.tpl */ ?>
 <div class="form-container">
     <h2>Đổi mật khẩu</h2>
@@ -152,5 +152,4 @@
             e.preventDefault();
         }
     });
-</script>
-'; ?>
+</script>'; ?>

@@ -52,8 +52,10 @@
         Form liên hệ
       </a>
       {if $showform.open eq 1}
-      <a href="index.php?do=register_info">
-        Form đăng ký tư vấn
+      <a class="fnc-bell" href="index.php?do=register_info">
+        Form đăng ký tư vấn {if $new_register_count > 0}
+        <span class="icon-new"></span>
+        {/if}
       </a>
       {/if}
     </div>

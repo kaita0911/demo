@@ -11,7 +11,7 @@ switch ($act) {
                 ON d.articlelist_id = a.id AND d.languageid = {$langid}
             LEFT JOIN {$GLOBALS['db_sp']}.articlelist_price AS p
                 ON p.articlelist_id = a.id
-            WHERE d.unique_key = '{$cat1}'
+            WHERE d.unique_key = '{$unique_key}'
         ";
         $rs = $GLOBALS["sp"]->getRow($sql);
         // Lấy nội dung bài viết
@@ -44,7 +44,7 @@ switch ($act) {
         $rs_id = $GLOBALS['sp']->getRow("
             SELECT articlelist_id 
             FROM {$GLOBALS['db_sp']}.articlelist_detail 
-            WHERE unique_key = '{$cat1}' AND languageid = {$langid}
+            WHERE unique_key = '{$unique_key}' AND languageid = {$langid}
         ");
         $article_id = isset($rs_id['articlelist_id']) ? (int)$rs_id['articlelist_id'] : 0;
         //$smarty->assign('article_id', $article_id);

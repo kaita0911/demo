@@ -62,7 +62,7 @@
             {/foreach}
 
             <a data-lang="{$lang.id}" class="tab act-btn btnView {if $lang.id==$currentLang}active{/if}"
-                href="{$web_base_url}/{$detail.unique_key|default:''}" target="_blank" title="Xem nhanh">
+                href="{$web_base_url}/{$detail.unique_key}/" target="_blank" title="Xem nhanh">
                 <i class="fa fa-eye"></i>
             </a>
             {/foreach}

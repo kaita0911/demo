@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2026-01-20 09:43:18
+<?php /* Smarty version 2.6.30, created on 2026-02-03 11:45:50
          compiled from categories/category_row_lang.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'categories/category_row_lang.tpl', 32, false),array('modifier', 'escape', 'categories/category_row_lang.tpl', 32, false),array('modifier', 'count', 'categories/category_row_lang.tpl', 83, false),)), $this); ?>
@@ -112,8 +112,8 @@ $this->_sections['i']['last']       = ($this->_sections['i']['iteration'] == $th
             <a data-lang="<?php echo $this->_tpl_vars['lang']['id']; ?>
 " class="tab act-btn btnView <?php if ($this->_tpl_vars['lang']['id'] == $this->_tpl_vars['currentLang']): ?>active<?php endif; ?>"
                 href="<?php echo $this->_tpl_vars['web_base_url']; ?>
-/<?php echo ((is_array($_tmp=@$this->_tpl_vars['detail']['unique_key'])) ? $this->_run_mod_handler('default', true, $_tmp, '') : smarty_modifier_default($_tmp, '')); ?>
-" target="_blank" title="Xem nhanh">
+/<?php echo $this->_tpl_vars['detail']['unique_key']; ?>
+/" target="_blank" title="Xem nhanh">
                 <i class="fa fa-eye"></i>
             </a>
             <?php endforeach; endif; unset($_from); ?>

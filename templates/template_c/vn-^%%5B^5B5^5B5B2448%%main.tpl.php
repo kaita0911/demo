@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2026-01-19 08:34:25
+<?php /* Smarty version 2.6.30, created on 2026-01-29 09:56:32
          compiled from main/main.tpl */ ?>
 <main>
    <div class="container">
@@ -42,7 +42,7 @@
                   <a class="product-item__img hover-img" href="<?php echo $this->_tpl_vars['path_url']; ?>
 /<?php echo $this->_tpl_vars['lang_prefix']; ?>
 <?php echo $this->_tpl_vars['item']['unique_key']; ?>
-" title="<?php echo $this->_tpl_vars['item']['name_detail']; ?>
+.html" title="<?php echo $this->_tpl_vars['item']['name_detail']; ?>
 ">
                      <img src="<?php echo $this->_tpl_vars['item']['img_thumb_vn']; ?>
 " alt="<?php echo $this->_tpl_vars['item']['name_detail']; ?>
@@ -51,7 +51,7 @@
                   <h3><a class="product-item__ttl hover" href="<?php echo $this->_tpl_vars['path_url']; ?>
 /<?php echo $this->_tpl_vars['lang_prefix']; ?>
 <?php echo $this->_tpl_vars['item']['unique_key']; ?>
-" title="<?php echo $this->_tpl_vars['item']['name_detail']; ?>
+.html" title="<?php echo $this->_tpl_vars['item']['name_detail']; ?>
 "><?php echo $this->_tpl_vars['item']['name_detail']; ?>
 </a></h3>
                   <div class="product-price">
@@ -76,7 +76,7 @@
          <div class="home-category__head">
             <h2>
                <a class="ttl02" href="/<?php echo $this->_tpl_vars['cat']['unique_key']; ?>
-">
+/">
                   <?php echo $this->_tpl_vars['cat']['name']; ?>
 
                </a>
@@ -98,7 +98,7 @@
                </ul>
                <?php endif; ?>
                <a class="view-all" href="/<?php echo $this->_tpl_vars['cat']['unique_key']; ?>
-">Xem thêm</a>
+/">Xem thêm</a>
             </div>
          </div>
          <div class="p-products">
@@ -109,7 +109,7 @@
                <a class="product-item__img hover-img" href="<?php echo $this->_tpl_vars['path_url']; ?>
 /<?php echo $this->_tpl_vars['lang_prefix']; ?>
 <?php echo $this->_tpl_vars['item']['unique_key']; ?>
-" title="<?php echo $this->_tpl_vars['item']['name_detail']; ?>
+.html" title="<?php echo $this->_tpl_vars['item']['name_detail']; ?>
 ">
                   <img src="<?php echo $this->_tpl_vars['item']['img_thumb_vn']; ?>
 " alt="<?php echo $this->_tpl_vars['item']['name_detail']; ?>
@@ -118,7 +118,7 @@
                <h3><a class="product-item__ttl hover" href="<?php echo $this->_tpl_vars['itemath_url']; ?>
 /<?php echo $this->_tpl_vars['lang_prefix']; ?>
 <?php echo $this->_tpl_vars['item']['unique_key']; ?>
-" title="<?php echo $this->_tpl_vars['item']['name_detail']; ?>
+.html" title="<?php echo $this->_tpl_vars['item']['name_detail']; ?>
 "><?php echo $this->_tpl_vars['item']['name_detail']; ?>
 </a></h3>
                <div class="product-price">

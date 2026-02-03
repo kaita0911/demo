@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2026-01-08 14:00:50
+<?php /* Smarty version 2.6.30, created on 2026-01-29 09:34:16
          compiled from categories_tree.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'categories_tree.tpl', 1, false),array('modifier', 'count', 'categories_tree.tpl', 4, false),)), $this); ?>
@@ -11,7 +11,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', '
     <li class="nav-item <?php if (count($this->_tpl_vars['cat']['children']) > 0): ?>has-sub<?php endif; ?>">
         <a class="nav-link" href="<?php echo $this->_tpl_vars['web_base_url']; ?>
 /<?php echo $this->_tpl_vars['cat']['unique_key']; ?>
-" title="<?php echo $this->_tpl_vars['cat']['name_detail']; ?>
+/" title="<?php echo $this->_tpl_vars['cat']['name_detail']; ?>
 ">
             <?php if ($this->_tpl_vars['cat']['img_vn']): ?><img class="icon-img" src="<?php echo $this->_tpl_vars['web_base_url']; ?>
 /<?php echo $this->_tpl_vars['cat']['img_vn']; ?>

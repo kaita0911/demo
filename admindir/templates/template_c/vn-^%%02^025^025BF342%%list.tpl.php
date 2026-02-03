@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2026-01-20 09:35:31
+<?php /* Smarty version 2.6.30, created on 2026-02-03 11:45:14
          compiled from articlelist/list.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'articlelist/list.tpl', 21, false),array('modifier', 'count', 'articlelist/list.tpl', 52, false),array('modifier', 'escape', 'articlelist/list.tpl', 153, false),array('modifier', 'date_format', 'articlelist/list.tpl', 172, false),)), $this); ?>
@@ -304,7 +304,7 @@ if ($this->_foreach['loop']['total'] > 0):
                                  <a data-lang="<?php echo $this->_tpl_vars['lang']['id']; ?>
 " class="tab act-btn btnView <?php if ($this->_tpl_vars['lang']['id'] == $this->_tpl_vars['currentLang']): ?>active<?php endif; ?>" href="<?php echo $this->_tpl_vars['web_base_url']; ?>
 /<?php echo $this->_tpl_vars['detail']['unique_key']; ?>
-" target="_blank" title="Xem nhanh">
+.html" target="_blank" title="Xem nhanh">
                                     <i class="fa fa-eye"></i>
                                  </a>
                                  <?php endforeach; endif; unset($_from); ?>

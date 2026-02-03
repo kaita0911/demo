@@ -17,6 +17,11 @@ switch ($act) {
 
 	case "edit":
 		$id = intval(isset($_GET['id']) ? $_GET['id'] : 0);
+		// khi xem đơn hàng
+		$sp->execute("
+			UPDATE {$GLOBALS['db_sp']}.orders
+			SET is_read = 1
+			WHERE id = ?", [$id]);
 		if ($id > 0) {
 			$order = $sp->getRow("SELECT * FROM {$db_sp}.orders WHERE id = ?", [$id]);
 			$order_lines = $sp->getAll("SELECT * FROM {$db_sp}.orders_line WHERE order_id = ?", [$id]);

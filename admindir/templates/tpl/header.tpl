@@ -23,9 +23,12 @@
   <div class="header">
     <div class="box-cart">
       {if $showcart.open eq 1}
-      <a class="c-cart" href="index.php?do=orders">
+      <a class="c-cart fnc-bell" href="index.php?do=orders">
         <span><i class="fa fa-shopping-cart"></i></span>
         <label>Danh sách đơn hàng</label>
+        {if $new_order_count > 0}
+        <span class="icon-new"></span>
+        {/if}
       </a>
       {/if}
     </div>

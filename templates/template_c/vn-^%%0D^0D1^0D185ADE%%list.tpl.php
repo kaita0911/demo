@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2026-01-12 09:58:17
+<?php /* Smarty version 2.6.30, created on 2026-01-29 09:51:03
          compiled from ./search/list.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'count', './search/list.tpl', 9, false),)), $this); ?>
@@ -19,7 +19,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'count', './
             <a class="product-item__img hover-img" href="<?php echo $this->_tpl_vars['path_url']; ?>
 /<?php echo $this->_tpl_vars['lang_prefix']; ?>
 <?php echo $this->_tpl_vars['item']['unique_key']; ?>
-" title="<?php echo $this->_tpl_vars['item']['name_detail']; ?>
+.html" title="<?php echo $this->_tpl_vars['item']['name_detail']; ?>
 ">
                 <img src="/<?php echo $this->_tpl_vars['item']['img_thumb_vn']; ?>
 ?width=300&height=300&mode=scale" title="<?php echo $this->_tpl_vars['item']['name_detail']; ?>
@@ -29,7 +29,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'count', './
             <h3><a class="product-item__ttl hover" href="<?php echo $this->_tpl_vars['path_url']; ?>
 /<?php echo $this->_tpl_vars['lang_prefix']; ?>
 <?php echo $this->_tpl_vars['item']['unique_key']; ?>
-" title="<?php echo $this->_tpl_vars['item']['name_detail']; ?>
+.html" title="<?php echo $this->_tpl_vars['item']['name_detail']; ?>
 "><?php echo $this->_tpl_vars['item']['name_detail']; ?>
 </a></h3>
             <div class="product-price">

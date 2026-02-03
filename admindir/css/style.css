@@ -544,7 +544,8 @@ span.subconten a {
 .bgonmose {
   background: #fff1e4;
 }
-.br1 {
+.br1 tr.unread {
+  font-weight: bold;
 }
 table.br1 thead tr:nth-child(1) {
   color: #fff;
@@ -1900,7 +1901,9 @@ th.width-04 {
 th.width-show {
   width: 6%;
 }
-
+th.width-date {
+  width: 15%;
+}
 th.width-action {
   width: 10%;
 }
@@ -3221,4 +3224,36 @@ select.status-select {
   content: "📷";
   font-size: 20px;
   margin-bottom: 4px;
+}
+
+
+.fnc-bell {
+  display: inline-flex;
+  color: #FFF;
+  background: #007bff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  position: relative;
+}
+.fnc-bell .icon-new{
+  display: inline-block;
+  background: url(../images/icon-bell.svg) no-repeat top center;
+  background-size: contain; animation: bell-shake 1.2s infinite;
+  transform-origin: top center;
+  width: 21px;
+  height: 21px;
+  position: absolute;
+  right: -10px;
+  top: -6px;
+}
+@keyframes bell-shake {
+  0%   { transform: rotate(0); }
+  10%  { transform: rotate(15deg); }
+  20%  { transform: rotate(-15deg); }
+  30%  { transform: rotate(10deg); }
+  40%  { transform: rotate(-10deg); }
+  50%  { transform: rotate(5deg); }
+  60%  { transform: rotate(-5deg); }
+  70%  { transform: rotate(0); }
+  100% { transform: rotate(0); }
 }

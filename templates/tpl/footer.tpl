@@ -32,7 +32,7 @@
         <div class="p-footer-lst">
           {foreach from=$consulting item=item}
 
-          <a class="services-item hover" href="{$path_url}/{$lang_prefix}{$item.unique_key}" title="{$item.name_detail}">
+          <a class="services-item hover" href="{$path_url}/{$lang_prefix}{$item.unique_key}.html" title="{$item.name_detail}">
             <i class="fa-solid fa-caret-right"></i> {$item.name_detail}
           </a>
 

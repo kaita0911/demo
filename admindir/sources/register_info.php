@@ -1,55 +1,101 @@
 <?php
-require_once "functions/pagination.php"; // ✅ gọi phan trang
+require_once "functions/pagination.php";
+
+/* ❌ Chống cache admin (PHP 5.6 OK) */
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+
 $act = isset($_REQUEST['act']) ? $_REQUEST['act'] : "";
+
 switch ($act) {
+
+	/* ==========================
+       MARK READ + REDIRECT
+    ========================== */
 	case "edit":
 
-		$id  = $_GET["id"];
-		$sql = "select * from $GLOBALS[db_sp].register_info where id=$id";
-		$rs = $GLOBALS["sp"]->getRow($sql);
+		$id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+
+		if ($id > 0) {
+			$GLOBALS["sp"]->execute("
+                UPDATE {$GLOBALS['db_sp']}.register_info
+                SET is_read = 1
+                WHERE id = ?
+            ", array($id));
+		}
+
+		header("Location: index.php?do=register_info&act=view&id=" . $id);
+		exit;
+
+
+		/* ==========================
+       VIEW CHI TIẾT
+    ========================== */
+	case "view":
+
+		$id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+
+		$rs = $GLOBALS["sp"]->getRow("
+            SELECT *
+            FROM {$GLOBALS['db_sp']}.register_info
+            WHERE id = $id
+        ");
 
 		$smarty->assign("edit", $rs);
 		$template = "register_info/edit.tpl";
-		//}
 		break;
 
-	case 'dellistajax':
-		ob_clean(); // Xóa mọi thứ đã in ra trước đó
+
+	/* ==========================
+       DELETE AJAX
+    ========================== */
+	case "dellistajax":
+
+		ob_clean();
 		$ids = isset($_POST['cid']) ? $_POST['cid'] : '';
-		if ($ids !== '') {
-			$idList = implode(',', array_map('intval', explode(',', $ids)));
 
-			$GLOBALS["sp"]->query("DELETE FROM {$GLOBALS['db_sp']}.register_info WHERE id IN ($idList)");
+		if ($ids != '') {
+			$idArr = explode(',', $ids);
+			$idArr = array_map('intval', $idArr);
+			$idList = implode(',', $idArr);
 
-			echo json_encode(['success' => true]);
+			$GLOBALS["sp"]->query("
+                DELETE FROM {$GLOBALS['db_sp']}.register_info
+                WHERE id IN ($idList)
+            ");
+
+			echo json_encode(array('success' => true));
 		} else {
-			echo json_encode(['success' => false]);
+			echo json_encode(array('success' => false));
 		}
 		exit;
 
+
+		/* ==========================
+       LIST
+    ========================== */
 	default:
-		$where = "";
-		$join = "";
+
 		$order = "ORDER BY a.id DESC";
 
-		$page = intval(isset($_GET['page']) ? $_GET['page'] : 1);
+		$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+		if ($page < 1) $page = 1;
+
 		$per_page = 30;
 
 		$result = paginate(
 			$GLOBALS["sp"],
 			"{$GLOBALS['db_sp']}.register_info as a",
-			$join,
-			$where,
+			"",
+			"",
 			$order,
 			$page,
 			$per_page
 		);
 
-		$articles = $result['data'];
-		$pagination = $result['pagination'];
-
-		$smarty->assign('articlelist', $articles);
-		$smarty->assign('pagination', $pagination);
+		$smarty->assign('articlelist', $result['data']);
+		$smarty->assign('pagination', $result['pagination']);
 		$template = "register_info/list.tpl";
 		break;
 }

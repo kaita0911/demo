@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2025-11-21 09:45:56
+<?php /* Smarty version 2.6.30, created on 2026-02-03 11:26:01
          compiled from header.tpl */ ?>
 <!DOCTYPE html>
 <html lang="vi" xmlns="http://www.w3.org/1999/xhtml">
@@ -25,9 +25,12 @@
   <div class="header">
     <div class="box-cart">
       <?php if ($this->_tpl_vars['showcart']['open'] == 1): ?>
-      <a class="c-cart" href="index.php?do=orders">
+      <a class="c-cart fnc-bell" href="index.php?do=orders">
         <span><i class="fa fa-shopping-cart"></i></span>
         <label>Danh sách đơn hàng</label>
+        <?php if ($this->_tpl_vars['new_order_count'] > 0): ?>
+        <span class="icon-new"></span>
+        <?php endif; ?>
       </a>
       <?php endif; ?>
     </div>

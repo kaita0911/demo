@@ -32,163 +32,29 @@ function getCategoryChain($categoryId, $langid)
     return $chain;
 }
 
-// function buildBreadcrumb($langid, $path_url, $cat1 = '', $unique_key = '')
-// {
-//     // --- 1️⃣ Home ---
-//     if ($langid == 1) {
-//         $home_name = 'Trang chủ';
-//     } elseif ($langid == 2) {
-//         $home_name = 'Home';
-//     } elseif ($langid == 3) {
-//         $home_name = 'ホーム';
-//     } else {
-//         $home_name = 'Home';
-//     }
-
-//     $breadcrumbs = array(
-//         array('name' => $home_name, 'link' => $path_url)
-//     );
-
-//     $menu = null;
-
-//     // --- 2️⃣ Lấy menu nếu $cat1 có ---
-//     if (!empty($cat1)) {
-//         $menu = $GLOBALS['sp']->getRow("
-//             SELECT m.id, m.comp, IFNULL(d.name, m.comp) AS name, d.unique_key
-//             FROM {$GLOBALS['db_sp']}.menu AS m
-//             LEFT JOIN {$GLOBALS['db_sp']}.menu_detail AS d
-//                 ON d.menu_id = m.id AND d.languageid = {$langid}
-//             WHERE d.unique_key = '{$cat1}'
-//             LIMIT 1
-//         ");
-
-//         if ($menu && !empty($menu['name'])) {
-//             $breadcrumbs[] = array('name' => $menu['name'], 'link' => "{$path_url}/{$menu['unique_key']}");
-//         }
-//     }
-
-//     // --- 3️⃣ Chi tiết bài viết ---
-//     if (!empty($unique_key)) {
-//         $article = $GLOBALS['sp']->getRow("
-//             SELECT a.id, a.comp, d.name AS article_name
-//             FROM {$GLOBALS['db_sp']}.articlelist AS a
-//             LEFT JOIN {$GLOBALS['db_sp']}.articlelist_detail AS d
-//                 ON d.articlelist_id = a.id AND d.languageid = {$langid}
-//             WHERE d.unique_key = '{$unique_key}'
-//             LIMIT 1
-//         ");
-
-//         if ($article) {
-//             // 3a. Nếu menu chưa có → thử lấy menu theo comp bài viết
-//             if (!$menu) {
-//                 $menuArticle = $GLOBALS['sp']->getRow("
-//                     SELECT m.id, IFNULL(d.name, m.comp) AS name, d.unique_key
-//                     FROM {$GLOBALS['db_sp']}.menu AS m
-//                     LEFT JOIN {$GLOBALS['db_sp']}.menu_detail AS d
-//                         ON d.menu_id = m.id AND d.languageid = {$langid}
-//                     WHERE m.comp = '{$article['comp']}'
-//                     LIMIT 1
-//                 ");
-//                 if ($menuArticle && !empty($menuArticle['name'])) {
-//                     $breadcrumbs[] = array('name' => $menuArticle['name'], 'link' => "{$path_url}/{$menuArticle['unique_key']}");
-//                     $menu = $menuArticle;
-//                 }
-//             }
-
-//             // 3b. Thêm category chain
-//             $article_categories = $GLOBALS['sp']->getAll("
-//                 SELECT categories_id
-//                 FROM {$GLOBALS['db_sp']}.articlelist_categories
-//                 WHERE articlelist_id = {$article['id']}
-//             ");
-
-//             if ($article_categories) {
-//                 foreach ($article_categories as $ac) {
-//                     $chain = getCategoryChain($ac['categories_id'], $langid);
-//                     foreach ($chain as $c) {
-//                         $exists = false;
-//                         foreach ($breadcrumbs as $b) {
-//                             if ($b['name'] === $c['name']) {
-//                                 $exists = true;
-//                                 break;
-//                             }
-//                         }
-//                         if (!$exists) {
-//                             $breadcrumbs[] = array(
-//                                 'name' => $c['name'],
-//                                 'link' => "{$path_url}/{$c['unique_key']}"
-//                             );
-//                         }
-//                     }
-//                 }
-//             }
-
-//             // 3c. Thêm bài viết cuối cùng
-//             $breadcrumbs[] = array('name' => $article['article_name'], 'link' => '');
-//         }
-//     }
-//     // --- 4️⃣ Nếu chỉ có cat1 nhưng chưa thêm category ---
-//     elseif (!empty($cat1) && !$menu) {
-//         $category = $GLOBALS['sp']->getRow("
-//             SELECT c.id
-//             FROM {$GLOBALS['db_sp']}.categories AS c
-//             LEFT JOIN {$GLOBALS['db_sp']}.categories_detail AS d
-//                 ON d.categories_id = c.id AND d.languageid = {$langid}
-//             WHERE d.unique_key = '{$cat1}'
-//             LIMIT 1
-//         ");
-//         if ($category) {
-//             $chain = getCategoryChain($category['id'], $langid);
-//             foreach ($chain as $c) {
-//                 $breadcrumbs[] = array(
-//                     'name' => $c['name'],
-//                     'link' => "{$path_url}/{$c['unique_key']}"
-//                 );
-//             }
-//         }
-//     }
-
-//     return $breadcrumbs;
-// }
-function buildBreadcrumb($langid, $path_url, $cat1 = '')
+function buildBreadcrumb($langid, $path_url, $cat1 = '', $unique_key = '')
 {
-    // --- 1️⃣ HOME ---
-    $home_name = ($langid == 1 ? 'Trang chủ' : ($langid == 2 ? 'Home' : 'ホーム'));
-
-    $breadcrumbs = [];
-    $breadcrumbs[] = ['name' => $home_name, 'link' => $path_url];
-
-    $category = null;
-    $menu = null;
-
-    // --- 2️⃣ ƯU TIÊN MAPPING UNIQUE_KEY VỚI CATEGORY ---
-    if (!empty($cat1)) {
-        $category = $GLOBALS['sp']->getRow("
-            SELECT c.id, d.name, d.unique_key
-            FROM {$GLOBALS['db_sp']}.categories AS c
-            LEFT JOIN {$GLOBALS['db_sp']}.categories_detail AS d
-                ON d.categories_id = c.id AND d.languageid = {$langid}
-            WHERE d.unique_key = '{$cat1}'
-            LIMIT 1
-        ");
-
-        if ($category) {
-            // Lấy chain cha → con
-            $chain = getCategoryChain($category['id'], $langid);
-
-            foreach ($chain as $c) {
-                $breadcrumbs[] = [
-                    'name' => $c['name'],
-                    'link' => "{$path_url}/{$c['unique_key']}"
-                ];
-            }
-        }
+    // --- 1️⃣ Home ---
+    if ($langid == 1) {
+        $home_name = 'Trang chủ';
+    } elseif ($langid == 2) {
+        $home_name = 'Home';
+    } elseif ($langid == 3) {
+        $home_name = 'ホーム';
+    } else {
+        $home_name = 'Home';
     }
 
-    // --- 3️⃣ Nếu KHÔNG có category → thử tìm MENU ---
-    if (!$category && !empty($cat1)) {
+    $breadcrumbs = array(
+        array('name' => $home_name, 'link' => $path_url)
+    );
+
+    $menu = null;
+
+    // --- 2️⃣ Lấy menu nếu $cat1 có ---
+    if (!empty($cat1)) {
         $menu = $GLOBALS['sp']->getRow("
-            SELECT m.id, IFNULL(d.name, m.comp) AS name, d.unique_key
+            SELECT m.id, m.comp, IFNULL(d.name, m.comp) AS name, d.unique_key
             FROM {$GLOBALS['db_sp']}.menu AS m
             LEFT JOIN {$GLOBALS['db_sp']}.menu_detail AS d
                 ON d.menu_id = m.id AND d.languageid = {$langid}
@@ -196,81 +62,215 @@ function buildBreadcrumb($langid, $path_url, $cat1 = '')
             LIMIT 1
         ");
 
-        if ($menu) {
-            $breadcrumbs[] = [
-                'name' => $menu['name'],
-                'link' => "{$path_url}/{$menu['unique_key']}"
-            ];
-        } else {
-            // Lấy bài viết
-            $article = $GLOBALS['sp']->getRow("
-        SELECT a.id, a.comp, d.name AS article_name
-        FROM {$GLOBALS['db_sp']}.articlelist AS a
-        LEFT JOIN {$GLOBALS['db_sp']}.articlelist_detail AS d
-            ON d.articlelist_id = a.id AND d.languageid = {$langid}
-        WHERE d.unique_key = '{$cat1}'
-        LIMIT 1
-    ");
+        if ($menu && !empty($menu['name'])) {
+            $breadcrumbs[] = array('name' => $menu['name'], 'link' => "{$path_url}/{$menu['unique_key']}");
+        }
+    }
 
-            if ($article) {
-
-                // --- 4a. Nếu chưa có menu → tìm menu theo comp bài viết ---
-                if (!$menu) {
-                    $menu = $GLOBALS['sp']->getRow("
-                SELECT m.id, IFNULL(d.name, m.comp) AS name, d.unique_key
-                FROM {$GLOBALS['db_sp']}.menu AS m
-                LEFT JOIN {$GLOBALS['db_sp']}.menu_detail AS d
-                    ON d.menu_id = m.id AND d.languageid = {$langid}
-                WHERE m.comp = '{$article['comp']}'
-                LIMIT 1
-            ");
-
-                    if ($menu) {
-                        $breadcrumbs[] = [
-                            'name' => $menu['name'],
-                            'link' => "{$path_url}/{$menu['unique_key']}"
-                        ];
-                    }
-                }
-
-                // --- 4b. Lấy tất cả categories của bài viết ---
-                $article_categories = $GLOBALS['sp']->getAll("
-            SELECT categories_id
-            FROM {$GLOBALS['db_sp']}.articlelist_categories
-            WHERE articlelist_id = {$article['id']}
+    // --- 3️⃣ Chi tiết bài viết ---
+    if (!empty($unique_key)) {
+        $article = $GLOBALS['sp']->getRow("
+            SELECT a.id, a.comp, d.name AS article_name
+            FROM {$GLOBALS['db_sp']}.articlelist AS a
+            LEFT JOIN {$GLOBALS['db_sp']}.articlelist_detail AS d
+                ON d.articlelist_id = a.id AND d.languageid = {$langid}
+            WHERE d.unique_key = '{$unique_key}'
+            LIMIT 1
         ");
 
-                if ($article_categories) {
-                    foreach ($article_categories as $ac) {
-                        $chain = getCategoryChain($ac['categories_id'], $langid);
+        if ($article) {
+            // 3a. Nếu menu chưa có → thử lấy menu theo comp bài viết
+            if (!$menu) {
+                $menuArticle = $GLOBALS['sp']->getRow("
+                    SELECT m.id, IFNULL(d.name, m.comp) AS name, d.unique_key
+                    FROM {$GLOBALS['db_sp']}.menu AS m
+                    LEFT JOIN {$GLOBALS['db_sp']}.menu_detail AS d
+                        ON d.menu_id = m.id AND d.languageid = {$langid}
+                    WHERE m.comp = '{$article['comp']}'
+                    LIMIT 1
+                ");
+                if ($menuArticle && !empty($menuArticle['name'])) {
+                    $breadcrumbs[] = array('name' => $menuArticle['name'], 'link' => "{$path_url}/{$menuArticle['unique_key']}");
+                    $menu = $menuArticle;
+                }
+            }
 
-                        foreach ($chain as $c) {
-                            // Không cho trùng
-                            $exists = false;
-                            foreach ($breadcrumbs as $b) {
-                                if ($b['name'] === $c['name']) {
-                                    $exists = true;
-                                    break;
-                                }
+            // 3b. Thêm category chain
+            $article_categories = $GLOBALS['sp']->getAll("
+                SELECT categories_id
+                FROM {$GLOBALS['db_sp']}.articlelist_categories
+                WHERE articlelist_id = {$article['id']}
+            ");
+
+            if ($article_categories) {
+                foreach ($article_categories as $ac) {
+                    $chain = getCategoryChain($ac['categories_id'], $langid);
+                    foreach ($chain as $c) {
+                        $exists = false;
+                        foreach ($breadcrumbs as $b) {
+                            if ($b['name'] === $c['name']) {
+                                $exists = true;
+                                break;
                             }
-                            if (!$exists) {
-                                $breadcrumbs[] = [
-                                    'name' => $c['name'],
-                                    'link' => "{$path_url}/{$c['unique_key']}"
-                                ];
-                            }
+                        }
+                        if (!$exists) {
+                            $breadcrumbs[] = array(
+                                'name' => $c['name'],
+                                'link' => "{$path_url}/{$c['unique_key']}"
+                            );
                         }
                     }
                 }
+            }
 
-                // --- 4c. Add bài viết ---
-                $breadcrumbs[] = ['name' => $article['article_name'], 'link' => ''];
+            // 3c. Thêm bài viết cuối cùng
+            $breadcrumbs[] = array('name' => $article['article_name'], 'link' => '');
+        }
+    }
+    // --- 4️⃣ Nếu chỉ có cat1 nhưng chưa thêm category ---
+    elseif (!empty($cat1) && !$menu) {
+        $category = $GLOBALS['sp']->getRow("
+            SELECT c.id
+            FROM {$GLOBALS['db_sp']}.categories AS c
+            LEFT JOIN {$GLOBALS['db_sp']}.categories_detail AS d
+                ON d.categories_id = c.id AND d.languageid = {$langid}
+            WHERE d.unique_key = '{$cat1}'
+            LIMIT 1
+        ");
+        if ($category) {
+            $chain = getCategoryChain($category['id'], $langid);
+            foreach ($chain as $c) {
+                $breadcrumbs[] = array(
+                    'name' => $c['name'],
+                    'link' => "{$path_url}/{$c['unique_key']}"
+                );
             }
         }
     }
 
     return $breadcrumbs;
 }
+// function buildBreadcrumb($langid, $path_url, $cat1 = '')
+// {
+//     // --- 1️⃣ HOME ---
+//     $home_name = ($langid == 1 ? 'Trang chủ' : ($langid == 2 ? 'Home' : 'ホーム'));
+
+//     $breadcrumbs = [];
+//     $breadcrumbs[] = ['name' => $home_name, 'link' => $path_url];
+
+//     $category = null;
+//     $menu = null;
+
+//     // --- 2️⃣ ƯU TIÊN MAPPING UNIQUE_KEY VỚI CATEGORY ---
+//     if (!empty($cat1)) {
+//         $category = $GLOBALS['sp']->getRow("
+//             SELECT c.id, d.name, d.unique_key
+//             FROM {$GLOBALS['db_sp']}.categories AS c
+//             LEFT JOIN {$GLOBALS['db_sp']}.categories_detail AS d
+//                 ON d.categories_id = c.id AND d.languageid = {$langid}
+//             WHERE d.unique_key = '{$cat1}'
+//             LIMIT 1
+//         ");
+
+//         if ($category) {
+//             // Lấy chain cha → con
+//             $chain = getCategoryChain($category['id'], $langid);
+
+//             foreach ($chain as $c) {
+//                 $breadcrumbs[] = [
+//                     'name' => $c['name'],
+//                     'link' => "{$path_url}/{$c['unique_key']}"
+//                 ];
+//             }
+//         }
+//     }
+
+//     // --- 3️⃣ Nếu KHÔNG có category → thử tìm MENU ---
+//     if (!$category && !empty($cat1)) {
+//         $menu = $GLOBALS['sp']->getRow("
+//             SELECT m.id, IFNULL(d.name, m.comp) AS name, d.unique_key
+//             FROM {$GLOBALS['db_sp']}.menu AS m
+//             LEFT JOIN {$GLOBALS['db_sp']}.menu_detail AS d
+//                 ON d.menu_id = m.id AND d.languageid = {$langid}
+//             WHERE d.unique_key = '{$cat1}'
+//             LIMIT 1
+//         ");
+
+//         if ($menu) {
+//             $breadcrumbs[] = [
+//                 'name' => $menu['name'],
+//                 'link' => "{$path_url}/{$menu['unique_key']}"
+//             ];
+//         } else {
+//             // Lấy bài viết
+//             $article = $GLOBALS['sp']->getRow("
+//         SELECT a.id, a.comp, d.name AS article_name
+//         FROM {$GLOBALS['db_sp']}.articlelist AS a
+//         LEFT JOIN {$GLOBALS['db_sp']}.articlelist_detail AS d
+//             ON d.articlelist_id = a.id AND d.languageid = {$langid}
+//         WHERE d.unique_key = '{$cat1}'
+//         LIMIT 1
+//     ");
+
+//             if ($article) {
+
+//                 // --- 4a. Nếu chưa có menu → tìm menu theo comp bài viết ---
+//                 if (!$menu) {
+//                     $menu = $GLOBALS['sp']->getRow("
+//                 SELECT m.id, IFNULL(d.name, m.comp) AS name, d.unique_key
+//                 FROM {$GLOBALS['db_sp']}.menu AS m
+//                 LEFT JOIN {$GLOBALS['db_sp']}.menu_detail AS d
+//                     ON d.menu_id = m.id AND d.languageid = {$langid}
+//                 WHERE m.comp = '{$article['comp']}'
+//                 LIMIT 1
+//             ");
+
+//                     if ($menu) {
+//                         $breadcrumbs[] = [
+//                             'name' => $menu['name'],
+//                             'link' => "{$path_url}/{$menu['unique_key']}"
+//                         ];
+//                     }
+//                 }
+
+//                 // --- 4b. Lấy tất cả categories của bài viết ---
+//                 $article_categories = $GLOBALS['sp']->getAll("
+//             SELECT categories_id
+//             FROM {$GLOBALS['db_sp']}.articlelist_categories
+//             WHERE articlelist_id = {$article['id']}
+//         ");
+
+//                 if ($article_categories) {
+//                     foreach ($article_categories as $ac) {
+//                         $chain = getCategoryChain($ac['categories_id'], $langid);
+
+//                         foreach ($chain as $c) {
+//                             // Không cho trùng
+//                             $exists = false;
+//                             foreach ($breadcrumbs as $b) {
+//                                 if ($b['name'] === $c['name']) {
+//                                     $exists = true;
+//                                     break;
+//                                 }
+//                             }
+//                             if (!$exists) {
+//                                 $breadcrumbs[] = [
+//                                     'name' => $c['name'],
+//                                     'link' => "{$path_url}/{$c['unique_key']}"
+//                                 ];
+//                             }
+//                         }
+//                     }
+//                 }
+
+//                 // --- 4c. Add bài viết ---
+//                 $breadcrumbs[] = ['name' => $article['article_name'], 'link' => ''];
+//             }
+//         }
+//     }
+
+//     return $breadcrumbs;
+// }
 
 //////////
 function renderPagination($currentPage, $totalPages, $baseUrl = null)

@@ -1,6 +1,6 @@
 <?php
 ini_set('display_errors', 1);
-ini_set('display_startup_errors', 0);
+ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 if (session_status() == PHP_SESSION_NONE) {
@@ -12,14 +12,14 @@ $config = [];
 
 // ✅ BASE PATH & URL (đặt tên thư mục dự án của bạn)
 $config['BASE_DIR'] = $_SERVER['DOCUMENT_ROOT'];
-$config['BASE_URL'] = 'http://demo.local';
+$config['BASE_URL'] = 'http://tanphatmobile.local';
 
 // ================= DATABASE =================
 $DBTYPE = 'mysql';
 $DBHOST = 'localhost';
 $DBUSER = 'root';      // user mặc định XAMPP
 $DBPASSWORD = '';       // trống (nếu bạn chưa đặt password MySQL)
-$DBNAME = 'demo';  // nhớ tạo DB này trong phpMyAdmin
+$DBNAME = 'tanphatmobile';  // nhớ tạo DB này trong phpMyAdmin
 
 // ================= BOOTSTRAP =================
 require_once($config['BASE_DIR'] . '/includes/bootstrap.php');

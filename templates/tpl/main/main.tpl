@@ -25,10 +25,10 @@
             <div class="js-sale">
                {foreach from=$product_new item=item}
                <div class="product-item">
-                  <a class="product-item__img hover-img" href="{$path_url}/{$lang_prefix}{$item.unique_key}" title="{$item.name_detail}">
+                  <a class="product-item__img hover-img" href="{$path_url}/{$lang_prefix}{$item.unique_key}.html" title="{$item.name_detail}">
                      <img src="{$item.img_thumb_vn}" alt="{$item.name_detail}" class="img-cover" loading="lazy">
                   </a>
-                  <h3><a class="product-item__ttl hover" href="{$path_url}/{$lang_prefix}{$item.unique_key}" title="{$item.name_detail}">{$item.name_detail}</a></h3>
+                  <h3><a class="product-item__ttl hover" href="{$path_url}/{$lang_prefix}{$item.unique_key}.html" title="{$item.name_detail}">{$item.name_detail}</a></h3>
                   <div class="product-price">
                      <span class="price-current">{$item.price_formatted}</span>
                      {if $item.priceold > 0 }
@@ -46,7 +46,7 @@
       <section class="home-category">
          <div class="home-category__head">
             <h2>
-               <a class="ttl02" href="/{$cat.unique_key}">
+               <a class="ttl02" href="/{$cat.unique_key}/">
                   {$cat.name}
                </a>
             </h2>
@@ -62,16 +62,16 @@
                   {/foreach}
                </ul>
                {/if}
-               <a class="view-all" href="/{$cat.unique_key}">Xem thêm</a>
+               <a class="view-all" href="/{$cat.unique_key}/">Xem thêm</a>
             </div>
          </div>
          <div class="p-products">
             {foreach from=$cat.products item=item}
             <div class="product-item">
-               <a class="product-item__img hover-img" href="{$path_url}/{$lang_prefix}{$item.unique_key}" title="{$item.name_detail}">
+               <a class="product-item__img hover-img" href="{$path_url}/{$lang_prefix}{$item.unique_key}.html" title="{$item.name_detail}">
                   <img src="{$item.img_thumb_vn}" alt="{$item.name_detail}" class="img-cover" loading="lazy">
                </a>
-               <h3><a class="product-item__ttl hover" href="{$itemath_url}/{$lang_prefix}{$item.unique_key}" title="{$item.name_detail}">{$item.name_detail}</a></h3>
+               <h3><a class="product-item__ttl hover" href="{$itemath_url}/{$lang_prefix}{$item.unique_key}.html" title="{$item.name_detail}">{$item.name_detail}</a></h3>
                <div class="product-price">
                   <span class="price-current">{$item.price_formatted}</span>
                   {if $item.priceold_formatted}

@@ -1,8 +1,10 @@
 <?php
-
+// if (!isset($cat1)) {
+//     $cat1 = isset($_GET['cat1']) ? $_GET['cat1'] : '';
+// }
 $smarty->assign('randcss', rand(1, 10000000));
-$breadcrumbs = buildBreadcrumb($langid, $path_url, $cat1);
-$smarty->assign('breadcrumbs', $breadcrumbs);
+// $breadcrumbs = buildBreadcrumb($langid, $path_url, $cat1);
+// $smarty->assign('breadcrumbs', $breadcrumbs);
 // =================== Mặc định các biến ===================
 $now = (new DateTime())->format('YmdHis');
 $smarty->assign('currentTime', $now);

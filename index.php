@@ -3,13 +3,12 @@ session_start();
 include_once(__DIR__ . "/includes/config.php");
 include_once(__DIR__ . "/functions/function.php");
 include_once(__DIR__ . "/includes/get_languages.php");
+include_once(__DIR__ . "/functions/allmenu.php");
 include_once(__DIR__ . "/includes/track_visit.php");
 
 // Lấy param
 $cat1       = isset($_GET['cat1']) ? $_GET['cat1'] : '';
-if (!empty($cat1) && $cat1 === $lang) {
-    $cat1 = '';
-}
+$unique_key = isset($_GET['unique_key']) ? $_GET['unique_key'] : '';
 
 // Lấy menu 1 lần
 $menu_list = $GLOBALS['sp']->getAll("
@@ -22,7 +21,7 @@ $menu_list = $GLOBALS['sp']->getAll("
 // ==============================
 // Hàm xác định route
 // ==============================
-function determineRoute($cat1, $menu_list, $langid)
+function determineRoute($cat1, $unique_key, $menu_list, $langid)
 {
     $result = [
         'do'        => 'main',
@@ -31,6 +30,7 @@ function determineRoute($cat1, $menu_list, $langid)
         'comp_id'   => 0,
         'cate_id'   => 0,
         'menu_name' => 'Trang chủ',
+        'unique_key' => ''
     ];
 
     $fixed_pages = ['404', 'pay', 'finish', 'order', 'cart', 'mua-nhanh', 'addajax', 'lien-he', 'tim-kiem'];
@@ -151,32 +151,32 @@ function determineRoute($cat1, $menu_list, $langid)
             $result['cate_id']   = $category['id'];
             $result['menu_name'] = $category['name'];
             return $result;
-        } else {
-            $article = $GLOBALS['sp']->getRow("
-            SELECT a.active, d.articlelist_id, d.unique_key, a.comp
-            FROM {$GLOBALS['db_sp']}.articlelist AS a
-            LEFT JOIN {$GLOBALS['db_sp']}.articlelist_detail AS d
-              ON d.articlelist_id=a.id AND d.languageid={$langid}
-            WHERE d.unique_key='{$cat1}' AND a.active=1");
-            if ($article) {
-                $comp = $GLOBALS['sp']->getRow("SELECT do, act FROM {$GLOBALS['db_sp']}.component WHERE id={$article['comp']}");
-                $result['do']        = $comp['do'];
-                $result['act']       = 'detail';
-                $result['page_flag'] = $comp['do'];
-                $result['comp_id']   = $article['comp'];
-                //$result['unique_key'] = $unique_key;
-            } else {
-                $result['do']        = 'error-404';
-                $result['act']       = 'view';
-                $result['menu_name'] = '404';
-                $result['page_flag'] = 'home';
-            }
-            return $result;
         }
     }
 
     // Kiểm tra bài viết
     if (!empty($unique_key)) {
+        $article = $GLOBALS['sp']->getRow("
+            SELECT a.active, d.articlelist_id, d.unique_key, a.comp
+            FROM {$GLOBALS['db_sp']}.articlelist AS a
+            LEFT JOIN {$GLOBALS['db_sp']}.articlelist_detail AS d
+              ON d.articlelist_id=a.id AND d.languageid={$langid}
+            WHERE d.unique_key='{$unique_key}' AND a.active=1
+        ");
+        if ($article) {
+            $comp = $GLOBALS['sp']->getRow("SELECT do, act FROM {$GLOBALS['db_sp']}.component WHERE id={$article['comp']}");
+            $result['do']        = $comp['do'];
+            $result['act']       = 'detail';
+            $result['page_flag'] = $comp['do'];
+            $result['comp_id']   = $article['comp'];
+            $result['unique_key'] = $unique_key;
+        } else {
+            $result['do']        = 'error-404';
+            $result['act']       = 'view';
+            $result['menu_name'] = '404';
+            $result['page_flag'] = 'home';
+        }
+        return $result;
     }
     // ===== Thêm kiểm tra tag =====
     if (!empty($cat1) && strpos($cat1, 'tag/') === 0) {
@@ -197,7 +197,7 @@ function determineRoute($cat1, $menu_list, $langid)
 // ==============================
 // Xác định route
 // ==============================
-$route = determineRoute($cat1, $menu_list, $langid);
+$route = determineRoute($cat1, $unique_key, $menu_list, $langid);
 // Nếu URL không thuộc menu, category, article, tag → chuyển về 404
 if ($route['do'] === 'main' && !empty($cat1)) {
     $do  = 'error-404';
@@ -223,8 +223,9 @@ $smarty->assign([
 // ==============================
 // Breadcrumbs
 // ==============================
-include_once(__DIR__ . "/functions/allmenu.php");
-
+$breadcrumbs = buildBreadcrumb($langid, $path_url, $cat1, $unique_key);
+$smarty->assign('breadcrumbs', $breadcrumbs);
+$smarty->assign('unique_key', $unique_key);
 // ==============================
 // Load source file
 // ==============================

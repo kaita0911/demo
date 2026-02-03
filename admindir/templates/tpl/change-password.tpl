@@ -148,5 +148,4 @@
             e.preventDefault();
         }
     });
-</script>
-{/literal}
+</script>{/literal}
