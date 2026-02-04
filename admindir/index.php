@@ -125,6 +125,38 @@ $r2 = $GLOBALS['sp']->getRow("
     WHERE is_read = 0
 ");
 $smarty->assign('new_order_count', (int)$r2['total']);
+//
+$r2 = $GLOBALS['sp']->getRow("
+    SELECT COUNT(*) AS total
+    FROM {$GLOBALS['db_sp']}.orders
+");
+
+$smarty->assign('total_order_count', (int)$r2['total']);
+
+//Tổng sản phẩm
+$r2 = $GLOBALS['sp']->getRow("
+    SELECT COUNT(*) AS total
+    FROM {$GLOBALS['db_sp']}.articlelist
+	where comp = 2
+");
+
+$smarty->assign('total_products_count', (int)$r2['total']);
+//Tổng bài viết
+$r2 = $GLOBALS['sp']->getRow("
+    SELECT COUNT(*) AS total
+    FROM {$GLOBALS['db_sp']}.articlelist
+	where comp = 1
+");
+
+$smarty->assign('total_news_count', (int)$r2['total']);
+///
+//Tổng bài viết
+$r2 = $GLOBALS['sp']->getRow("
+    SELECT COUNT(*) AS total
+    FROM {$GLOBALS['db_sp']}.contact
+");
+
+$smarty->assign('total_contact_count', (int)$r2['total']);
 // -----------------------------
 // 📄 Xử lý router trang admin
 // -----------------------------

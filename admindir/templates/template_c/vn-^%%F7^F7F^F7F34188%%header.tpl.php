@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2026-02-03 11:26:01
+<?php /* Smarty version 2.6.30, created on 2026-02-04 11:56:21
          compiled from header.tpl */ ?>
 <!DOCTYPE html>
 <html lang="vi" xmlns="http://www.w3.org/1999/xhtml">
@@ -16,13 +16,49 @@
   <script src="js/chart.js"></script>
   <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body>
 
   <div class="popupqc"><img src="images/giahan.jpg" alt="Gia hạn" /></div>
   <div class="header">
+  <div class="box-time">
+      <p>Ngày hết hạn 05/02/2027</p>
+      <p id="demo"></p>
+
+      <?php echo '
+      <script>
+        // FIX TIMEZONE
+        var endTime = new Date("2027-02-05T11:00:00+07:00").getTime();
+
+        function updateCountdown() {
+          var now = Date.now();
+          var distance = Math.max(0, Math.floor((endTime - now) / 1000));
+
+          var days = Math.floor(distance / 86400);
+          var hours = Math.floor((distance % 86400) / 3600);
+          var minutes = Math.floor((distance % 3600) / 60);
+          var seconds = distance % 60;
+
+          document.getElementById("demo").innerHTML =
+            days + " Ngày " +
+            hours + " Giờ " +
+            minutes + " Phút " +
+            seconds + " Giây";
+
+          if (distance <= 0) {
+            clearInterval(timer);
+            document.getElementById("demo").innerHTML = "EXPIRED";
+          }
+        }
+
+        updateCountdown();
+        var timer = setInterval(updateCountdown, 1000);
+      </script>
+      '; ?>
+
+    </div>
     <div class="box-cart">
       <?php if ($this->_tpl_vars['showcart']['open'] == 1): ?>
       <a class="c-cart fnc-bell" href="index.php?do=orders">

@@ -1,5 +1,7 @@
-<?php /* Smarty version 2.6.30, created on 2025-11-21 09:52:29
+<?php /* Smarty version 2.6.30, created on 2026-02-04 14:40:18
          compiled from main/main.tpl */ ?>
+<?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'escape', 'main/main.tpl', 60, false),)), $this); ?>
 <div class="contentmain">
 	<div class="main">
 		<div class="left_sidebar padding10">
@@ -9,14 +11,46 @@ $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
 		</div>
-		<div class="right_content ">
+		<div class="right_content">
 			<div class="wrap-tk">
+				<div class="box-ana">
+					<a class="ana-item" href="index.php?do=articlelist&comp=2">
+						<i class="fa-solid fa-newspaper"></i>
+						<div class="ana-item-info">
+							<span><?php echo $this->_tpl_vars['total_products_count']; ?>
+</span>
+							<label>Tổng sản phẩm</label>
+						</div>
+					</a>
+					<a class="ana-item" href="index.php?do=articlelist&comp=1">
+						<i class="fa-solid fa-pen-to-square"></i>
+						<div class="ana-item-info">
+							<span><?php echo $this->_tpl_vars['total_news_count']; ?>
+</span>
+							<label>Tổng bài viết</label>
+						</div>
+					</a>
+					<a class="ana-item" href="index.php?do=orders">
+						<i class="fa-solid fa-cart-arrow-down"></i>
+						<div class="ana-item-info">
+							<span><?php echo $this->_tpl_vars['total_order_count']; ?>
+</span>
+							<label>Đơn hàng</label>
+						</div>
+					</a>
+					<a class="ana-item" href="index.php?do=contact&comp=23">
+						<i class="fa-solid fa-address-book"></i>
+						<div class="ana-item-info">
+							<span><?php echo $this->_tpl_vars['total_contact_count']; ?>
+</span>
+							<label>Liên hệ</label>
+						</div>
+					</a>
+				</div>
 				<div class="wrap-analytic">
 					<div class="box-browers">
 						<h2 class="box-ttl2">📈 Thống kê trình duyệt truy cập</h2>
-
-
-						<div class="stats">
+						<!-- <div class="stats">
 							<?php $_from = $this->_tpl_vars['browser_counts']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['browser'] => $this->_tpl_vars['count']):
 ?>
@@ -26,8 +60,85 @@ unset($_smarty_tpl_vars);
 <span>
 							</div>
 							<?php endforeach; endif; unset($_from); ?>
+						</div> -->
+						<div class="browser-flex">
+							<div class="chart-wrap">
+								<canvas id="browserChart"></canvas>
+							</div>
+							<div class="browser-legend" id="browserLegend"></div>
 						</div>
+						
+					
+						<script>
+							const browserLabels = [];
+							const browserData = [];
+							<?php $_from = $this->_tpl_vars['browser_counts']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+    foreach ($_from as $this->_tpl_vars['browser'] => $this->_tpl_vars['count']):
+?>
+							browserLabels.push("<?php echo ((is_array($_tmp=$this->_tpl_vars['browser'])) ? $this->_run_mod_handler('escape', true, $_tmp, 'javascript') : smarty_modifier_escape($_tmp, 'javascript')); ?>
+");
+							browserData.push(<?php echo $this->_tpl_vars['count']; ?>
+);
+							<?php endforeach; endif; unset($_from); ?>
+						</script>
+						
+						<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+						<?php echo '
+							<script>
+							var ctx = document.getElementById(\'browserChart\');
 
+							var chart = new Chart(ctx, {
+								type: \'doughnut\',
+								data: {
+								labels: browserLabels,
+								datasets: [{
+									data: browserData,
+									backgroundColor: [
+									\'#4285F4\',
+									\'#FF7139\',
+									\'#ff0000\',
+									\'#34A853\',
+									\'#999999\',
+									\'#f76080\'
+									],
+									borderWidth: 0
+								}]
+								},
+								options: {
+								cutout: \'65%\',
+								plugins: {
+									legend: {
+									display: false   // 👈 TẮT legend mặc định
+									}
+								}
+								}
+							});
+
+							// ====== TẠO LEGEND HTML ======
+							var legend = document.getElementById(\'browserLegend\');
+							var total = browserData.reduce(function(a, b) { return a + b; }, 0);
+
+							browserLabels.forEach(function(label, i) {
+								var value = browserData[i];
+								var percent = ((value / total) * 100).toFixed(1);
+
+								var div = document.createElement(\'div\');
+								div.className = \'item\';
+
+								// div.innerHTML =
+								// \'<span class="color" style="background:\' + chart.data.datasets[0].backgroundColor[i] + \'"></span>\' +
+								// \'<strong>\' + label + \'</strong>&nbsp;:&nbsp;\' + value + \' (\' + percent + \'%)\';
+								div.innerHTML =
+								\'<span class="color" style="background:\' + chart.data.datasets[0].backgroundColor[i] + \'"></span>\'
+								 + label + \'<span class="card-num" style="color:\'+chart.data.datasets[0].backgroundColor[i]+\'">\' + value + \'</span>\';
+
+								legend.appendChild(div);
+							});
+							</script>
+						'; ?>
+
+
+					
 					</div>
 
 					<div class="box-browers">
@@ -51,27 +162,24 @@ unset($_smarty_tpl_vars);
 							</div>
 						</div>
 					</div>
-					<div class="box-browers">
-						<h2>Thống kê truy cập theo</h2>
+					<div class="box-browers scroll">
+						<h2>📈 Thống kê truy cập theo vùng</h2>
 
-						<div class="tk-item --head">
-							<div class="tk-item__ttl">THÀNH PHỐ</div>
-							<div class="tk-item__total">Lượng truy cập</div>
-						</div>
-						<?php $_from = $this->_tpl_vars['region_stats']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+						<div class="box-browers__tk">
+							<?php $_from = $this->_tpl_vars['region_stats']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['row']):
 ?>
-						<div class="tk-item">
-							<div class="tk-item__ttl"><?php echo $this->_tpl_vars['row']['region']; ?>
+							<div class="tk-item">
+								<div class="tk-item__ttl"><?php echo $this->_tpl_vars['row']['region']; ?>
 </div>
-							<div class="tk-item__total"><?php echo $this->_tpl_vars['row']['total']; ?>
+								<div class="tk-item__total"><?php echo $this->_tpl_vars['row']['total']; ?>
  lượt</div>
+							</div>
+							<?php endforeach; endif; unset($_from); ?>
 						</div>
-						<?php endforeach; endif; unset($_from); ?>
-
 					</div>
 				</div>
-				<div class="box-browers width-100">
+				<div class="box-browers width-100 mrg-15">
 					<h2>🔗 Top links truy cập (từ cao → thấp)</h2>
 
 					<table class="br1">
@@ -89,9 +197,10 @@ unset($_smarty_tpl_vars);
 							<tr>
 								<td align="center"><?php echo $this->_tpl_vars['i']+1; ?>
 </td>
-								<td align="left"><span class="url-cell" title="<?php echo $this->_tpl_vars['row']['url']; ?>
+								<td align="left"><a class="url-cell" href="<?php echo $this->_tpl_vars['row']['url']; ?>
+" title="<?php echo $this->_tpl_vars['row']['url']; ?>
 "><?php echo $this->_tpl_vars['row']['url']; ?>
-</span></td>
+</a></td>
 								<td align="center"><span class="badge"><?php echo $this->_tpl_vars['row']['total']; ?>
 </span></td>
 							</tr>

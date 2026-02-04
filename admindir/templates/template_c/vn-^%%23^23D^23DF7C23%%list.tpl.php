@@ -27,7 +27,7 @@ unset($_smarty_tpl_vars);
         <div class="acti2">
           <button class="add" type="button" id="saveOrderBtn" data-comp="<?php echo ((is_array($_tmp=@$_REQUEST['comp'])) ? $this->_run_mod_handler('default', true, $_tmp, 0) : smarty_modifier_default($_tmp, 0)); ?>
 ">
-            <i class="fa fa-first-order"></i> Sắp xếp
+            <i class="fa-solid fa-up-down"></i> Sắp xếp
           </button>
         </div>
       </div>

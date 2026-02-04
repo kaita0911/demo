@@ -19,7 +19,7 @@
                </div>
                <div class="acti2">
                   <button class="add" type="button" id="saveOrderBtn" data-comp="{$smarty.request.comp|default:0}">
-                     <i class="fa fa-first-order"></i> Sắp xếp
+                     <i class="fa-solid fa-up-down"></i> Sắp xếp
                   </button>
                </div>
                <div class="acti2">
@@ -64,7 +64,7 @@
                         <th align="center" class="width-del">
                            <input type="checkbox" name="all" id="checkAll" />
                         </th>
-                        <th align="center" class="width-order">Thứ tự</th>
+                        <!-- <th align="center" class="width-order">Thứ tự</th> -->
                         <th align="center" class="width-order">Sắp xếp</th>
                         {if $tinhnang.hinhanh == 1}
                         <th align="center" class="width-image">Hình ảnh</th>
@@ -107,9 +107,9 @@
                         <td align="center">
                            <input type="checkbox" class="c-item" name="cid[]" value="{$item.id}">
                         </td>
-                        <td align="center">
+                        <!-- <td align="center">
                            {$smarty.foreach.loop.iteration}
-                        </td>
+                        </td> -->
                         <td align="center">
                            <input type="text" class="numInput" value="{$item.num}" />
                         </td>

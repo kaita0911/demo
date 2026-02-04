@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2026-02-03 11:45:14
+<?php /* Smarty version 2.6.30, created on 2026-02-04 14:47:30
          compiled from articlelist/list.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'articlelist/list.tpl', 21, false),array('modifier', 'count', 'articlelist/list.tpl', 52, false),array('modifier', 'escape', 'articlelist/list.tpl', 153, false),array('modifier', 'date_format', 'articlelist/list.tpl', 172, false),)), $this); ?>
@@ -29,7 +29,7 @@ unset($_smarty_tpl_vars);
                <div class="acti2">
                   <button class="add" type="button" id="saveOrderBtn" data-comp="<?php echo ((is_array($_tmp=@$_REQUEST['comp'])) ? $this->_run_mod_handler('default', true, $_tmp, 0) : smarty_modifier_default($_tmp, 0)); ?>
 ">
-                     <i class="fa fa-first-order"></i> Sắp xếp
+                     <i class="fa-solid fa-up-down"></i> Sắp xếp
                   </button>
                </div>
                <div class="acti2">
@@ -87,7 +87,7 @@ unset($_smarty_tpl_vars);
                         <th align="center" class="width-del">
                            <input type="checkbox" name="all" id="checkAll" />
                         </th>
-                        <th align="center" class="width-order">Thứ tự</th>
+                        <!-- <th align="center" class="width-order">Thứ tự</th> -->
                         <th align="center" class="width-order">Sắp xếp</th>
                         <?php if ($this->_tpl_vars['tinhnang']['hinhanh'] == 1): ?>
                         <th align="center" class="width-image">Hình ảnh</th>
@@ -136,10 +136,10 @@ if ($this->_foreach['loop']['total'] > 0):
                            <input type="checkbox" class="c-item" name="cid[]" value="<?php echo $this->_tpl_vars['item']['id']; ?>
 ">
                         </td>
-                        <td align="center">
+                        <!-- <td align="center">
                            <?php echo $this->_foreach['loop']['iteration']; ?>
 
-                        </td>
+                        </td> -->
                         <td align="center">
                            <input type="text" class="numInput" value="<?php echo $this->_tpl_vars['item']['num']; ?>
 " />

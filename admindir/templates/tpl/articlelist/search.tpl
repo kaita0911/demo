@@ -35,7 +35,7 @@
       </div>
       <div class="acti2">
         <a class="order" href="javascript:void(0)" title="Order" onclick="ChangeAction('index.php?do=articlelist&act=order&comp=<!--{$smarty.request.comp}-->');">
-        <i class="fa fa-first-order"></i> Sắp xếp
+        <i class="fa-solid fa-up-down"></i> Sắp xếp
       </a>
     </div>
     <div class="acti2">

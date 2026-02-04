@@ -13,7 +13,7 @@
             </div>
             <div class="acti2">
                <button class="add" type="button" id="saveOrderBtn" data-comp="{$smarty.request.comp|default:0}">
-                  <i class="fa fa-first-order"></i> Sắp xếp
+                  <i class="fa-solid fa-up-down"></i> Sắp xếp
                </button>
             </div>
          </div>

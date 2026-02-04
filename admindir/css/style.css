@@ -81,7 +81,8 @@ a {
 }
 a:hover,
 .ActiveMenu {
-  color: #005ebb;
+  color: #fff;
+  background: #cccccc33;
 }
 .link00 a {
   /* color: #fff;
@@ -124,6 +125,7 @@ img {
   justify-content: space-between;
   padding: 10px 15px 10px 0;
   margin-left: 245px;
+  height: 67px;
 }
 a.c-cart {
   background: #007bff;
@@ -1021,7 +1023,7 @@ td.titles.paleft.brbottom.brleft {
 }
 .left_sidebar {
   width: 230px;
-  background: #fff;
+  background: #222d32;
   height: 100%;
   box-shadow: 7px 0 60px rgba(0, 0, 0, 0.05);
   z-index: 11;
@@ -1086,7 +1088,7 @@ td.titles.paleft.brbottom.brleft {
   margin-bottom: 5px;
 }
 .left_sidebar .nav-item .nav-toggle, .nav-normal {
-  color: #111;
+  color: #ccccccbd;
   font-size: 14px;
   padding: 6px 8px 6px 10px;
   align-items: center;
@@ -1098,7 +1100,7 @@ td.titles.paleft.brbottom.brleft {
   position: relative;
 }
 .menusidebar .nav-item .nav-toggle:hover,.menusidebar .nav-item.active .nav-toggle {
-  color: #007bff;
+  color: #fff;
 }
 .left_sidebar .nav-item.active .nav-toggle .fa-angle-down {
   transform: rotate(180deg);
@@ -1106,8 +1108,9 @@ td.titles.paleft.brbottom.brleft {
 
 .left_sidebar .nav-item .nav-toggle .fa-angle-down {
   position: absolute;
-  right: 0;
+  right: 10px;
   transition: all 0.3s;
+  font-size: 10px;
 }
 .left_sidebar .nav-item .nav-toggle:after {
   content: "";
@@ -1130,9 +1133,8 @@ td.titles.paleft.brbottom.brleft {
 .list-sidebar a {
   font-size: 13px;
   background: transparent;
-  \: 5px;
   border-radius: 30px;
-  color: #111;
+  color: #ccccccbd;
   padding: 5px 10px;
   position: relative;
   display: flex;
@@ -1452,8 +1454,7 @@ select#menu {
   margin-right: 10px;
 }
 .list-sidebar a:hover,.list-sidebar a:hover:before {
-  background: #007bff33;
-  color: #007bff;
+  background: #cccccc33;
 }
 .list-sidebar a:before {content: "";width: 4px;height: 4px;border-radius: 50%;background: #333;}
 
@@ -1901,9 +1902,7 @@ th.width-04 {
 th.width-show {
   width: 6%;
 }
-th.width-date {
-  width: 15%;
-}
+
 th.width-action {
   width: 10%;
 }
@@ -2472,9 +2471,9 @@ ul.category-tree ul {
   border-radius: 3px;
 }
 .menusidebar {
-  padding: 10px;
-  height: 93vh;
-  overflow-y: scroll;
+  padding: 10px 0px 10px 0;
+  max-height: calc(100vh - 51px);
+  overflow-y: auto;
 }
 
 .custom-upload {
@@ -2598,7 +2597,10 @@ input#img_thumb_vn, input#multiimages,input#img_vn {
   transition: all 0.3s ease;
   border: 1px solid #ddd;
   width: 50%;
-  margin-bottom: 15px;
+  margin-top: 15px;
+}
+.box-browers.scroll{
+  padding-right: 5px;
 }
 .box-browers h2 {
   color: #333;
@@ -2697,14 +2699,10 @@ input#img_thumb_vn, input#multiimages,input#img_vn {
   font-size: 13px;
 }
 
-@media (max-width:768px) {
-  .chart-wrap {
-    height: 300px;
-  }
-}
 .wrap-tk {
     padding: 15px;
     padding-right: 0;
+    padding-bottom: 0;
 }
 .tk-item {
     display: flex;
@@ -2718,29 +2716,24 @@ input#img_thumb_vn, input#multiimages,input#img_vn {
     font-weight: 600;
 }
 /* ===== CUSTOM SCROLLBAR ===== */
-.menusidebar::-webkit-scrollbar {
-  width: 8px;                 /* Độ dày thanh cuộn */
-}
 
-.menusidebar::-webkit-scrollbar-track {
-  background: #f3f4f6;        /* Nền track */
-  border-radius: 8px;
-}
-
-.menusidebar::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #cfcfcf, #a0a0a0);
-  border-radius: 8px;
-  transition: background 0.3s;
-}
-
-.menusidebar::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #999, #777);
-}
 
 /* ===== SCROLLBAR CHO FIREFOX ===== */
-.menusidebar {
-  scrollbar-width: thin;
-  scrollbar-color: #a0a0a0 #f3f4f6;
+
+/* Thanh cuộn */
+.menusidebar::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* Track (nền) */
+.menusidebar::-webkit-scrollbar-track {
+  background: #222d32;
+  border-radius: 2px;
+}
+/* Thumb (tay kéo) */
+.menusidebar::-webkit-scrollbar-thumb {
+  background: #fff;
+  border-radius: 2px;
 }
 .bg-color {
   display: block;
@@ -3225,9 +3218,126 @@ select.status-select {
   font-size: 20px;
   margin-bottom: 4px;
 }
+.box-ana {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 15px;
+}
+.ana-item {
+  background: #ccc;
+  position: relative;
+  color:#FFF;
+  min-height: 100px;
+  overflow: hidden;  
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+.ana-item:hover{
+  opacity: 0.7;
+}
+.ana-item:nth-child(1){
+  background:#61d270;
+}
+.ana-item:nth-child(2){
+  background:#fba026;
+}
+.ana-item:nth-child(3){
+  background:#e25041;
+}
+.ana-item:nth-child(4){
+  background:#26b7fb;
+}
+.ana-item i {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 67px;
+  color: #3333331f;
+}
+.ana-item-info {
+  display: flex;
+  flex-direction: column;
+  margin: 25px;
+}
 
+.ana-item-info span {
+  font-weight: bold;
+  font-size: 39px;
+  display: block;
+  margin-bottom: 10px;
+}
+.browser-flex {
+    display: flex;
+    gap: 20px;
+}
+.chart-wrap {
+  max-width: 180px;
+  margin: 0 auto;
+}
 
-.fnc-bell {
+.card-title {
+  font-size: 15px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.browser-legend {
+  margin-bottom: 10px;
+  width: 40%;
+}
+
+.browser-legend .item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;   /* 👈 mỗi browser 1 dòng */
+  font-size: 13px;
+  width: 100%;
+  position: relative;
+}
+span.card-num {
+    font-weight: 500;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    font-size: 15px;
+}
+.browser-legend .color {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+.box-browers__tk {
+    overflow-y: scroll;
+    max-height: 195px;
+    padding-right: 15px;
+}
+/* Thanh cuộn */
+.box-browers__tk::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track (nền) */
+.box-browers__tk::-webkit-scrollbar-track {
+  background: #ddd;
+  border-radius: 3px;
+}
+/* Thumb (tay kéo) */
+.box-browers__tk::-webkit-scrollbar-thumb {
+  background: #007bff;
+  border-radius: 3px;
+}
+.box-register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  position: absolute;
+  right: 28%;
+  top: 19px;
+}
+
+.box-register a {
   display: inline-flex;
   color: #FFF;
   background: #007bff;
@@ -3235,7 +3345,7 @@ select.status-select {
   border-radius: 5px;
   position: relative;
 }
-.fnc-bell .icon-new{
+.box-register a .icon-new{
   display: inline-block;
   background: url(../images/icon-bell.svg) no-repeat top center;
   background-size: contain; animation: bell-shake 1.2s infinite;
