@@ -2007,7 +2007,44 @@ th.width-ttl {
 .br1 input[type="checkbox"] {
   transform: scale(1.2);
   cursor: pointer;
-  margin-top: 9px;
+  margin-top: 10px;
+  color: #fff;
+}
+.br1 input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 13px;
+  height: 13px;
+  background: #fff;          /* 👈 nền trắng */
+  border: 1px solid #007bff; /* viền xám */
+  border-radius: 1px;
+  cursor: pointer;
+  position: relative;
+  \: none;
+}
+
+/* khi hover */
+.br1 input[type="checkbox"]:hover {
+  border-color: #3b82f6;
+}
+
+/* khi checked */
+.br1 input[type="checkbox"]:checked {
+  background: #007bff;          /* 👈 vẫn trắng */
+  border-color: #007bff;
+}
+
+/* dấu tick */
+.br1 input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  width: 3px;
+  height: 6px;
+  border: solid #fff;     /* 👈 tick màu xanh (nổi trên nền trắng) */
+  border-width: 0 2px 2px 0;
+  left: 3px;
+  top: 1px;
+  transform: rotate(45deg);
 }
 
 /* Responsive table scroll */
@@ -2388,7 +2425,7 @@ ul.category-tree ul {
 .category-tree input[type="checkbox"] {
   width: 15px;
   height: 15px;
-  accent-color: #1a73e8; /* MÃƒÂ u xanh Google */
+  accent-color: #007bff; /* MÃƒÂ u xanh Google */
   cursor: pointer;
 }
 
@@ -2607,7 +2644,7 @@ input#img_thumb_vn, input#multiimages,input#img_vn {
   font-size: 16px;
   margin-bottom: 25px;
   font-weight: 600;
-  margin-top: 10px;
+  margin-top: 0;
 }
 
 .stats {
@@ -3366,4 +3403,41 @@ span.card-num {
   60%  { transform: rotate(-5deg); }
   70%  { transform: rotate(0); }
   100% { transform: rotate(0); }
+}
+.month-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+  padding: 0;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.month-tabs li {
+  padding: 6px 12px;
+  background: #f1f1f1;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.month-tabs li.active {
+  background: #007bff;
+  color: #fff;
+  font-weight: 600;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.url-cell {
+  max-width: 600px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

@@ -15,7 +15,7 @@
         CKEDITOR.replace(el.id, {
           language: langId === "2" ? "en" : "vi", // tùy theo lang_id
           removePlugins: "exportpdf",
-          height: 600,
+          height: 300,
         });
       });
     });
@@ -1241,4 +1241,16 @@ window.addEventListener("pageshow", function (event) {
     // Trang được load từ BFCache
     window.location.reload();
   }
+});
+
+document.querySelectorAll('.month-tabs li').forEach(function(tab){
+  tab.addEventListener('click', function(){
+      // bỏ active hết
+      document.querySelectorAll('.month-tabs li').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+      // active cái được click
+      this.classList.add('active');
+      document.getElementById(this.dataset.tab).classList.add('active');
+  });
 });

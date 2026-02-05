@@ -38,13 +38,7 @@
 				<div class="wrap-analytic">
 					<div class="box-browers">
 						<h2 class="box-ttl2">📈 Thống kê trình duyệt truy cập</h2>
-						<!-- <div class="stats">
-							{foreach from=$browser_counts key=browser item=count}
-							<div class="card"><strong>{$browser}</strong>
-								<span id="online">{$count}<span>
-							</div>
-							{/foreach}
-						</div> -->
+
 						<div class="browser-flex">
 							<div class="chart-wrap">
 								<canvas id="browserChart"></canvas>
@@ -64,7 +58,7 @@
 							{/foreach}
 						</script>
 						
-						<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+						
 						{literal}
 							<script>
 							var ctx = document.getElementById('browserChart');
@@ -153,32 +147,87 @@
 					</div>
 				</div>
 				<div class="box-browers width-100 mrg-15">
-					<h2>🔗 Top links truy cập (từ cao → thấp)</h2>
+					<h2>📊 Top 20 link truy cập nhiều nhất theo tháng – {$year}</h2>
 
-					<table class="br1">
-						<thead>
-							<tr>
-								<th align="center" class="width-image">Thứ tự</th>
-								<th align="left" class="width-ttl">Link</th>
-								<th align="center" class="width-action">Lượt truy cập</th>
-							</tr>
-						</thead>
-						<tbody>
-							{foreach from=$top_links key=i item=row}
-							<tr>
-								<td align="center">{$i+1}</td>
-								<td align="left"><a class="url-cell" href="{$row.url}" title="{$row.url}">{$row.url}</a></td>
-								<td align="center"><span class="badge">{$row.total}</span></td>
-							</tr>
-							{/foreach}
-							{if !$top_links}
-							<tr>
-								<td colspan="3">Không có dữ liệu.</td>
-							</tr>
-							{/if}
-						</tbody>
-					</table>
+					<!-- TAB HEADER -->
+					<ul class="month-tabs">
+						{foreach from=$topByMonth key=month item=links}
+						<li class="{if $month == date('n')}active{/if}" data-tab="month{$month}">
+							Tháng {$month}
+						</li>
+						{/foreach}
+					</ul>
+
+					<!-- TAB CONTENT -->
+					{foreach from=$topByMonth key=month item=links}
+					<div class="tab-content {if $month == date('n')}active{/if}" id="month{$month}">
+						<table class="br1">
+							<thead>
+								<tr>
+									<th>Thứ tự</th>
+									<th>Link</th>
+									<th>Lượt truy cập</th>
+								</tr>
+							</thead>
+							<tbody>
+								{if $links}
+									{foreach from=$links key=i item=row}
+									<tr>
+										<td align="center">{$i+1}</td>
+										<td><a href="{$row.url}" target="_blank">{$row.url}</a></td>
+										<td align="center">
+											<span class="badge">{$row.total}</span>
+										</td>
+									</tr>
+									{/foreach}
+								{else}
+									<tr>
+										<td colspan="3" align="center">Không có dữ liệu</td>
+									</tr>
+								{/if}
+							</tbody>
+						</table>
+					</div>
+					{/foreach}
+
+					<canvas id="monthChart" height="90"></canvas>
+					<script>
+						const labels = [
+							"Tháng 1","Tháng 2","Tháng 3","Tháng 4","Tháng 5","Tháng 6",
+							"Tháng 7","Tháng 8","Tháng 9","Tháng 10","Tháng 11","Tháng 12"
+						];
+
+						const data = {$months_json};
+						</script>
+
+						{literal}
+						<script>
+						const monthCtx = document.getElementById('monthChart').getContext('2d');
+
+						new Chart(monthCtx, {
+							type: 'bar',
+							data: {
+								labels: labels,
+								datasets: [{
+									label: 'Lượt truy cập',
+									data: data,
+									borderWidth: 1
+								}]
+							},
+							options: {
+								responsive: true,
+								scales: {
+									y: {
+										beginAtZero: true
+									}
+								}
+							}
+						});
+						</script>
+						{/literal}
+
 				</div>
+
 			</div>
 		</div>
 	</div>

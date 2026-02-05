@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.30, created on 2026-02-04 14:40:18
+<?php /* Smarty version 2.6.30, created on 2026-02-05 10:52:34
          compiled from main/main.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'escape', 'main/main.tpl', 60, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'escape', 'main/main.tpl', 54, false),)), $this); ?>
 <div class="contentmain">
 	<div class="main">
 		<div class="left_sidebar padding10">
@@ -50,17 +50,7 @@ unset($_smarty_tpl_vars);
 				<div class="wrap-analytic">
 					<div class="box-browers">
 						<h2 class="box-ttl2">📈 Thống kê trình duyệt truy cập</h2>
-						<!-- <div class="stats">
-							<?php $_from = $this->_tpl_vars['browser_counts']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
-    foreach ($_from as $this->_tpl_vars['browser'] => $this->_tpl_vars['count']):
-?>
-							<div class="card"><strong><?php echo $this->_tpl_vars['browser']; ?>
-</strong>
-								<span id="online"><?php echo $this->_tpl_vars['count']; ?>
-<span>
-							</div>
-							<?php endforeach; endif; unset($_from); ?>
-						</div> -->
+
 						<div class="browser-flex">
 							<div class="chart-wrap">
 								<canvas id="browserChart"></canvas>
@@ -82,7 +72,7 @@ unset($_smarty_tpl_vars);
 							<?php endforeach; endif; unset($_from); ?>
 						</script>
 						
-						<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+						
 						<?php echo '
 							<script>
 							var ctx = document.getElementById(\'browserChart\');
@@ -180,39 +170,103 @@ unset($_smarty_tpl_vars);
 					</div>
 				</div>
 				<div class="box-browers width-100 mrg-15">
-					<h2>🔗 Top links truy cập (từ cao → thấp)</h2>
+					<h2>📊 Top 20 link truy cập nhiều nhất theo tháng – <?php echo $this->_tpl_vars['year']; ?>
+</h2>
 
-					<table class="br1">
-						<thead>
-							<tr>
-								<th align="center" class="width-image">Thứ tự</th>
-								<th align="left" class="width-ttl">Link</th>
-								<th align="center" class="width-action">Lượt truy cập</th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php $_from = $this->_tpl_vars['top_links']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+					<!-- TAB HEADER -->
+					<ul class="month-tabs">
+						<?php $_from = $this->_tpl_vars['topByMonth']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+    foreach ($_from as $this->_tpl_vars['month'] => $this->_tpl_vars['links']):
+?>
+						<li class="<?php if ($this->_tpl_vars['month'] == date ( 'n' )): ?>active<?php endif; ?>" data-tab="month<?php echo $this->_tpl_vars['month']; ?>
+">
+							Tháng <?php echo $this->_tpl_vars['month']; ?>
+
+						</li>
+						<?php endforeach; endif; unset($_from); ?>
+					</ul>
+
+					<!-- TAB CONTENT -->
+					<?php $_from = $this->_tpl_vars['topByMonth']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+    foreach ($_from as $this->_tpl_vars['month'] => $this->_tpl_vars['links']):
+?>
+					<div class="tab-content <?php if ($this->_tpl_vars['month'] == date ( 'n' )): ?>active<?php endif; ?>" id="month<?php echo $this->_tpl_vars['month']; ?>
+">
+						<table class="br1">
+							<thead>
+								<tr>
+									<th>Thứ tự</th>
+									<th>Link</th>
+									<th>Lượt truy cập</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php if ($this->_tpl_vars['links']): ?>
+									<?php $_from = $this->_tpl_vars['links']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['i'] => $this->_tpl_vars['row']):
 ?>
-							<tr>
-								<td align="center"><?php echo $this->_tpl_vars['i']+1; ?>
+									<tr>
+										<td align="center"><?php echo $this->_tpl_vars['i']+1; ?>
 </td>
-								<td align="left"><a class="url-cell" href="<?php echo $this->_tpl_vars['row']['url']; ?>
-" title="<?php echo $this->_tpl_vars['row']['url']; ?>
-"><?php echo $this->_tpl_vars['row']['url']; ?>
+										<td><a href="<?php echo $this->_tpl_vars['row']['url']; ?>
+" target="_blank"><?php echo $this->_tpl_vars['row']['url']; ?>
 </a></td>
-								<td align="center"><span class="badge"><?php echo $this->_tpl_vars['row']['total']; ?>
-</span></td>
-							</tr>
-							<?php endforeach; endif; unset($_from); ?>
-							<?php if (! $this->_tpl_vars['top_links']): ?>
-							<tr>
-								<td colspan="3">Không có dữ liệu.</td>
-							</tr>
-							<?php endif; ?>
-						</tbody>
-					</table>
+										<td align="center">
+											<span class="badge"><?php echo $this->_tpl_vars['row']['total']; ?>
+</span>
+										</td>
+									</tr>
+									<?php endforeach; endif; unset($_from); ?>
+								<?php else: ?>
+									<tr>
+										<td colspan="3" align="center">Không có dữ liệu</td>
+									</tr>
+								<?php endif; ?>
+							</tbody>
+						</table>
+					</div>
+					<?php endforeach; endif; unset($_from); ?>
+
+					<canvas id="monthChart" height="90"></canvas>
+					<script>
+						const labels = [
+							"Tháng 1","Tháng 2","Tháng 3","Tháng 4","Tháng 5","Tháng 6",
+							"Tháng 7","Tháng 8","Tháng 9","Tháng 10","Tháng 11","Tháng 12"
+						];
+
+						const data = <?php echo $this->_tpl_vars['months_json']; ?>
+;
+						</script>
+
+						<?php echo '
+						<script>
+						const monthCtx = document.getElementById(\'monthChart\').getContext(\'2d\');
+
+						new Chart(monthCtx, {
+							type: \'bar\',
+							data: {
+								labels: labels,
+								datasets: [{
+									label: \'Lượt truy cập\',
+									data: data,
+									borderWidth: 1
+								}]
+							},
+							options: {
+								responsive: true,
+								scales: {
+									y: {
+										beginAtZero: true
+									}
+								}
+							}
+						});
+						</script>
+						'; ?>
+
+
 				</div>
+
 			</div>
 		</div>
 	</div>

@@ -1,3 +1,6 @@
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
 <div class="form-container">
     <h2>Đổi mật khẩu</h2>
 
@@ -12,17 +15,26 @@
     <form method="post" action="" id="changePassForm">
         <div class="form-group">
             <label>Mật khẩu cũ</label>
-            <input type="password" name="old_password" required>
+            <div class="login-fr">
+                <input type="password" name="old_password" required > 
+                <i class="fa-solid fa-eye toggle-password" ></i>
+            </div>
         </div>
 
         <div class="form-group">
             <label>Mật khẩu mới</label>
-            <input type="password" name="new_password" required>
+            <div class="login-fr">
+                <input type="password" name="new_password" required>
+                <i class="fa-solid fa-eye toggle-password" ></i>
+            </div>
         </div>
 
         <div class="form-group">
             <label>Xác nhận mật khẩu mới</label>
-            <input type="password" name="confirm_password" required>
+            <div class="login-fr">
+                <input type="password" name="confirm_password" required>
+                <i class="fa-solid fa-eye toggle-password" ></i>
+            </div>
         </div>
 
         <button type="submit" class="btn-primary">Đổi mật khẩu</button>
@@ -60,8 +72,9 @@
     .form-group label {
         display: block;
         margin-bottom: 5px;
-        color: #555;
-        font-weight: bold;
+        color: #444;
+        font-weight: 500;
+        font-size: 14px;
     }
 
     /* Input */
@@ -130,6 +143,19 @@
     .login-link a:hover {
         color: #0056b3;
     }
+    .login-fr {
+            position: relative;
+        }
+
+    .login-fr i.fa-solid {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 14px;
+        color: #ccc;
+        cursor: pointer;
+    }
 </style>
 
 <script>
@@ -148,4 +174,24 @@
             e.preventDefault();
         }
     });
-</script>{/literal}
+</script>
+<script>
+document.querySelectorAll('.toggle-password').forEach(function(icon) {
+    icon.addEventListener('click', function () {
+
+        // tìm input trong cùng khối
+        const wrapper = this.closest('.login-fr');
+        const input = wrapper.querySelector('input');
+
+        if (!input) return;
+
+        const isPassword = input.type === 'password';
+        input.type = isPassword ? 'text' : 'password';
+
+        this.classList.toggle('fa-eye', !isPassword);
+        this.classList.toggle('fa-eye-slash', isPassword);
+    });
+});
+</script>
+
+{/literal}

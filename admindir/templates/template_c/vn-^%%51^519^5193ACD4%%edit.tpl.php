@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2025-12-04 09:15:29
+<?php /* Smarty version 2.6.30, created on 2026-02-05 10:36:14
          compiled from footer/edit.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'count', 'footer/edit.tpl', 20, false),array('modifier', 'escape', 'footer/edit.tpl', 38, false),)), $this); ?>
@@ -74,7 +74,7 @@ unset($_smarty_tpl_vars);
 " class="InputText" />
                   </div>
                 </div>
-                <div class="item">
+                <!-- <div class="item">
                   <div class="title">Mô tả ngắn</div>
                   <div class="meta">
                     <textarea id="content_<?php echo $this->_tpl_vars['lang']['id']; ?>
@@ -82,7 +82,7 @@ unset($_smarty_tpl_vars);
 ][content]"><?php echo $this->_tpl_vars['detail']['content']; ?>
 </textarea>
                   </div>
-                </div>
+                </div> -->
               </div>
               <?php endforeach; endif; unset($_from); ?>
 

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2025-11-23 10:41:46
+<?php /* Smarty version 2.6.30, created on 2026-02-05 10:56:22
          compiled from login.tpl */ ?>
 <!DOCTYPE html>
 <html lang="vi">
@@ -6,14 +6,28 @@
 <head>
     <meta charset="utf-8" />
     <meta name="robots" content="noindex, nofollow" />
-    <title>Administrator Login</title><?php echo '
+    <title>Administrator Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <?php echo '
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
+        .login-fr {
+            position: relative;
+        }
 
+        .login-fr i.fa-solid {
+            position: absolute;
+            right: 10px;
+            top: 36%;
+            transform: translateY(-50%);
+            font-size: 14px;
+            color: #ccc;
+            cursor: pointer;
+        }
         html,
         body {
             height: 100%;
@@ -56,8 +70,9 @@
 
         label {
             display: block;
-            font-weight: 600;
+            font-weight: 500;
             color: #444;
+            font-size: 14px;
             margin-bottom: 5px;
         }
 
@@ -106,7 +121,10 @@
             text-align: center;
             color: red;
         }
-    </style>'; ?>
+    </style>
+    
+
+    '; ?>
 
 </head>
 
@@ -119,18 +137,43 @@
 </div>
             <?php endif; ?>
             <label for="username">Username</label>
-            <input class="text" name="username" id="username" maxlength="50" type="text" required>
+            <div class="login-fr">
+                <input class="text" name="username" id="username" maxlength="50" type="text" required>
+                <i class="fa-solid fa-user"></i>
+            </div>
+            
             <label for="password">Password</label>
-            <input class="text" name="password" id="password" maxlength="50" type="password" required>
-
+            <div class="login-fr">
+                <input class="text" name="password" id="password" maxlength="50" type="password" required>
+                <i class="fa-solid fa-eye toggle-password" data-target="password"></i>
+            </div>
             <button type="submit" class="login-btn">Đăng nhập</button>
             <!-- Link quên mật khẩu -->
             <div style="text-align:center; margin-top:10px;">
                 <a href="index.php?do=login&act=forgot" style="color:#007bff; text-decoration:none; font-size:14px;">Quên mật khẩu?</a>
             </div>
-            <div class="footer-note">© 2025 Administrator</div>
+            <div class="footer-note">© Administrator</div>
         </div>
     </form>
-</body>
+</body>   
+ <?php echo '
+<script>
+        document.querySelectorAll(\'.toggle-password\').forEach(function(icon) {
+            icon.addEventListener(\'click\', function () {
+                const input = document.getElementById(this.dataset.target);
+
+                if (input.type === \'password\') {
+                    input.type = \'text\';
+                    this.classList.remove(\'fa-eye\');
+                    this.classList.add(\'fa-eye-slash\');
+                } else {
+                    input.type = \'password\';
+                    this.classList.remove(\'fa-eye-slash\');
+                    this.classList.add(\'fa-eye\');
+                }
+            });
+        });
+        </script>   
+         '; ?>
 
 </html>

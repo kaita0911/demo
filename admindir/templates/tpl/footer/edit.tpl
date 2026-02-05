@@ -48,12 +48,12 @@
                     <input type="text" name="languages[{$lang.id}][address]" value="{$detail.address}" class="InputText" />
                   </div>
                 </div>
-                <div class="item">
+                <!-- <div class="item">
                   <div class="title">Mô tả ngắn</div>
                   <div class="meta">
                     <textarea id="content_{$lang.id}" name="languages[{$lang.id}][content]">{$detail.content}</textarea>
                   </div>
-                </div>
+                </div> -->
               </div>
               {/foreach}
 

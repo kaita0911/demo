@@ -28,6 +28,7 @@
                   </button>
                </div>
             </div>
+            {if $smarty.request.comp == 2}
             <!-- ====== Bộ lọc tìm kiếm ====== -->
             <form method="get" action="index.php">
                <input type="hidden" name="do" value="articlelist">
@@ -46,6 +47,7 @@
                   <button type="submit" name="search" value="1" style="margin-left:10px;">Tìm kiếm</button>
                </div>
             </form>
+            {/if}
          </div>
 
          <div class="main-content">
@@ -65,7 +67,7 @@
                            <input type="checkbox" name="all" id="checkAll" />
                         </th>
                         <!-- <th align="center" class="width-order">Thứ tự</th> -->
-                        <th align="center" class="width-order">Sắp xếp</th>
+                        <th align="center" class="width-order">Thứ tự</th>
                         {if $tinhnang.hinhanh == 1}
                         <th align="center" class="width-image">Hình ảnh</th>
                         {/if}

@@ -3,3 +3,4 @@
 <script src="js/Sortable.min.js"></script>
 <script src="js/script.js"></script>
 <script src="ckeditor4/ckeditor.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

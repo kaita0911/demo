@@ -42,12 +42,12 @@
                       class="InputText title-input" {if $lang.code=='vi' }required{/if} />
                   </div>
                 </div>
-                <div class="item">
+                <!-- <div class="item">
                   <div class="title">Mô tả ngắn</div>
                   <div class="meta">
                     <textarea name="languages[{$lang.id}][content]" id="content_{$lang.id}"></textarea>
                   </div>
-                </div>
+                </div> -->
               </div>
               {/foreach}
 

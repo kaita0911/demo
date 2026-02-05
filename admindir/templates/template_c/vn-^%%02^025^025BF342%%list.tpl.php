@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.30, created on 2026-02-04 14:47:30
+<?php /* Smarty version 2.6.30, created on 2026-02-05 10:19:28
          compiled from articlelist/list.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'articlelist/list.tpl', 21, false),array('modifier', 'count', 'articlelist/list.tpl', 52, false),array('modifier', 'escape', 'articlelist/list.tpl', 153, false),array('modifier', 'date_format', 'articlelist/list.tpl', 172, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'articlelist/list.tpl', 21, false),array('modifier', 'count', 'articlelist/list.tpl', 54, false),array('modifier', 'escape', 'articlelist/list.tpl', 155, false),array('modifier', 'date_format', 'articlelist/list.tpl', 174, false),)), $this); ?>
 <div class="contentmain">
    <div class="main">
       <div class="left_sidebar padding10">
@@ -39,6 +39,7 @@ unset($_smarty_tpl_vars);
                   </button>
                </div>
             </div>
+            <?php if ($_REQUEST['comp'] == 2): ?>
             <!-- ====== Bộ lọc tìm kiếm ====== -->
             <form method="get" action="index.php">
                <input type="hidden" name="do" value="articlelist">
@@ -65,6 +66,7 @@ unset($_smarty_tpl_vars);
                   <button type="submit" name="search" value="1" style="margin-left:10px;">Tìm kiếm</button>
                </div>
             </form>
+            <?php endif; ?>
          </div>
 
          <div class="main-content">
@@ -88,7 +90,7 @@ unset($_smarty_tpl_vars);
                            <input type="checkbox" name="all" id="checkAll" />
                         </th>
                         <!-- <th align="center" class="width-order">Thứ tự</th> -->
-                        <th align="center" class="width-order">Sắp xếp</th>
+                        <th align="center" class="width-order">Thứ tự</th>
                         <?php if ($this->_tpl_vars['tinhnang']['hinhanh'] == 1): ?>
                         <th align="center" class="width-image">Hình ảnh</th>
                         <?php endif; ?>

@@ -1,3 +1,5 @@
+<?php /* Smarty version 2.6.30, created on 2026-02-05 10:51:57
+         compiled from forgot-password.tpl */ ?>
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -5,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="robots" content="noindex, nofollow" />
     <title>Quên mật khẩu</title>
-    {literal}
+    <?php echo '
     <style>
         * {
             box-sizing: border-box;
@@ -55,10 +57,9 @@
 
         label {
             display: block;
-            margin-bottom: 5px;
+            font-weight: 600;
             color: #444;
-            font-weight: 500;
-            font-size: 14px;
+            margin-bottom: 5px;
         }
 
         input[type="email"] {
@@ -112,7 +113,8 @@
             color: red;
         }
     </style>
-     {/literal}
+     '; ?>
+
 </head>
 
 <body>
@@ -121,13 +123,15 @@
             <h2>Quên mật khẩu</h2>
 
             <!-- Hiển thị thông báo -->
-            {if isset($msg)}
-            <div class="message">{$msg}</div>
-            {/if}
+            <?php if (isset ( $this->_tpl_vars['msg'] )): ?>
+            <div class="message"><?php echo $this->_tpl_vars['msg']; ?>
+</div>
+            <?php endif; ?>
 
-            {if isset($err)}
-            <div class="error">{$err}</div>
-            {/if}
+            <?php if (isset ( $this->_tpl_vars['err'] )): ?>
+            <div class="error"><?php echo $this->_tpl_vars['err']; ?>
+</div>
+            <?php endif; ?>
 
             <label for="email">Email</label>
             <input type="email" name="email" id="email" maxlength="100" required>
