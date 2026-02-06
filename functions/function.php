@@ -63,7 +63,7 @@ function buildBreadcrumb($langid, $path_url, $cat1 = '', $unique_key = '')
         ");
 
         if ($menu && !empty($menu['name'])) {
-            $breadcrumbs[] = array('name' => $menu['name'], 'link' => "{$path_url}/{$menu['unique_key']}");
+            $breadcrumbs[] = array('name' => $menu['name'], 'link' => "{$path_url}/{$menu['unique_key']}/");
         }
     }
 
@@ -90,7 +90,7 @@ function buildBreadcrumb($langid, $path_url, $cat1 = '', $unique_key = '')
                     LIMIT 1
                 ");
                 if ($menuArticle && !empty($menuArticle['name'])) {
-                    $breadcrumbs[] = array('name' => $menuArticle['name'], 'link' => "{$path_url}/{$menuArticle['unique_key']}");
+                    $breadcrumbs[] = array('name' => $menuArticle['name'], 'link' => "{$path_url}/{$menuArticle['unique_key']}/");
                     $menu = $menuArticle;
                 }
             }
@@ -116,7 +116,7 @@ function buildBreadcrumb($langid, $path_url, $cat1 = '', $unique_key = '')
                         if (!$exists) {
                             $breadcrumbs[] = array(
                                 'name' => $c['name'],
-                                'link' => "{$path_url}/{$c['unique_key']}"
+                                'link' => "{$path_url}/{$c['unique_key']}/"
                             );
                         }
                     }

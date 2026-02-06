@@ -40,26 +40,6 @@
     {/if}
   </div>
   {/foreach}
-
-  <div class="nav-item">
-    <div class="nav-toggle">
-      <span><i class="fa fa-book"></i></span>
-      <label>From đăng ký</label>
-      <i class="fa fa-angle-down"></i>
-    </div>
-    <div class="list-sidebar">
-      <a href="index.php?do=contact&comp=23">
-        Form liên hệ
-      </a>
-      {if $showform.open eq 1}
-      <a class="fnc-bell" href="index.php?do=register_info">
-        Form đăng ký tư vấn {if $new_register_count > 0}
-        <span class="icon-new"></span>
-        {/if}
-      </a>
-      {/if}
-    </div>
-  </div>
   <a class="nav-normal" href="index.php?do=footer">
     <span><i class="fa fa-globe"></i></span>
     <label>Thông tin chân trang</label>

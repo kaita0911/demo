@@ -69,7 +69,7 @@ function sendOrderEmails($orderData, $path_url)
     $get_domain = $GLOBALS['sp']->getRow("SELECT * FROM {$GLOBALS['db_sp']}.infos WHERE id = 2");
     $domain     = isset($get_domain['domain']) ? $get_domain['domain'] : '';
 
-    $orderId       = isset($orderData['id']) ? $orderData['id'] : '';
+    $orderId       = isset($orderData['order_code']) ? $orderData['order_code'] : '';
     $customerName  = isset($orderData['customer_name']) ? $orderData['customer_name'] : '';
     $phone         = isset($orderData['phone']) ? $orderData['phone'] : '';
     $email         = isset($orderData['email']) ? $orderData['email'] : '';

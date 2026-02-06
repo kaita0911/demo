@@ -1,8 +1,9 @@
-<?php /* Smarty version 2.6.30, created on 2026-02-03 11:11:30
+<?php /* Smarty version 2.6.30, created on 2026-02-06 12:16:17
          compiled from register_info/list.tpl */ ?>
+<?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'register_info/list.tpl', 44, false),)), $this); ?>
 <div class="contentmain">
    <div class="main">
-
       <aside class="left_sidebar padding10">
          <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "left.tpl", 'smarty_include_vars' => array()));
@@ -10,16 +11,15 @@ $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
       </aside>
-
-      <section class="right_content conten">
-         <div class="divright">
+      <section class="right_content">
+         <!-- <div class="divright">
             <div class="acti2">
                <button class="add" type="button" id="btnDelete" data-comp="">
                   <i class="fa fa-trash"></i> Xóa
                </button>
             </div>
-         </div>
-         <div class="main-content">
+         </div> -->
+         <div class="right_content-wrap">
             <form class="form-all" method="post" action="">
                <table class="br1 w-full border-collapse">
                   <thead>
@@ -34,7 +34,6 @@ unset($_smarty_tpl_vars);
                         <th class="width-action">Action</th>
                      </tr>
                   </thead>
-
                   <tbody>
                      <?php $_from = $this->_tpl_vars['articlelist']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['loop'] = array('total' => count($_from), 'iteration' => 0);
 if ($this->_foreach['loop']['total'] > 0):
@@ -49,32 +48,42 @@ if ($this->_foreach['loop']['total'] > 0):
 ">
                         </td>
 
-                        <td class=" text-center">
+                        <td align="center" class=" text-center">
                            <?php echo $this->_foreach['loop']['iteration']; ?>
 
                         </td>
-
-
-
                         <td class=" text-left linkblack">
                            <?php echo $this->_tpl_vars['item']['fullname']; ?>
 
                         </td>
                         <td align="center" class=" text-center linkblack">
-                           <?php echo $this->_tpl_vars['item']['created_at']; ?>
+                            <?php echo ((is_array($_tmp=$this->_tpl_vars['item']['created_at'])) ? $this->_run_mod_handler('date_format', true, $_tmp, "%H:%M:%S  %d-%m-%Y") : smarty_modifier_date_format($_tmp, "%H:%M:%S  %d-%m-%Y")); ?>
 
                         </td>
                         <td align="center">
-
-                           <a href="index.php?do=register_info&act=edit&id=<?php echo $this->_tpl_vars['item']['id']; ?>
-">Xem</a>
-
+                           <a href="javascript:void(0)" class="btn-view" data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
+"> <i class="fa fa-eye"></i> Xem chi tiết</a>
                         </td>
                      </tr>
                      <?php endforeach; endif; unset($_from); ?>
                   </tbody>
                </table>
             </form>
+            <div class="pagination-wrapper">
+               <?php echo $this->_tpl_vars['pagination']; ?>
+
+            </div>
+            <div class="modal-overlay" id="modalView">
+               <div class="modal-box">
+                  <div class="modal-header">
+                     <h3>CHI TIẾT</h3>
+                     <span class="modal-close">&times;</span>
+                  </div>
+                  <div class="modal-body" id="modalContent">
+                     Đang tải dữ liệu...
+                  </div>
+               </div>
+            </div>
          </div>
       </section>
    </div>

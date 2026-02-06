@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2025-11-21 10:22:33
+<?php /* Smarty version 2.6.30, created on 2026-02-06 09:45:17
          compiled from contact/list.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'escape', 'contact/list.tpl', 42, false),)), $this); ?>
@@ -13,7 +13,7 @@ unset($_smarty_tpl_vars);
       </div>
 
       <div class="right_content">
-         <div class="divright">
+         <!-- <div class="divright">
             <div class="acti2">
                <div class="acti2">
                   <button class="add" type="button" id="btnDelete" data-comp="0">
@@ -21,8 +21,8 @@ unset($_smarty_tpl_vars);
                   </button>
                </div>
             </div>
-         </div>
-         <div class="tbtitle2 main-content">
+         </div> -->
+         <div class="right_content-wrap">
             <form id="f" name="f"
                method="post"
                action="index.php?do=contact&act=dellist&cid=1&city=<?php echo $_REQUEST['city']; ?>

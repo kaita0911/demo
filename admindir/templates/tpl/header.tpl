@@ -21,6 +21,7 @@
 
   <div class="popupqc"><img src="images/giahan.jpg" alt="Gia hạn" /></div>
   <div class="header">
+    
   <div class="box-time">
       <p>Ngày hết hạn 05/02/2027</p>
       <p id="demo"></p>
@@ -57,22 +58,51 @@
       {/literal}
     </div>
     <div class="box-cart">
+     
+    </div>
+    <div class="box-register">
       {if $showcart.open eq 1}
       <a class="c-cart fnc-bell" href="index.php?do=orders">
-        <span><i class="fa fa-shopping-cart"></i></span>
-        <label>Danh sách đơn hàng</label>
+        <i class="fa fa-shopping-cart"></i>
+        Danh sách đơn hàng
         {if $new_order_count > 0}
         <span class="icon-new"></span>
         {/if}
       </a>
       {/if}
+      <a class="box-register__btn" href="index.php?do=contact&comp=23"><i class="fa-solid fa-address-book"></i> Form liên hệ</a>
+      {if $showform.open eq 1}
+        <a class="box-register__btn" href="index.php?do=register_info"><i class="fa-solid fa-address-book"></i> Form đăng ký tư vấn
+        {if $new_register_count > 0}
+        <span class="icon-new"></span>
+        {/if}</a>
+      {/if}
     </div>
-    <div class="date linkorg">
-      <span>Hi, <strong>{$smarty.session.admin_artseed_username}</strong></span>
-      <a target="_blank" href="/">Xem trang chủ</a>
-      <a href="index.php?do=login&act=log_out">Thoát</a>
-      <a href="index.php?do=login&act=changepass">Đổi mật khẩu</a>
+    <div class="box-time-ad">
+      <div class="welcome">
+        <span>Hi, <strong>{$smarty.session.admin_artseed_username}</strong> - </span>
+        <div>
+        {assign var=day value=$now|date_format:"%w"}
+
+        {if $day == 0}Chủ nhật
+        {elseif $day == 1}Thứ Hai
+        {elseif $day == 2}Thứ Ba
+        {elseif $day == 3}Thứ Tư
+        {elseif $day == 4}Thứ Năm
+        {elseif $day == 5}Thứ Sáu
+        {elseif $day == 6}Thứ Bảy
+        {/if}
+        , {$now|date_format:"%d-%m-%Y"}
+
+        </div>
+      </div>
+      <div class="date linkorg">
+        <a target="_blank" href="/">Xem trang chủ</a>
+        <a href="index.php?do=login&act=log_out">Thoát</a>
+        <a href="index.php?do=login&act=changepass">Đổi mật khẩu</a>
+      </div>
     </div>
+    
   </div>
 </body>
 

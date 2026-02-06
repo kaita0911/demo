@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2026-01-06 08:45:30
+<?php /* Smarty version 2.6.30, created on 2026-02-06 10:52:19
          compiled from cart/order.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_format', 'cart/order.tpl', 92, false),array('modifier', 'default', 'cart/order.tpl', 115, false),array('modifier', 'replace', 'cart/order.tpl', 115, false),array('modifier', 'intval', 'cart/order.tpl', 117, false),array('function', 'math', 'cart/order.tpl', 125, false),)), $this); ?>
@@ -42,7 +42,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
             <div class="box-choosed">
               <div class="box-choosed__rd">
                 <label for="c-home" class="c-input-check --radio">
-                  <input type="radio" id="c-home" name="shipped" value="home" checked>
+                  <input type="radio" id="c-home" name="shipped" value="Giao tận nơi" checked>
                   <span class="checkmark"></span>Giao tận nơi</label>
               </div>
               <div class="box-choosed__rd">

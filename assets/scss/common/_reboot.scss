@@ -63,7 +63,6 @@ body {
 	line-height: 1.7;
 	text-align: left;
 	position: relative;
-	overflow-x: hidden;
 
 	@include mixin.mq('md', min) {
 		font-size: var(--font-size-base);

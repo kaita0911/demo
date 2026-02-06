@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2026-01-20 11:15:44
+<?php /* Smarty version 2.6.30, created on 2026-02-06 10:52:11
          compiled from products/detail.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'count', 'products/detail.tpl', 9, false),array('modifier', 'round', 'products/detail.tpl', 48, false),array('function', 'math', 'products/detail.tpl', 47, false),)), $this); ?>
@@ -200,7 +200,7 @@ if ($this->_foreach['codeLoop']['total'] > 0):
               </div>
             </div>
             <?php endif; ?> -->
-            <!-- <div class="box-order">
+            <div class="box-order">
               <div class="c-quantity">
                 <button type="button" class="c-quantity-btn minus">−</button>
                 <input type="number" name="quantity" value="1" min="1">
@@ -212,7 +212,7 @@ if ($this->_foreach['codeLoop']['total'] > 0):
                 <button type="button" class="btn-cart btn-buy-now hide" data-id="<?php echo $this->_tpl_vars['detail']['articlelist_id']; ?>
 ">Mua nhanh</button>
               </div>
-            </div> -->
+            </div>
           </form>
         </div>
       </div>

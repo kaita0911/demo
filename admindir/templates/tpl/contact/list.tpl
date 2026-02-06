@@ -5,7 +5,7 @@
       </div>
 
       <div class="right_content">
-         <div class="divright">
+         <!-- <div class="divright">
             <div class="acti2">
                <div class="acti2">
                   <button class="add" type="button" id="btnDelete" data-comp="0">
@@ -13,8 +13,8 @@
                   </button>
                </div>
             </div>
-         </div>
-         <div class="tbtitle2 main-content">
+         </div> -->
+         <div class="right_content-wrap">
             <form id="f" name="f"
                method="post"
                action="index.php?do=contact&act=dellist&cid=1&city={$smarty.request.city}&type={$smarty.request.type}">

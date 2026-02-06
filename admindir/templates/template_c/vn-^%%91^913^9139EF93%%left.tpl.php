@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2026-02-03 11:14:38
+<?php /* Smarty version 2.6.30, created on 2026-02-06 09:43:47
          compiled from left.tpl */ ?>
 <a href="/" target="_blank" class="logo">
   <img src="/<?php echo $this->_tpl_vars['logoadmin']['img_thumb_vn']; ?>
@@ -49,26 +49,6 @@
     <?php endif; ?>
   </div>
   <?php endforeach; endif; unset($_from); ?>
-
-  <div class="nav-item">
-    <div class="nav-toggle">
-      <span><i class="fa fa-book"></i></span>
-      <label>From đăng ký</label>
-      <i class="fa fa-angle-down"></i>
-    </div>
-    <div class="list-sidebar">
-      <a href="index.php?do=contact&comp=23">
-        Form liên hệ
-      </a>
-      <?php if ($this->_tpl_vars['showform']['open'] == 1): ?>
-      <a class="fnc-bell" href="index.php?do=register_info">
-        Form đăng ký tư vấn <?php if ($this->_tpl_vars['new_register_count'] > 0): ?>
-        <span class="icon-new"></span>
-        <?php endif; ?>
-      </a>
-      <?php endif; ?>
-    </div>
-  </div>
   <a class="nav-normal" href="index.php?do=footer">
     <span><i class="fa fa-globe"></i></span>
     <label>Thông tin chân trang</label>

@@ -12,7 +12,7 @@ $config = [];
 
 // ✅ BASE PATH & URL (đặt tên thư mục dự án của bạn)
 $config['BASE_DIR'] = $_SERVER['DOCUMENT_ROOT'];
-$config['BASE_URL'] = 'http://tanphatmobile.local';
+$config['BASE_URL'] = 'http://demo.local';
 
 // ================= DATABASE =================
 $DBTYPE = 'mysql';

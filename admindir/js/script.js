@@ -1254,3 +1254,75 @@ document.querySelectorAll('.month-tabs li').forEach(function(tab){
       document.getElementById(this.dataset.tab).classList.add('active');
   });
 });
+  // popup xem chi tiet mail
+  document.addEventListener("DOMContentLoaded", function () {
+
+    const modal = document.getElementById("modalView");
+    if (!modal) return; // 👈 CỰC KỲ QUAN TRỌNG
+ 
+    const closeBtn = modal.querySelector(".modal-close");
+    const content  = modal.querySelector("#modalContent");
+ 
+    document.querySelectorAll(".btn-view").forEach(btn => {
+       btn.addEventListener("click", function () {
+          const id = this.dataset.id;
+ 
+          modal.style.display = "flex";
+          content.innerHTML = "Đang tải dữ liệu...";
+ 
+          fetch("index.php?do=register_info&act=popup&id=" + id)
+             .then(res => res.text())
+             .then(html => content.innerHTML = html);
+       });
+    });
+ 
+    closeBtn.onclick = () => {
+       modal.style.display = "none";
+    };
+ 
+    modal.onclick = (e) => {
+       if (e.target === modal) modal.style.display = "none";
+    };
+ 
+ });
+
+
+ ////
+ document.addEventListener("DOMContentLoaded", function () {
+
+  const modal   = document.getElementById("globalModal");
+  const content = document.getElementById("globalModalContent");
+  const closeBtn = modal?.querySelector(".modal-close");
+
+  if (!modal || !content) return;
+
+  function openModal(url) {
+     modal.style.display = "flex";
+     content.innerHTML = "Đang tải dữ liệu...";
+
+     fetch(url)
+        .then(res => res.text())
+        .then(html => content.innerHTML = html)
+        .catch(() => content.innerHTML = "Lỗi tải dữ liệu");
+  }
+
+  // CLICK BUTTON BẤT KỲ CÓ data-popup
+  document.addEventListener("click", function (e) {
+     const btn = e.target.closest("[data-popup]");
+     if (!btn) return;
+
+     e.preventDefault();
+     openModal(btn.dataset.popup);
+  });
+
+  closeBtn.onclick = () => modal.style.display = "none";
+
+  modal.onclick = (e) => {
+     if (e.target === modal) modal.style.display = "none";
+  };
+
+  document.addEventListener("keydown", function (e) {
+     if (e.key === "Escape") modal.style.display = "none";
+  });
+
+});

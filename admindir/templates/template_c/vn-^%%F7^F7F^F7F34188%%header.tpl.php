@@ -1,5 +1,7 @@
-<?php /* Smarty version 2.6.30, created on 2026-02-04 11:56:21
+<?php /* Smarty version 2.6.30, created on 2026-02-06 09:59:30
          compiled from header.tpl */ ?>
+<?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'header.tpl', 85, false),)), $this); ?>
 <!DOCTYPE html>
 <html lang="vi" xmlns="http://www.w3.org/1999/xhtml">
 
@@ -23,6 +25,7 @@
 
   <div class="popupqc"><img src="images/giahan.jpg" alt="Gia hạn" /></div>
   <div class="header">
+    
   <div class="box-time">
       <p>Ngày hết hạn 05/02/2027</p>
       <p id="demo"></p>
@@ -60,23 +63,53 @@
 
     </div>
     <div class="box-cart">
+     
+    </div>
+    <div class="box-register">
       <?php if ($this->_tpl_vars['showcart']['open'] == 1): ?>
       <a class="c-cart fnc-bell" href="index.php?do=orders">
-        <span><i class="fa fa-shopping-cart"></i></span>
-        <label>Danh sách đơn hàng</label>
+        <i class="fa fa-shopping-cart"></i>
+        Danh sách đơn hàng
         <?php if ($this->_tpl_vars['new_order_count'] > 0): ?>
         <span class="icon-new"></span>
         <?php endif; ?>
       </a>
       <?php endif; ?>
+      <a class="box-register__btn" href="index.php?do=contact&comp=23"><i class="fa-solid fa-address-book"></i> Form liên hệ</a>
+      <?php if ($this->_tpl_vars['showform']['open'] == 1): ?>
+        <a class="box-register__btn" href="index.php?do=register_info"><i class="fa-solid fa-address-book"></i> Form đăng ký tư vấn
+        <?php if ($this->_tpl_vars['new_register_count'] > 0): ?>
+        <span class="icon-new"></span>
+        <?php endif; ?></a>
+      <?php endif; ?>
     </div>
-    <div class="date linkorg">
-      <span>Hi, <strong><?php echo $_SESSION['admin_artseed_username']; ?>
-</strong></span>
-      <a target="_blank" href="/">Xem trang chủ</a>
-      <a href="index.php?do=login&act=log_out">Thoát</a>
-      <a href="index.php?do=login&act=changepass">Đổi mật khẩu</a>
+    <div class="box-time-ad">
+      <div class="welcome">
+        <span>Hi, <strong><?php echo $_SESSION['admin_artseed_username']; ?>
+</strong> - </span>
+        <div>
+        <?php $this->assign('day', ((is_array($_tmp=$this->_tpl_vars['now'])) ? $this->_run_mod_handler('date_format', true, $_tmp, "%w") : smarty_modifier_date_format($_tmp, "%w"))); ?>
+
+        <?php if ($this->_tpl_vars['day'] == 0): ?>Chủ nhật
+        <?php elseif ($this->_tpl_vars['day'] == 1): ?>Thứ Hai
+        <?php elseif ($this->_tpl_vars['day'] == 2): ?>Thứ Ba
+        <?php elseif ($this->_tpl_vars['day'] == 3): ?>Thứ Tư
+        <?php elseif ($this->_tpl_vars['day'] == 4): ?>Thứ Năm
+        <?php elseif ($this->_tpl_vars['day'] == 5): ?>Thứ Sáu
+        <?php elseif ($this->_tpl_vars['day'] == 6): ?>Thứ Bảy
+        <?php endif; ?>
+        , <?php echo ((is_array($_tmp=$this->_tpl_vars['now'])) ? $this->_run_mod_handler('date_format', true, $_tmp, "%d-%m-%Y") : smarty_modifier_date_format($_tmp, "%d-%m-%Y")); ?>
+
+
+        </div>
+      </div>
+      <div class="date linkorg">
+        <a target="_blank" href="/">Xem trang chủ</a>
+        <a href="index.php?do=login&act=log_out">Thoát</a>
+        <a href="index.php?do=login&act=changepass">Đổi mật khẩu</a>
+      </div>
     </div>
+    
   </div>
 </body>
 

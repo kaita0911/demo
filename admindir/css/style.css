@@ -127,20 +127,6 @@ img {
   margin-left: 245px;
   height: 67px;
 }
-a.c-cart {
-  background: #007bff;
-  padding: 7px 10px;
-  border-radius: 5px;
-  color: #fff;
-  display: inline-flex;
-  font-weight: normal;
-  gap: 10px;
-}
-
-a.c-cart:hover {
-  color: #fff;
-  background: #007bff;
-}
 .date.linkorg a {
   background: #007bff;
   color: #fff;
@@ -149,6 +135,7 @@ a.c-cart:hover {
   display: inline-block;
   border-radius: 3px;
   margin-left: 4px;
+  height: 30px;
 }
 .date.linkorg a:hover {
   text-decoration: none;
@@ -1861,7 +1848,7 @@ form#f table tr td a img {
   width: 15px;
   height: 15px;
 }
-/* TÃƒÂ¡Ã‚Â»Ã¢â‚¬Â¢ng thÃƒÂ¡Ã‚Â»Ã†â€™ bÃƒÂ¡Ã‚ÂºÃ‚Â£ng */
+/* TÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚Â»ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ng thÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚Â»Ãƒâ€ Ã¢â‚¬â„¢ bÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚ÂºÃƒâ€šÃ‚Â£ng */
 .br1 {
   width: 100%;
   border-collapse: collapse;
@@ -1870,7 +1857,7 @@ form#f table tr td a img {
   border: 1px solid #ddd;
 }
 
-/* Header bÃƒÂ¡Ã‚ÂºÃ‚Â£ng */
+/* Header bÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚ÂºÃƒâ€šÃ‚Â£ng */
 .br1 th {
   background: #f1f1f1;
   color: #111;
@@ -1902,7 +1889,9 @@ th.width-04 {
 th.width-show {
   width: 6%;
 }
-
+th.width-date {
+  width: 15%;
+}
 th.width-action {
   width: 10%;
 }
@@ -1919,7 +1908,7 @@ th.width-ttl {
   font-size: 13px;
 }
 
-/* Hover hÃƒÆ’Ã‚Â ng */
+/* Hover hÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â ng */
 .br1 tbody tr:hover {
   background-color: #f1faff;
   transition: background 0.2s;
@@ -1942,7 +1931,7 @@ th.width-ttl {
   color: #fff;
 }
 
-/* Input thÃƒÂ¡Ã‚Â»Ã‚Â© tÃƒÂ¡Ã‚Â»Ã‚Â± */
+/* Input thÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚Â»Ãƒâ€šÃ‚Â© tÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚Â»Ãƒâ€šÃ‚Â± */
 .InputOrder {
   width: 50px;
   text-align: center;
@@ -1977,7 +1966,7 @@ th.width-ttl {
   margin-right: 5px;
 }
 
-/* ÃƒÂ¡Ã‚ÂºÃ‚Â¨n cÃƒÂ¡Ã‚Â»Ã¢â€žÂ¢t responsive */
+/* ÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚ÂºÃƒâ€šÃ‚Â¨n cÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚Â»ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢t responsive */
 .hidden-xs {
   display: table-cell;
 }
@@ -1996,14 +1985,15 @@ th.width-ttl {
   border-radius: 4px;
 }
 
-/* Link sÃƒÂ¡Ã‚Â»Ã‚Â­a xÃƒÆ’Ã‚Â³a trong table */
+/* Link sÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚Â»Ãƒâ€šÃ‚Â­a xÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³a trong table */
 .br1 td a {
   color: #007bff;
   text-decoration: none;
   font-weight: 500;
+  background: none;
 }
 
-/* Checkbox cÃƒâ€žÃ†â€™n giÃƒÂ¡Ã‚Â»Ã‚Â¯a */
+/* Checkbox cÃƒÆ’Ã¢â‚¬Å¾Ãƒâ€ Ã¢â‚¬â„¢n giÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚Â»Ãƒâ€šÃ‚Â¯a */
 .br1 input[type="checkbox"] {
   transform: scale(1.2);
   cursor: pointer;
@@ -2015,8 +2005,8 @@ th.width-ttl {
   -webkit-appearance: none;
   width: 13px;
   height: 13px;
-  background: #fff;          /* 👈 nền trắng */
-  border: 1px solid #007bff; /* viền xám */
+  background: #fff;          /* ðŸ‘ˆ ná»n tráº¯ng */
+  border: 1px solid #007bff; /* viá»n xÃ¡m */
   border-radius: 1px;
   cursor: pointer;
   position: relative;
@@ -2030,17 +2020,17 @@ th.width-ttl {
 
 /* khi checked */
 .br1 input[type="checkbox"]:checked {
-  background: #007bff;          /* 👈 vẫn trắng */
+  background: #007bff;          /* ðŸ‘ˆ váº«n tráº¯ng */
   border-color: #007bff;
 }
 
-/* dấu tick */
+/* dáº¥u tick */
 .br1 input[type="checkbox"]:checked::after {
   content: "";
   position: absolute;
   width: 3px;
   height: 6px;
-  border: solid #fff;     /* 👈 tick màu xanh (nổi trên nền trắng) */
+  border: solid #fff;     /* ðŸ‘ˆ tick mÃ u xanh (ná»•i trÃªn ná»n tráº¯ng) */
   border-width: 0 2px 2px 0;
   left: 3px;
   top: 1px;
@@ -2055,7 +2045,7 @@ th.width-ttl {
     white-space: nowrap;
   }
 }
-/* =================== Layout cÃƒâ€ Ã‚Â¡ bÃƒÂ¡Ã‚ÂºÃ‚Â£n =================== */
+/* =================== Layout cÃƒÆ’Ã¢â‚¬Â Ãƒâ€šÃ‚Â¡ bÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚ÂºÃƒâ€šÃ‚Â£n =================== */
 .contentmain {
   margin-top: 0px;
 }
@@ -2179,7 +2169,7 @@ ul.tab-list li.active {
 .nav-tabs {
   /* border-bottom: 1px solid #e0e0e0; */
   display: flex;
-  gap: 5px; /* khoÃ¡ÂºÂ£ng cÃƒÂ¡ch giÃ¡Â»Â¯a cÃƒÂ¡c tab */
+  gap: 5px; /* khoÃƒÂ¡Ã‚ÂºÃ‚Â£ng cÃƒÆ’Ã‚Â¡ch giÃƒÂ¡Ã‚Â»Ã‚Â¯a cÃƒÆ’Ã‚Â¡c tab */
   padding: 0;
   margin: 0;
 }
@@ -2201,18 +2191,18 @@ ul.tab-list li.active {
 
 /* Tab active */
 .nav-tabs li.active {
-  background: #007bff; /* mÃƒÂ u chÃ¡Â»Â§ Ã„â€˜Ã¡ÂºÂ¡o */
+  background: #007bff; /* mÃƒÆ’Ã‚Â u chÃƒÂ¡Ã‚Â»Ã‚Â§ Ãƒâ€žÃ¢â‚¬ËœÃƒÂ¡Ã‚ÂºÃ‚Â¡o */
   color: #fff;
-  /* viÃ¡Â»Ân trÃƒÂªn vÃƒÂ  hai bÃƒÂªn */
+  /* viÃƒÂ¡Ã‚Â»Ã‚Ân trÃƒÆ’Ã‚Âªn vÃƒÆ’Ã‚Â  hai bÃƒÆ’Ã‚Âªn */
 }
 
-/* Hover hiÃ¡Â»â€¡u Ã¡Â»Â©ng */
+/* Hover hiÃƒÂ¡Ã‚Â»Ã¢â‚¬Â¡u ÃƒÂ¡Ã‚Â»Ã‚Â©ng */
 .nav-tabs li a:hover {
   background: #e0e0e0;
   color: #007bff;
 }
 
-/* Responsive nhÃ¡Â»Â mÃƒÂ n hÃƒÂ¬nh */
+/* Responsive nhÃƒÂ¡Ã‚Â»Ã‚Â mÃƒÆ’Ã‚Â n hÃƒÆ’Ã‚Â¬nh */
 @media (max-width: 576px) {
   .nav-tabs {
     flex-direction: column;
@@ -2291,7 +2281,7 @@ ul.tab-list li.active {
   background: #007bff;
   color: #fff;
 }
-/* ===== Tooltip cho cÃƒÂ¡c nÃƒÂºt hÃƒÂ nh Ã„â€˜Ã¡Â»â„¢ng ===== */
+/* ===== Tooltip cho cÃƒÆ’Ã‚Â¡c nÃƒÆ’Ã‚Âºt hÃƒÆ’Ã‚Â nh Ãƒâ€žÃ¢â‚¬ËœÃƒÂ¡Ã‚Â»Ã¢â€žÂ¢ng ===== */
 .act-btn {
   position: relative;
   cursor: pointer;
@@ -2302,7 +2292,7 @@ ul.tab-list li.active {
 .act-btn[title]:hover::after {
   content: attr(title);
   position: absolute;
-  bottom: 130%; /* hiÃ¡Â»â€¡n phÃƒÂ­a trÃƒÂªn nÃƒÂºt */
+  bottom: 130%; /* hiÃƒÂ¡Ã‚Â»Ã¢â‚¬Â¡n phÃƒÆ’Ã‚Â­a trÃƒÆ’Ã‚Âªn nÃƒÆ’Ã‚Âºt */
   left: 50%;
   transform: translateX(-50%) translateY(6px);
   background: #eee;
@@ -2322,7 +2312,7 @@ ul.tab-list li.active {
   animation: tooltip-fade-in 0.3s forwards ease-out;
 }
 
-/* MÃ…Â©i tÃƒÂªn nhÃ¡Â»Â chÃ¡Â»â€° xuÃ¡Â»â€˜ng */
+/* MÃƒâ€¦Ã‚Â©i tÃƒÆ’Ã‚Âªn nhÃƒÂ¡Ã‚Â»Ã‚Â chÃƒÂ¡Ã‚Â»Ã¢â‚¬Â° xuÃƒÂ¡Ã‚Â»Ã¢â‚¬Ëœng */
 .act-btn[title]:hover::before {
   content: "";
   position: absolute;
@@ -2337,7 +2327,7 @@ ul.tab-list li.active {
   animation: tooltip-fade-in 0.3s forwards ease-out;
 }
 
-/* Animation mÃ†Â°Ã¡Â»Â£t */
+/* Animation mÃƒâ€ Ã‚Â°ÃƒÂ¡Ã‚Â»Ã‚Â£t */
 @keyframes tooltip-fade-in {
   0% {
     opacity: 0;
@@ -2384,7 +2374,7 @@ ul.tab-list li.active {
   padding-left: 15px;
 }
 
-/* TÃ¡Â»â€¢ng thÃ¡Â»Æ’ danh sÃƒÂ¡ch */
+/* TÃƒÂ¡Ã‚Â»Ã¢â‚¬Â¢ng thÃƒÂ¡Ã‚Â»Ã†â€™ danh sÃƒÆ’Ã‚Â¡ch */
 ul.category-tree,
 ul.category-tree ul {
   list-style: none;
@@ -2393,7 +2383,7 @@ ul.category-tree ul {
   padding: 0;
 }
 
-/* MÃ¡Â»â€”i mÃ¡Â»Â¥c danh mÃ¡Â»Â¥c */
+/* MÃƒÂ¡Ã‚Â»Ã¢â‚¬â€i mÃƒÂ¡Ã‚Â»Ã‚Â¥c danh mÃƒÂ¡Ã‚Â»Ã‚Â¥c */
 .category-tree li {
   position: relative;
   color: #333;
@@ -2402,7 +2392,7 @@ ul.category-tree ul {
   margin: 0;
 }
 
-/* Label hiÃ¡Â»Æ’n thÃ¡Â»â€¹ tÃƒÂªn */
+/* Label hiÃƒÂ¡Ã‚Â»Ã†â€™n thÃƒÂ¡Ã‚Â»Ã¢â‚¬Â¹ tÃƒÆ’Ã‚Âªn */
 .category-tree label {
   display: flex;
   align-items: center;
@@ -2415,7 +2405,7 @@ ul.category-tree ul {
   transition: background 0.2s, color 0.2s;
 }
 
-/* HiÃ¡Â»â€¡u Ã¡Â»Â©ng hover */
+/* HiÃƒÂ¡Ã‚Â»Ã¢â‚¬Â¡u ÃƒÂ¡Ã‚Â»Ã‚Â©ng hover */
 .category-tree label:hover {
   background: #f5f8ff;
   color: #1a73e8;
@@ -2425,17 +2415,17 @@ ul.category-tree ul {
 .category-tree input[type="checkbox"] {
   width: 15px;
   height: 15px;
-  accent-color: #007bff; /* MÃƒÂ u xanh Google */
+  accent-color: #007bff; /* MÃƒÆ’Ã‚Â u xanh Google */
   cursor: pointer;
 }
 
-/* TÃƒÂªn danh mÃ¡Â»Â¥c */
+/* TÃƒÆ’Ã‚Âªn danh mÃƒÂ¡Ã‚Â»Ã‚Â¥c */
 .category-tree label span,
 .category-tree label {
   user-select: none;
 }
 
-/* CÃ¡ÂºÂ¥p sÃƒÂ¢u hÃ†Â¡n: chÃ¡Â»Â¯ nhÃ¡Â»Â hÃ†Â¡n vÃƒÂ  nhÃ¡ÂºÂ¡t mÃƒÂ u dÃ¡ÂºÂ§n */
+/* CÃƒÂ¡Ã‚ÂºÃ‚Â¥p sÃƒÆ’Ã‚Â¢u hÃƒâ€ Ã‚Â¡n: chÃƒÂ¡Ã‚Â»Ã‚Â¯ nhÃƒÂ¡Ã‚Â»Ã‚Â hÃƒâ€ Ã‚Â¡n vÃƒÆ’Ã‚Â  nhÃƒÂ¡Ã‚ÂºÃ‚Â¡t mÃƒÆ’Ã‚Â u dÃƒÂ¡Ã‚ÂºÃ‚Â§n */
 .category-tree li:nth-child(n) label {
   font-size: 13px;
   color: #444;
@@ -2445,9 +2435,9 @@ ul.category-tree ul {
   font-size: 13px;
   color: #555;
 }
-/* Container Ã¡ÂºÂ£nh cÃ…Â© */
+/* Container ÃƒÂ¡Ã‚ÂºÃ‚Â£nh cÃƒâ€¦Ã‚Â© */
 
-/* ThÃ¡ÂºÂ» Ã¡ÂºÂ£nh + nÃƒÂºt xÃƒÂ³a */
+/* ThÃƒÂ¡Ã‚ÂºÃ‚Â» ÃƒÂ¡Ã‚ÂºÃ‚Â£nh + nÃƒÆ’Ã‚Âºt xÃƒÆ’Ã‚Â³a */
 .preview-gallery {
   display: flex;
   flex-wrap: wrap;
@@ -2598,12 +2588,12 @@ input#img_thumb_vn, input#multiimages,input#img_vn {
   padding: 8px 36px 8px 12px;
   font-size: 14px;
   color: #111827;
-  appearance: none; /* ẩn mũi tên mặc định */
+  appearance: none; /* áº©n mÅ©i tÃªn máº·c Ä‘á»‹nh */
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
-/* hiệu ứng hover/focus */
+/* hiá»‡u á»©ng hover/focus */
 #language-select:hover {
   border-color: #2563eb;
   background-color: #f0f7ff;
@@ -2615,9 +2605,9 @@ input#img_thumb_vn, input#multiimages,input#img_vn {
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
 }
 
-/* tạo icon mũi tên custom */
+/* táº¡o icon mÅ©i tÃªn custom */
 .select-languages::after {
-  content: "▼";
+  content: "â–¼";
   position: absolute;
   right: 12px;
   top: 50%;
@@ -2676,9 +2666,9 @@ input#img_thumb_vn, input#multiimages,input#img_vn {
 }
 
 .card:nth-child(1) span{ color: #28a745; } /* Online */
-.card:nth-child(2) span{ color: #17a2b8; } /* Tuần */
-.card:nth-child(3) span{ color: #ffc107; } /* Tháng */
-.card:nth-child(4) span{ color: #dc3545; } /* Tổng */
+.card:nth-child(2) span{ color: #17a2b8; } /* Tuáº§n */
+.card:nth-child(3) span{ color: #ffc107; } /* ThÃ¡ng */
+.card:nth-child(4) span{ color: #dc3545; } /* Tá»•ng */
 
 .wrap-analytic {
   display: flex;
@@ -2757,17 +2747,17 @@ input#img_thumb_vn, input#multiimages,input#img_vn {
 
 /* ===== SCROLLBAR CHO FIREFOX ===== */
 
-/* Thanh cuộn */
+/* Thanh cuá»™n */
 .menusidebar::-webkit-scrollbar {
   width: 2px;
 }
 
-/* Track (nền) */
+/* Track (ná»n) */
 .menusidebar::-webkit-scrollbar-track {
   background: #222d32;
   border-radius: 2px;
 }
-/* Thumb (tay kéo) */
+/* Thumb (tay kÃ©o) */
 .menusidebar::-webkit-scrollbar-thumb {
   background: #fff;
   border-radius: 2px;
@@ -2806,15 +2796,6 @@ input#img_thumb_vn, input#multiimages,input#img_vn {
   justify-content: center;
 }
 /* ===== MODAL OVERLAY ===== */
-.modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
 
 /* ===== MODAL CONTENT ===== */
 .modal-content {
@@ -3007,12 +2988,14 @@ input#img_thumb_vn, input#multiimages,input#img_vn {
   display: flex;
   gap: 24px;
   margin-bottom: 10px;
+  font-size: 13px;
+  margin-top: 10px;
 }
 .box-meta label{
   font-weight: 500;
 }
 .box-meta span {
-  font-size: 14px;
+  font-size: 13px;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -3130,12 +3113,12 @@ select.status-select {
   transition: opacity 0.2s;
 }
 
-/* hover mã sản phẩm */
+/* hover mÃ£ sáº£n pháº©m */
 .product-code:hover .product-handle {
   opacity: 1;
 }
 
-/* hover màu */
+/* hover mÃ u */
 .variant-item:hover .variant-handle {
   opacity: 1;
 }
@@ -3249,9 +3232,9 @@ select.status-select {
   opacity: 1;
 }
 
-/* icon camera (nếu chưa có icon lib) */
+/* icon camera (náº¿u chÆ°a cÃ³ icon lib) */
 .icon-camera::before {
-  content: "📷";
+  content: "ðŸ“·";
   font-size: 20px;
   margin-bottom: 4px;
 }
@@ -3326,7 +3309,7 @@ select.status-select {
 .browser-legend .item {
   display: flex;
   align-items: center;
-  margin-bottom: 6px;   /* 👈 mỗi browser 1 dòng */
+  margin-bottom: 6px;   /* ðŸ‘ˆ má»—i browser 1 dÃ²ng */
   font-size: 13px;
   width: 100%;
   position: relative;
@@ -3349,17 +3332,17 @@ span.card-num {
     max-height: 195px;
     padding-right: 15px;
 }
-/* Thanh cuộn */
+/* Thanh cuá»™n */
 .box-browers__tk::-webkit-scrollbar {
   width: 3px;
 }
 
-/* Track (nền) */
+/* Track (ná»n) */
 .box-browers__tk::-webkit-scrollbar-track {
   background: #ddd;
   border-radius: 3px;
 }
-/* Thumb (tay kéo) */
+/* Thumb (tay kÃ©o) */
 .box-browers__tk::-webkit-scrollbar-thumb {
   background: #007bff;
   border-radius: 3px;
@@ -3368,19 +3351,23 @@ span.card-num {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: 8px;
   position: absolute;
   right: 28%;
   top: 19px;
 }
 
 .box-register a {
-  display: inline-flex;
   color: #FFF;
   background: #007bff;
-  padding: 5px 10px;
-  border-radius: 5px;
+  padding: 4px 9px;
+  border-radius: 3px;
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  height: 30px;
 }
 .box-register a .icon-new{
   display: inline-block;
@@ -3403,6 +3390,9 @@ span.card-num {
   60%  { transform: rotate(-5deg); }
   70%  { transform: rotate(0); }
   100% { transform: rotate(0); }
+}
+.box-register a:hover{
+  opacity:0.8;
 }
 .month-tabs {
   display: flex;
@@ -3440,4 +3430,172 @@ span.card-num {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+/*/////popup/////*/
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-box {
+  animation: fadeIn .25s ease;
+}
+
+.modal-header {
+  padding: 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal-header h3 {
+    margin-top: 0;
+}
+.modal-body {
+  /* padding: 15px; */
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.modal-close {
+  cursor: pointer;
+  font-size: 22px;
+}
+
+@keyframes fadeIn {
+  from {transform: scale(.95); opacity: 0;}
+  to {transform: scale(1); opacity: 1;}
+}
+
+.table-view {
+  border-collapse: collapse;
+}
+
+.table-view th {
+  width: 135px;
+  text-align: left;
+  vertical-align: top;
+  padding: 8px;
+  background: #f5f6f7;
+  border: 1px solid #ddd;
+}
+
+.table-view td {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+.w-full {
+  width: 100%;
+}
+.right_content-wrap {
+  padding: 15px;
+  padding-right: 0;
+  padding-bottom: 0;
+}
+.welcome {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: flex-end;
+  font-size: 12px;
+}
+.box-time-ad {
+    position: absolute;
+    right: 15px;
+    top: 0;
+}
+
+
+/****/
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-box {
+  background: #fff;
+  width: 700px;
+  max-width: 95%;
+  border-radius: 8px;
+  padding: 15px 20px;
+  position: relative;
+  max-height: 98vh;
+}
+#globalModalContent {
+    max-height: 94vh;
+    overflow-y: auto;
+}
+#globalModalContent::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background-color: #fff;
+}
+#globalModalContent::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 6px 6px 6px 6px;
+}
+.modal-close {
+  position: absolute;
+  top: 0px;
+  right: 5px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.table-popup {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.table-popup tr {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.table-popup tr:last-child {
+  border-bottom: none;
+}
+
+.table-popup td {
+  padding: 8px 14px;
+  vertical-align: middle;
+}
+
+.table-popup td:first-child {
+  background: #f8fafc;
+  font-weight: 600;
+  color: #374151;
+  width: 24%;
+  white-space: nowrap;
+  border-right: 1px solid #e5e7eb;
+}
+
+.table-popup td:last-child {
+  color: #111827;
+}
+
+/* Tá»•ng tiá»n */
+.table-popup td[style*="color:red"] {
+  color: #dc2626 !important;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* Hover nháº¹, khÃ´ng Ä‘á»• bÃ³ng */
+.table-popup tr:hover td {
+  background: #f9fafb;
 }

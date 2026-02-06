@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2026-02-04 12:09:26
+<?php /* Smarty version 2.6.30, created on 2026-02-06 12:13:59
          compiled from orders/list.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'orders/list.tpl', 76, false),array('modifier', 'number_format', 'orders/list.tpl', 80, false),)), $this); ?>
@@ -13,13 +13,13 @@ unset($_smarty_tpl_vars);
       </div>
 
       <div class="right_content">
-         <div class="divright">
+         <!-- <div class="divright">
             <div class="acti2">
                <button class="add" type="button" id="btnDelete" data-comp="0">
                   <i class="fa fa-trash"></i> Xóa
                </button>
             </div>
-         </div>
+         </div> -->
          <div class="tbtitle2 main-content">
             <div class="box-meta">
                <label>Tình trạng</label>
@@ -32,14 +32,14 @@ unset($_smarty_tpl_vars);
                <table class="br1 order">
                   <thead>
                      <tr>
-                        <th class="width-del" align="center">
+                        <!-- <th class="width-del" align="center">
                            <input type="checkbox" name="all" id="checkAll" />
-                        </th>
-                        <th class="width-image" align="center">Mã đơn</th>
+                        </th> -->
+                        <th class="width-date" align="center">Mã đơn</th>
                         <th class="width-ttl">Tiêu đề</th>
                         <th class="width-image" align="center">Trạng thái</th>
                         <th class="width-image" align="center">Tình trạng</th>
-                        <th class="width-image" align="center">Ngày đặt</th>
+                        <th class="width-date" align="center">Ngày đặt</th>
                         <th class="width-action" align="center">Tổng tiền</th>
                         <th class="width-action" align="center">Action</th>
                      </tr>
@@ -51,13 +51,13 @@ unset($_smarty_tpl_vars);
 ?>
                      <tr data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
 " class="<?php if ($this->_tpl_vars['item']['is_read'] == 0): ?>unread<?php endif; ?> <?php if ($this->_tpl_vars['item']['status'] == 'Chờ duyệt'): ?>highlight<?php endif; ?> ">
-                        <td class="brbottom" align="center">
+                        <!-- <td class="brbottom" align="center">
                            <input class="c-item" type="checkbox" name="cid[]" value="<?php echo $this->_tpl_vars['item']['id']; ?>
 " />
-                        </td>
+                        </td> -->
 
                         <td class="brbottom" align="center">
-                           <?php echo $this->_tpl_vars['item']['id']; ?>
+                           <?php echo $this->_tpl_vars['item']['order_code']; ?>
 
                         </td>
 
@@ -115,7 +115,7 @@ $this->_sections['s']['last']       = ($this->_sections['s']['iteration'] == $th
                            </div>
                         </td>
                         <td class="brbottom" align="center">
-                           <?php echo ((is_array($_tmp=$this->_tpl_vars['item']['created_at'])) ? $this->_run_mod_handler('date_format', true, $_tmp, "%d/%m/%Y") : smarty_modifier_date_format($_tmp, "%d/%m/%Y")); ?>
+                           <?php echo ((is_array($_tmp=$this->_tpl_vars['item']['created_at'])) ? $this->_run_mod_handler('date_format', true, $_tmp, "%H:%M:%S, %d-%m-%Y") : smarty_modifier_date_format($_tmp, "%H:%M:%S, %d-%m-%Y")); ?>
 
                         </td>
 
@@ -125,16 +125,38 @@ $this->_sections['s']['last']       = ($this->_sections['s']['iteration'] == $th
                         </td>
 
                         <td class="brbottom editorder" align="center">
-                           <a href="index.php?do=orders&act=edit&id=<?php echo $this->_tpl_vars['item']['id']; ?>
+                           <!-- <a href="index.php?do=orders&act=edit&id=<?php echo $this->_tpl_vars['item']['id']; ?>
 " title="Chi tiết">
                               Chi tiết
+                           </a> -->
+                           <a href="javascript:void(0)" class="btn-order-view" data-popup="index.php?do=orders&act=popup&id=<?php echo $this->_tpl_vars['item']['id']; ?>
+"><i class="fa fa-eye"></i> Chi tiết
                            </a>
+                           
                         </td>
                      </tr>
                      <?php endforeach; endif; unset($_from); ?>
                   </tbody>
                </table>
             </form>
+            <!-- <div class="modal-overlay" id="modalView">
+               <div class="modal-box">
+                  <div class="modal-header">
+                     <h3>CHI TIẾT</h3>
+                     <span class="modal-close">&times;</span>
+                  </div>
+                  <div class="modal-body" id="modalContent">
+                     Đang tải dữ liệu...
+                  </div>
+               </div>
+            </div> -->
+            <div id="globalModal" class="modal">
+               <div class="modal-box">
+                  <span class="modal-close">&times;</span>
+                  <div id="globalModalContent">Loading...</div>
+               </div>
+            </div>
+
          </div>
       </div>
    </div>

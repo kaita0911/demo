@@ -56,7 +56,6 @@ body {
   line-height: 1.7;
   text-align: left;
   position: relative;
-  overflow-x: hidden;
 }
 @media (min-width: 768px) {
   body {

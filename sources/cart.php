@@ -79,12 +79,27 @@ switch ($act) {
                 $total += $item['price'] * $item['quantity'];
                 $totalQty += $item['quantity'];
             }
+            // =====================
+            // TẠO MÃ ĐƠN HÀNG
+            // DH-YYYYMMDD-XXXX
+            // =====================
+            $today = date('Y-m-d');
+
+            $countToday = $GLOBALS['sp']->getOne("
+            SELECT COUNT(*) 
+            FROM {$GLOBALS['db_sp']}.orders
+            WHERE DATE(created_at) = ?
+            ", [$today]);
+
+            $number = str_pad($countToday + 1, 4, '0', STR_PAD_LEFT);
+            $order_code = 'DH'. date('Ymd') . $number;
 
             // Lưu đơn hàng
             $sql = "INSERT INTO {$GLOBALS['db_sp']}.orders 
-                    (name, phone,email, address, thanhpho, quanhuyen, phuongxa, content, qty, descs, phiship, totalend,created_at)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
+                    (order_code, name, phone,email, address, thanhpho, quanhuyen, phuongxa, content, qty, descs, phiship, totalend,created_at)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
             $GLOBALS['sp']->execute($sql, [
+                $order_code,
                 $names,
                 $phones,
                 $email,

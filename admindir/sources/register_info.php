@@ -9,7 +9,18 @@ header("Pragma: no-cache");
 $act = isset($_REQUEST['act']) ? $_REQUEST['act'] : "";
 
 switch ($act) {
+	case "popup":
+		$id = (int)$_GET['id'];
+	 
+		$edit = $GLOBALS["sp"]->getRow("SELECT * FROM {$GLOBALS['db_sp']}.register_info WHERE id = $id LIMIT 1");
+	 
+		    // đánh dấu đã đọc
+		$GLOBALS["sp"]->execute("UPDATE {$GLOBALS['db_sp']}.register_info SET is_read = 1 WHERE id = ?", array($id));
 
+		$smarty->assign("edit", $edit);
+		$smarty->display("register_info/register_popup.tpl");
+		exit;
+	 
 	/* ==========================
        MARK READ + REDIRECT
     ========================== */

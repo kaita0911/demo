@@ -14,7 +14,43 @@ $smarty->assign("infos14", $info);
 // Xử lý các hành động
 // =========================
 switch ($act) {
+	case "popup":
 
+		$id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+		if ($id <= 0) {
+		   exit('Không có dữ liệu');
+		}
+	 
+		// Lấy đơn hàng
+		$order = $sp->getRow(
+		   "SELECT * FROM {$db_sp}.orders WHERE id = ?",
+		   [$id]
+		);
+	 
+		if (!$order) {
+		   exit('Đơn hàng không tồn tại');
+		}
+	 
+		// Lấy chi tiết sản phẩm trong đơn
+		$order_lines = $sp->getAll(
+		   "SELECT * FROM {$db_sp}.orders_line WHERE order_id = ?",
+		   [$id]
+		);
+	 
+		// Đánh dấu đã đọc
+		$sp->execute(
+		   "UPDATE {$db_sp}.orders SET is_read = 1 WHERE id = ?",
+		   [$id]
+		);
+	 
+		// Assign cho Smarty
+		$smarty->assign("order", $order);
+		$smarty->assign("order_line_view", $order_lines);
+	 
+		// ❗ CHỈ LOAD NỘI DUNG POPUP
+		$smarty->display("orders/popup.tpl");
+		exit;
+	 
 	case "edit":
 		$id = intval(isset($_GET['id']) ? $_GET['id'] : 0);
 		// khi xem đơn hàng

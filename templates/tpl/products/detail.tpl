@@ -134,7 +134,7 @@
               </div>
             </div>
             {/if} -->
-            <!-- <div class="box-order">
+            <div class="box-order">
               <div class="c-quantity">
                 <button type="button" class="c-quantity-btn minus">−</button>
                 <input type="number" name="quantity" value="1" min="1">
@@ -144,7 +144,7 @@
                 <button type="button" class="btn-cart btn-add-cart" data-id="{$detail.articlelist_id}">Thêm vào giỏ <i class="ic_cart"></i></button>
                 <button type="button" class="btn-cart btn-buy-now hide" data-id="{$detail.articlelist_id}">Mua nhanh</button>
               </div>
-            </div> -->
+            </div>
           </form>
         </div>
       </div>

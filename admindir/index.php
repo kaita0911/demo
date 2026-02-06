@@ -5,7 +5,9 @@ include_once(__DIR__ . "/#include/config.php");
 include_once(__DIR__ . "/../includes/get_languages.php");
 include_once(__DIR__ . "/functions/function.php");
 //include_once(__DIR__ . "/functions/categories.class.php");
-
+date_default_timezone_set('Asia/Ho_Chi_Minh');
+$now = date('H:i:s d-m-Y');
+$smarty->assign('now', $now);
 @session_start();
 
 $languages = $GLOBALS['sp']->getAll("SELECT * FROM {$GLOBALS['db_sp']}.language WHERE active=1 ORDER BY id ASC");
