@@ -27,7 +27,6 @@
     }
 
     if (CKEDITOR.instances[el.id]) return;
-
     CKEDITOR.replace(el.id, {
       language: el.dataset.langId == 2 ? "en" : "vi",
       height: 300,
@@ -111,28 +110,6 @@
       if (pid && pid != 0) checkAncestors(pid);
     });
 
-    // ==================== Form Submit ====================
-    // $("#ArticleForm").on("submit", function (e) {
-    //   const titleInput = $("#title_1");
-    //   if (!titleInput.val().trim()) {
-    //     e.preventDefault();
-    //     titleInput.css("border", "1px solid #007bff");
-    //     alert("Vui lòng nhập tiêu đề!");
-    //     titleInput.focus();
-    //     $("html, body").animate(
-    //       { scrollTop: titleInput.offset().top - 100 },
-    //       300
-    //     );
-    //     return false;
-    //   } else {
-    //     titleInput.css("border", "");
-    //   }
-
-    //   updateAllSlugs();
-
-    //   $('input[name="parentids[]"][data-autocheck="1"]').prop("disabled", true);
-    // });
-
     // ==================== Chọn tất cả ====================
     const checkAll = $("#checkAll");
     const items = $(".c-item");
@@ -200,7 +177,9 @@
             showPopupMessage("Không xác định được mục cần xoá!");
             return false;
           }
-    
+          resetPopup(); // ⭐ QUAN TRỌNG
+          $("#confirmPopup h3").text("🗑️ Xoá bài viết");
+          $("#confirmPopup p").text("Bạn có chắc chắn muốn xoá không?");
           $("#confirmPopup").fadeIn(200);
           return false;
         }
@@ -237,7 +216,9 @@
             showPopupMessage("Vui lòng chọn ít nhất một mục!");
             return false;
           }
-    
+          resetPopup(); // ⭐ QUAN TRỌNG
+          $("#confirmPopup h3").text("🗑️ Xoá bài viết");
+          $("#confirmPopup p").text("Bạn có chắc chắn muốn xoá không?");
           $("#confirmPopup").fadeIn(200);
           return false;
         }
@@ -293,11 +274,9 @@
           deleteContext = "updateNum";
           updateNumBtn = btn;
     
-          $("#confirmPopup .popup-title").text("Xác nhận làm mới");
-          $("#confirmPopup .popup-content").text(
-            "Bạn có chắc muốn cập nhật lại thứ tự không?"
-          );
-    
+          resetPopup(); // ⭐ QUAN TRỌNG
+          $("#confirmPopup h3").text("🔄 Làm mới");
+          $("#confirmPopup p").text("Bạn có chắc chắn muốn thực hiện không?");
           $("#confirmPopup").fadeIn(200);
           return false;
         }
@@ -415,7 +394,71 @@
         updateNumBtn.trigger("click");
       }
     
-
+      if (deleteContext === "editPrice") {
+        const price = $("#popupPriceInput").val().replace(/\D/g, "");
+        const newPrice = parseInt(price) || 0;
+      
+        if (newPrice <= 0) {
+          showPopupMessage("Giá không hợp lệ!");
+          return;
+        }
+      
+        $.ajax({
+          url: "/admindir/functions/update_price.php",
+          type: "POST",
+          dataType: "json",
+          data: {
+            id: editPriceId,
+            price: newPrice,
+          },
+          success: function (res) {
+            if (res.success) {
+              editPriceEl
+                .text(new Intl.NumberFormat("vi-VN").format(newPrice) + "₫")
+                .data("price", newPrice)
+                .css("background", "#f1faff");
+      
+              setTimeout(() => editPriceEl.css("background", ""), 600);
+      
+              $("#orderMsg")
+                .addClass("show")
+                .html('<span><i class="fa fa-check"></i> Cập nhật giá thành công!</span>');
+      
+              setTimeout(() => $("#orderMsg").removeClass("show"), 1200);
+            } else {
+              showPopupMessage(res.message || "Không thể cập nhật giá");
+            }
+          },
+          error: function (xhr) {
+            console.error(xhr.responseText);
+            showPopupMessage("Lỗi AJAX khi cập nhật giá!");
+          },
+          complete: function () {
+            $(".popup-extra").hide();
+            $("#popupPriceInput").val("");
+            deleteContext = null;
+          },
+        });
+      }
+      if (deleteContext === "editName") {
+        const name = $("#popupNameInput").val().trim();
+        if (!name) return alert("Tên không được để trống");
+    
+        $.post("/admindir/functions/update_name.php", {
+          id: popupData.id,
+          lang: popupData.lang,
+          name: name
+        }, function (res) {
+          if (res.success) {
+            popupData.el.find("span").text(name);
+            popupData.el.css("background", "#f1faff");
+            setTimeout(() => popupData.el.css("background", ""), 600);
+            closePopup();
+          } else {
+            alert(res.message || "Không thể cập nhật tên");
+          }
+        }, "json");
+      }
       deleteContext = null;
     });
 
@@ -617,126 +660,91 @@
       sessionStorage.removeItem("activeSubmenu");
     }
     /////////////////active-///////////////
-    $(document).on("click", ".btn_toggle", function () {
-      const btn = $(this);
+    $(document).on("change", ".btn_toggle input", function () {
+      const input = $(this);
+      const btn = input.closest(".btn_toggle");
+    
       const id = btn.data("id");
       const table = btn.data("table");
       const column = btn.data("column");
-      const currentValue = parseInt(btn.data("active"), 10);
-      const newValue = currentValue === 1 ? 0 : 1;
-      const msg = newValue === 0 ? "Ẩn" : "Hiển thị";
-
-      if (confirm(`Bạn muốn ${msg}?`)) {
-        $.ajax({
-          type: "POST",
-          url: "/admindir/functions/toggle.php",
-          data: {
-            id: id,
-            value: newValue,
-            table: table,
-            column: column,
-          },
-          success: function () {
-            // cập nhật lại UI
-            btn.data("active", newValue);
-            btn.find("img").attr("src", "images/" + newValue + ".png");
-            btn
-              .removeClass("btn-success btn-danger")
-              .addClass(newValue === 1 ? "btn-success" : "btn-danger");
-          },
-          error: function (xhr, status, error) {
-            alert("Lỗi AJAX: " + error);
-          },
-        });
-      }
-    });
-    /////CẬP NHẬT TÊN
-    // Bấm vào tên -> chuyển sang ô input
-    $(document).on("click", ".editable-name .view-text", function () {
-      const span = $(this).closest(".editable-name");
-      span.find(".view-text").hide();
-      span.find(".edit-input").show().focus();
-    });
-
-    // Nhấn Enter hoặc blur -> lưu AJAX
-    $(document).on("keypress", ".editable-name .edit-input", function (e) {
-      if (e.which === 13) {
-        e.preventDefault();
-        saveQuickEdit($(this));
-      }
-    });
-    $(document).on("blur", ".editable-name .edit-input", function () {
-      saveQuickEdit($(this));
-    });
-    function saveQuickEdit(input) {
-      const span = input.closest(".editable-name");
-      const id = span.data("id");
-      const lang = span.data("lang");
-      const newValue = input.val().trim();
-      const oldValue = span.find(".view-text").text().trim();
-
-      if (newValue === oldValue || newValue === "") {
-        input.hide();
-        span.find(".view-text").show();
-        return;
-      }
-
+      const newValue = input.is(":checked") ? 1 : 0;
+    
+      input.prop("disabled", true);
+    
       $.ajax({
-        url: "/admindir/functions/update_name.php",
-        method: "POST",
-        data: { id: id, lang: lang, name: newValue },
-        dataType: "json",
-        success: function (res) {
-          if (res.success) {
-            span.find(".view-text").text(newValue);
-          } else {
-            alert("❌ " + res.message);
-            input.val(oldValue);
-          }
-          input.hide();
-          span.find(".view-text").show();
+        type: "POST",
+        url: "/admindir/functions/toggle.php",
+        data: {
+          id: id,
+          value: newValue,
+          table: table,
+          column: column
+        },
+        success: function () {
+          btn.data("active", newValue);
         },
         error: function () {
-          alert("Không thể cập nhật!");
-          input.hide();
-          span.find(".view-text").show();
+          alert("Lỗi AJAX");
+          input.prop("checked", !newValue); // rollback
         },
+        complete: function () {
+          input.prop("disabled", false);
+        }
       });
-    }
-    ///////////////CẬP NHẬT GIÁ
-    $(document).on("blur", ".editable-price", function () {
-      let $this = $(this);
-      let id = $this.data("id");
-      let price = $(this).text().replace(/[^\d]/g, "");
-      price = parseInt(price) || 0;
+    });
+    
+    /////CẬP NHẬT TÊN
+    let popupData = {};
+    $(document).on("click", ".editable-name", function () {
+      resetPopup(); // ⭐ QUAN TRỌNG
+      deleteContext = "editName";
+      popupData.el = $(this);
+      popupData.id = $(this).data("id");
+      popupData.lang = $(this).data("lang");
+    
+      const name = $(this).find("span").text().trim();
+    
+      $("#confirmPopup h3").text("✏️ Cập nhật tên");
+      $("#confirmPopup p").text("Nhập tiêu đề mới cho bài viết");
 
-      $.ajax({
-        url: "/admindir/functions/update_price.php",
-        type: "POST",
-        dataType: "json",
-        data: { id: id, price: price },
-        success: function (res) {
-          if (res.success) {
-            $this.text(new Intl.NumberFormat("vi-VN").format(price) + "₫");
-            $this.css("background", "#e8ffe8");
-            setTimeout(() => $this.css("background", ""), 600);
-          } else {
-            alert(res.message || "Không thể cập nhật giá");
-          }
-        },
-        error: function (xhr) {
-          console.error(xhr.responseText);
-          alert("Lỗi AJAX khi cập nhật giá!");
-        },
-      });
+      $("#popupNameInput")
+    .val(name)
+    .show()
+    .focus();
+      $(".popup-extra").show();
+      $("#confirmPopup").fadeIn(200);
     });
-    // ✅ Xử lý Enter để blur (kích hoạt AJAX)
-    $(document).on("keydown", ".editable-price", function (e) {
-      if (e.key === "Enter") {
-        e.preventDefault(); // ngăn xuống dòng
-        $(this).blur(); // tự động blur => kích hoạt AJAX update
-      }
+    
+    ///////////////CẬP NHẬT GIÁ
+    let editPriceId = null;
+    let editPriceEl = null;
+    $(document).on("click", ".btn_edit_price", function () {
+      resetPopup(); // ⭐ CỰC QUAN TRỌNG
+      editPriceEl = $(this);
+      editPriceId = editPriceEl.data("id");
+    
+      const currentPrice = editPriceEl.data("price");
+    
+      deleteContext = "editPrice";
+      // ✅ SỬA ĐÚNG SELECTOR
+      $("#confirmPopup h3").text("💰 Cập nhật giá");
+      $("#confirmPopup p").text("Nhập giá mới cho sản phẩm");
+    
+      $("#popupPriceInput")
+    .val(currentPrice)
+    .show()
+    .focus();
+
+      $(".popup-extra").show();
+    
+      $("#confirmPopup").fadeIn(200);
     });
+    ///reset popup
+    function resetPopup() {
+      $("#popupPriceInput").hide().val("");
+      $("#popupNameInput").hide().val("");
+      $(".popup-extra").hide();
+    }
   }); // end ready
 })(jQuery);
 document.addEventListener("DOMContentLoaded", () => {

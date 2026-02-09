@@ -78,9 +78,9 @@
 
                         <th align="left" class="width-ttl">Tiêu đề</th>
 
-                        <!-- {if $tinhnang.price == 1}
+                        {if $tinhnang.price == 1}
                         <th align="center" class="width-image">Giá</th>
-                        {/if} -->
+                        {/if}
 
                         <!-- <th align="center" class="width-image">Ngày tạo</th> -->
                         <th align="center" class="width-date">Ngày</th>
@@ -151,24 +151,23 @@
                               {assign var=detail value=$ad}
                               {/if}
                               {/foreach}
-                              <span data-lang="{$lang.id}" class="tab c-name editable-name {if $lang.id==$currentLang}active{/if}" data-id="{$item.id}">
-                                 <span>{$detail.name|escape:'html':'UTF-8'}</span>
-                                 <input type="text" class="edit-input form-control" value="{$item.details.name|escape:'html':'UTF-8'}" style="display:none;">
-                              </span>
+                              <div title="Click vào cập nhật tên" data-lang="{$lang.id}" class="act-btn price-view tab c-name editable-name {if $lang.id==$currentLang}active{/if}" data-id="{$item.id}">
+                                 <span>{$detail.name}</span>
+                              </div>
                               {/foreach}
                            </div>
                         </td>
 
-                        <!-- {if $tinhnang.price == 1}
+                        {if $tinhnang.price == 1}
 
                         <td align="center">
-                           <span class="editable-price"
+                           <span title="Click vào cập nhật giá"  class="act-btn price-view btn_edit_price"
                               data-id="{$item.id}"
-                              contenteditable="true">
+                              data-price="{$item.price.price}">
                               {$item.price.price}₫
                            </span>
                         </td>
-                        {/if} -->
+                        {/if}
 
                         <!-- <td align="center">
                            {$item.dated|date_format:"%d/%m/%Y %H:%M"}
@@ -180,52 +179,79 @@
 
                         {if $tinhnang.new == 1}
                         <td align="center">
-                           <button type="button"
+                           <!-- <button type="button"
                               class="btn_checks btn_toggle"
                               data-id="{$item.id}"
                               data-active="{$item.new}"
                               data-column="new"
                               data-table="articlelist">
                               <img src="images/{$item.new}.png" alt="Trạng thái Mới" />
-                           </button>
+                           </button> -->
+
+                           <label class="toggle btn_toggle"
+                              data-id="{$item.id}"
+                              data-active="{$item.new}"
+                              data-column="new"
+                              data-table="articlelist">
+                           <input type="checkbox" {if $item.new == 1}checked{/if}>
+                           <span class="track"></span>
+                           </label>
                         </td>
                         {/if}
 
                         {if $tinhnang.hot == 1}
                         <td align="center">
-                           <button type="button"
+                           <!-- <button type="button"
                               class="btn_checks btn_toggle"
                               data-id="{$item.id}"
                               data-active="{$item.hot}"
                               data-column="hot"
                               data-table="articlelist">
                               <img src="images/{$item.hot}.png" alt="Trạng thái Hot" />
-                           </button>
+                           </button> -->
+
+                           <label class="toggle btn_toggle"
+                              data-id="{$item.id}"
+                              data-active="{$item.hot}"
+                              data-column="hot"
+                              data-table="articlelist">
+                           <input type="checkbox" {if $item.hot == 1}checked{/if}>
+                           <span class="track"></span>
+                           </label>
                         </td>
                         {/if}
 
                         {if $tinhnang.mostview == 1}
                         <td align="center">
-                           <button type="button"
+                           <!-- <button type="button"
                               class="btn_checks btn_toggle"
                               data-id="{$item.id}"
                               data-active="{$item.mostview}"
                               data-column="mostview"
                               data-table="articlelist">
                               <img src="images/{$item.mostview}.png" alt="Trạng thái Xem nhiều" />
-                           </button>
+                           </button> -->
+                           <label class="toggle btn_toggle"
+                              data-id="{$item.id}"
+                              data-active="{$item.mostview}"
+                              data-column="mostview"
+                              data-table="articlelist">
+                           <input type="checkbox" {if $item.mostview == 1}checked{/if}>
+                           <span class="track"></span>
+                           </label>
                         </td>
                         {/if}
 
                         <td align="center">
-                           <button type="button"
-                              class="btn_checks btn_toggle"
-                              data-id="{$item.id}"
-                              data-active="{$item.active}"
-                              data-column="active"
-                              data-table="articlelist">
-                              <img src="images/{$item.active}.png" alt="Hiển thị / Ẩn" />
-                           </button>
+                           <label class="toggle btn_toggle"
+                                 data-id="{$item.id}"
+                                 data-active="{$item.active}"
+                                 data-column="active"
+                                 data-table="articlelist">
+
+                           <input type="checkbox" {if $item.active == 1}checked{/if}>
+                           <span class="track"></span>
+                           </label>
                         </td>
 
                         <td align="center">
@@ -245,6 +271,9 @@
                                  {assign var=detail value=$ad}
                                  {/if}
                                  {/foreach}
+                                 <!-- <a data-lang="{$lang.id}" class="tab act-btn btnView {if $lang.id==$currentLang}active{/if}" href="{$web_base_url}/{$detail.unique_key}.html" target="_blank" title="Xem nhanh">
+                                    <i class="fa fa-eye"></i>
+                                 </a> -->
                                  <a data-lang="{$lang.id}" class="tab act-btn btnView {if $lang.id==$currentLang}active{/if}" href="{$web_base_url}/{$detail.unique_key}.html" target="_blank" title="Xem nhanh">
                                     <i class="fa fa-eye"></i>
                                  </a>

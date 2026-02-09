@@ -75,14 +75,22 @@
 
 
                            <td align="center" class="brbottom">
-                              <button type="button"
+                              <!-- <button type="button"
                                  class="btn_checks btn_toggle"
                                  data-id="{$row.id}"
                                  data-active="{$row.active}"
                                  data-column="active"
                                  data-table="menu">
                                  <img src="images/{$row.active}.png" alt="Show/Hide">
-                              </button>
+                              </button> -->
+                              <label class="toggle btn_toggle"
+                                 data-id="{$row.id}"
+                                 data-active="{$row.active}"
+                                 data-column="active"
+                                 data-table="menu">
+                                 <input type="checkbox" {if $row.active == 1}checked{/if}>
+                                 <span class="track"></span>
+                              </label>
                            </td>
 
                            <td align="center" class="brbottom">

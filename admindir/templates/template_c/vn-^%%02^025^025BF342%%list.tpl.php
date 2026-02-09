@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.30, created on 2026-02-08 12:21:00
+<?php /* Smarty version 2.6.30, created on 2026-02-09 13:57:53
          compiled from articlelist/list.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'articlelist/list.tpl', 21, false),array('modifier', 'count', 'articlelist/list.tpl', 54, false),array('modifier', 'escape', 'articlelist/list.tpl', 155, false),array('modifier', 'date_format', 'articlelist/list.tpl', 174, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'articlelist/list.tpl', 21, false),array('modifier', 'count', 'articlelist/list.tpl', 54, false),array('modifier', 'date_format', 'articlelist/list.tpl', 173, false),)), $this); ?>
 <div class="contentmain">
    <div class="main">
       <div class="left_sidebar padding10">
@@ -101,9 +101,9 @@ unset($_smarty_tpl_vars);
 
                         <th align="left" class="width-ttl">Tiêu đề</th>
 
-                        <!-- <?php if ($this->_tpl_vars['tinhnang']['price'] == 1): ?>
+                        <?php if ($this->_tpl_vars['tinhnang']['price'] == 1): ?>
                         <th align="center" class="width-image">Giá</th>
-                        <?php endif; ?> -->
+                        <?php endif; ?>
 
                         <!-- <th align="center" class="width-image">Ngày tạo</th> -->
                         <th align="center" class="width-date">Ngày</th>
@@ -190,30 +190,29 @@ if ($this->_foreach['loop']['total'] > 0):
                               <?php $this->assign('detail', $this->_tpl_vars['ad']); ?>
                               <?php endif; ?>
                               <?php endforeach; endif; unset($_from); ?>
-                              <span data-lang="<?php echo $this->_tpl_vars['lang']['id']; ?>
-" class="tab c-name editable-name <?php if ($this->_tpl_vars['lang']['id'] == $this->_tpl_vars['currentLang']): ?>active<?php endif; ?>" data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
+                              <div title="Click vào cập nhật tên" data-lang="<?php echo $this->_tpl_vars['lang']['id']; ?>
+" class="act-btn price-view tab c-name editable-name <?php if ($this->_tpl_vars['lang']['id'] == $this->_tpl_vars['currentLang']): ?>active<?php endif; ?>" data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
 ">
-                                 <span><?php echo ((is_array($_tmp=$this->_tpl_vars['detail']['name'])) ? $this->_run_mod_handler('escape', true, $_tmp, 'html', 'UTF-8') : smarty_modifier_escape($_tmp, 'html', 'UTF-8')); ?>
+                                 <span><?php echo $this->_tpl_vars['detail']['name']; ?>
 </span>
-                                 <input type="text" class="edit-input form-control" value="<?php echo ((is_array($_tmp=$this->_tpl_vars['item']['details']['name'])) ? $this->_run_mod_handler('escape', true, $_tmp, 'html', 'UTF-8') : smarty_modifier_escape($_tmp, 'html', 'UTF-8')); ?>
-" style="display:none;">
-                              </span>
+                              </div>
                               <?php endforeach; endif; unset($_from); ?>
                            </div>
                         </td>
 
-                        <!-- <?php if ($this->_tpl_vars['tinhnang']['price'] == 1): ?>
+                        <?php if ($this->_tpl_vars['tinhnang']['price'] == 1): ?>
 
                         <td align="center">
-                           <span class="editable-price"
+                           <span title="Click vào cập nhật giá"  class="act-btn price-view btn_edit_price"
                               data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
 "
-                              contenteditable="true">
+                              data-price="<?php echo $this->_tpl_vars['item']['price']['price']; ?>
+">
                               <?php echo $this->_tpl_vars['item']['price']['price']; ?>
 ₫
                            </span>
                         </td>
-                        <?php endif; ?> -->
+                        <?php endif; ?>
 
                         <!-- <td align="center">
                            <?php echo ((is_array($_tmp=$this->_tpl_vars['item']['dated'])) ? $this->_run_mod_handler('date_format', true, $_tmp, "%d/%m/%Y %H:%M") : smarty_modifier_date_format($_tmp, "%d/%m/%Y %H:%M")); ?>
@@ -227,7 +226,7 @@ if ($this->_foreach['loop']['total'] > 0):
 
                         <?php if ($this->_tpl_vars['tinhnang']['new'] == 1): ?>
                         <td align="center">
-                           <button type="button"
+                           <!-- <button type="button"
                               class="btn_checks btn_toggle"
                               data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
 "
@@ -237,13 +236,24 @@ if ($this->_foreach['loop']['total'] > 0):
                               data-table="articlelist">
                               <img src="images/<?php echo $this->_tpl_vars['item']['new']; ?>
 .png" alt="Trạng thái Mới" />
-                           </button>
+                           </button> -->
+
+                           <label class="toggle btn_toggle"
+                              data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
+"
+                              data-active="<?php echo $this->_tpl_vars['item']['new']; ?>
+"
+                              data-column="new"
+                              data-table="articlelist">
+                           <input type="checkbox" <?php if ($this->_tpl_vars['item']['new'] == 1): ?>checked<?php endif; ?>>
+                           <span class="track"></span>
+                           </label>
                         </td>
                         <?php endif; ?>
 
                         <?php if ($this->_tpl_vars['tinhnang']['hot'] == 1): ?>
                         <td align="center">
-                           <button type="button"
+                           <!-- <button type="button"
                               class="btn_checks btn_toggle"
                               data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
 "
@@ -253,13 +263,24 @@ if ($this->_foreach['loop']['total'] > 0):
                               data-table="articlelist">
                               <img src="images/<?php echo $this->_tpl_vars['item']['hot']; ?>
 .png" alt="Trạng thái Hot" />
-                           </button>
+                           </button> -->
+
+                           <label class="toggle btn_toggle"
+                              data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
+"
+                              data-active="<?php echo $this->_tpl_vars['item']['hot']; ?>
+"
+                              data-column="hot"
+                              data-table="articlelist">
+                           <input type="checkbox" <?php if ($this->_tpl_vars['item']['hot'] == 1): ?>checked<?php endif; ?>>
+                           <span class="track"></span>
+                           </label>
                         </td>
                         <?php endif; ?>
 
                         <?php if ($this->_tpl_vars['tinhnang']['mostview'] == 1): ?>
                         <td align="center">
-                           <button type="button"
+                           <!-- <button type="button"
                               class="btn_checks btn_toggle"
                               data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
 "
@@ -269,22 +290,32 @@ if ($this->_foreach['loop']['total'] > 0):
                               data-table="articlelist">
                               <img src="images/<?php echo $this->_tpl_vars['item']['mostview']; ?>
 .png" alt="Trạng thái Xem nhiều" />
-                           </button>
+                           </button> -->
+                           <label class="toggle btn_toggle"
+                              data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
+"
+                              data-active="<?php echo $this->_tpl_vars['item']['mostview']; ?>
+"
+                              data-column="mostview"
+                              data-table="articlelist">
+                           <input type="checkbox" <?php if ($this->_tpl_vars['item']['mostview'] == 1): ?>checked<?php endif; ?>>
+                           <span class="track"></span>
+                           </label>
                         </td>
                         <?php endif; ?>
 
                         <td align="center">
-                           <button type="button"
-                              class="btn_checks btn_toggle"
-                              data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
+                           <label class="toggle btn_toggle"
+                                 data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
 "
-                              data-active="<?php echo $this->_tpl_vars['item']['active']; ?>
+                                 data-active="<?php echo $this->_tpl_vars['item']['active']; ?>
 "
-                              data-column="active"
-                              data-table="articlelist">
-                              <img src="images/<?php echo $this->_tpl_vars['item']['active']; ?>
-.png" alt="Hiển thị / Ẩn" />
-                           </button>
+                                 data-column="active"
+                                 data-table="articlelist">
+
+                           <input type="checkbox" <?php if ($this->_tpl_vars['item']['active'] == 1): ?>checked<?php endif; ?>>
+                           <span class="track"></span>
+                           </label>
                         </td>
 
                         <td align="center">
@@ -303,6 +334,12 @@ if ($this->_foreach['loop']['total'] > 0):
                                  <?php $this->assign('detail', $this->_tpl_vars['ad']); ?>
                                  <?php endif; ?>
                                  <?php endforeach; endif; unset($_from); ?>
+                                 <!-- <a data-lang="<?php echo $this->_tpl_vars['lang']['id']; ?>
+" class="tab act-btn btnView <?php if ($this->_tpl_vars['lang']['id'] == $this->_tpl_vars['currentLang']): ?>active<?php endif; ?>" href="<?php echo $this->_tpl_vars['web_base_url']; ?>
+/<?php echo $this->_tpl_vars['detail']['unique_key']; ?>
+.html" target="_blank" title="Xem nhanh">
+                                    <i class="fa fa-eye"></i>
+                                 </a> -->
                                  <a data-lang="<?php echo $this->_tpl_vars['lang']['id']; ?>
 " class="tab act-btn btnView <?php if ($this->_tpl_vars['lang']['id'] == $this->_tpl_vars['currentLang']): ?>active<?php endif; ?>" href="<?php echo $this->_tpl_vars['web_base_url']; ?>
 /<?php echo $this->_tpl_vars['detail']['unique_key']; ?>

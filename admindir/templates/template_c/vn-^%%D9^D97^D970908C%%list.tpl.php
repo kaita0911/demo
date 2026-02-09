@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2026-02-08 14:46:58
+<?php /* Smarty version 2.6.30, created on 2026-02-09 11:20:49
          compiled from menu/list.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'menu/list.tpl', 16, false),array('modifier', 'count', 'menu/list.tpl', 29, false),)), $this); ?>
@@ -102,7 +102,7 @@ if ($this->_foreach['menuLoop']['total'] > 0):
 
 
                            <td align="center" class="brbottom">
-                              <button type="button"
+                              <!-- <button type="button"
                                  class="btn_checks btn_toggle"
                                  data-id="<?php echo $this->_tpl_vars['row']['id']; ?>
 "
@@ -112,7 +112,17 @@ if ($this->_foreach['menuLoop']['total'] > 0):
                                  data-table="menu">
                                  <img src="images/<?php echo $this->_tpl_vars['row']['active']; ?>
 .png" alt="Show/Hide">
-                              </button>
+                              </button> -->
+                              <label class="toggle btn_toggle"
+                                 data-id="<?php echo $this->_tpl_vars['row']['id']; ?>
+"
+                                 data-active="<?php echo $this->_tpl_vars['row']['active']; ?>
+"
+                                 data-column="active"
+                                 data-table="menu">
+                                 <input type="checkbox" <?php if ($this->_tpl_vars['row']['active'] == 1): ?>checked<?php endif; ?>>
+                                 <span class="track"></span>
+                              </label>
                            </td>
 
                            <td align="center" class="brbottom">

@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.30, created on 2026-02-03 11:45:50
+<?php /* Smarty version 2.6.30, created on 2026-02-09 11:12:15
          compiled from categories/category_row_lang.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'categories/category_row_lang.tpl', 32, false),array('modifier', 'escape', 'categories/category_row_lang.tpl', 32, false),array('modifier', 'count', 'categories/category_row_lang.tpl', 83, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'categories/category_row_lang.tpl', 32, false),array('modifier', 'escape', 'categories/category_row_lang.tpl', 32, false),array('modifier', 'count', 'categories/category_row_lang.tpl', 95, false),)), $this); ?>
 <tr data-id="<?php echo $this->_tpl_vars['category']['id']; ?>
 ">
     <td align="center">
@@ -76,22 +76,32 @@ $this->_sections['i']['last']       = ($this->_sections['i']['iteration'] == $th
 
     <?php if ($this->_tpl_vars['tinhnang']['danhmuchome'] == 1): ?>
     <td align="center">
-        <button type="button" class="btn_checks btn_toggle" data-id="<?php echo $this->_tpl_vars['category']['id']; ?>
-" data-active="<?php echo $this->_tpl_vars['category']['home']; ?>
-" data-column="home" data-table="categories">
-            <img src="images/<?php echo $this->_tpl_vars['category']['home']; ?>
-.png" alt="Show/Hide">
-        </button>
+        
+        <label class="toggle btn_toggle"
+            data-id="<?php echo $this->_tpl_vars['category']['id']; ?>
+" 
+            data-active="<?php echo $this->_tpl_vars['category']['home']; ?>
+" 
+            data-column="home" 
+            data-table="categories">
+            <input type="checkbox" <?php if ($this->_tpl_vars['category']['home'] == 1): ?>checked<?php endif; ?>>
+            <span class="track"></span>
+        </label>
     </td>
     <?php endif; ?>
 
     <td align="center">
-        <button type="button" class="btn_checks btn_toggle" data-id="<?php echo $this->_tpl_vars['category']['id']; ?>
-" data-active="<?php echo $this->_tpl_vars['category']['active']; ?>
-" data-column="active" data-table="categories">
-            <img src="images/<?php echo $this->_tpl_vars['category']['active']; ?>
-.png" alt="Show/Hide">
-        </button>
+       
+        <label class="toggle btn_toggle"
+            data-id="<?php echo $this->_tpl_vars['category']['id']; ?>
+" 
+            data-active="<?php echo $this->_tpl_vars['category']['active']; ?>
+" 
+            data-column="active" 
+            data-table="categories">
+            <input type="checkbox" <?php if ($this->_tpl_vars['category']['active'] == 1): ?>checked<?php endif; ?>>
+            <span class="track"></span>
+        </label>
     </td>
 
     <td align="center">

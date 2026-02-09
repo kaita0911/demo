@@ -38,16 +38,28 @@
 
     {if $tinhnang.danhmuchome == 1}
     <td align="center">
-        <button type="button" class="btn_checks btn_toggle" data-id="{$category.id}" data-active="{$category.home}" data-column="home" data-table="categories">
-            <img src="images/{$category.home}.png" alt="Show/Hide">
-        </button>
+        
+        <label class="toggle btn_toggle"
+            data-id="{$category.id}" 
+            data-active="{$category.home}" 
+            data-column="home" 
+            data-table="categories">
+            <input type="checkbox" {if $category.home == 1}checked{/if}>
+            <span class="track"></span>
+        </label>
     </td>
     {/if}
 
     <td align="center">
-        <button type="button" class="btn_checks btn_toggle" data-id="{$category.id}" data-active="{$category.active}" data-column="active" data-table="categories">
-            <img src="images/{$category.active}.png" alt="Show/Hide">
-        </button>
+       
+        <label class="toggle btn_toggle"
+            data-id="{$category.id}" 
+            data-active="{$category.active}" 
+            data-column="active" 
+            data-table="categories">
+            <input type="checkbox" {if $category.active == 1}checked{/if}>
+            <span class="track"></span>
+        </label>
     </td>
 
     <td align="center">

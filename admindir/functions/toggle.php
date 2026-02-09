@@ -12,7 +12,7 @@ if ($id <= 0 || $table === '' || $column === '' || ($value !== 0 && $value !== 1
     exit;
 }
 
-$allowedTables = ['categories', 'articlelist', 'language', 'component', 'infos', 'colors'];
+$allowedTables = ['categories', 'articlelist', 'language', 'component', 'infos', 'colors', 'menu'];
 $allowedColumns = ['active', 'home', 'show', 'hot', 'new', 'mostview', 'open', 'is_default'];
 
 if (!in_array($table, $allowedTables) || !in_array($column, $allowedColumns)) {
