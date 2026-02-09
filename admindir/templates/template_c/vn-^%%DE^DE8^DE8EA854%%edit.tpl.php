@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2026-01-10 10:40:17
+<?php /* Smarty version 2.6.30, created on 2026-02-08 11:12:54
          compiled from articlelist/edit.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'count', 'articlelist/edit.tpl', 25, false),array('modifier', 'escape', 'articlelist/edit.tpl', 44, false),array('modifier', 'replace', 'articlelist/edit.tpl', 198, false),array('modifier', 'is_array', 'articlelist/edit.tpl', 245, false),array('modifier', 'default', 'articlelist/edit.tpl', 286, false),array('modifier', 'number_format', 'articlelist/edit.tpl', 314, false),)), $this); ?>
@@ -84,7 +84,7 @@ unset($_smarty_tpl_vars);
                 <div class="item">
                   <div class="title">Mô tả ngắn</div>
                   <div class="meta">
-                    <textarea id="short_<?php echo $this->_tpl_vars['lang']['id']; ?>
+                    <textarea class="InputTextarea"  id="short_<?php echo $this->_tpl_vars['lang']['id']; ?>
 " name="languages[<?php echo $this->_tpl_vars['lang']['id']; ?>
 ][short]"><?php echo $this->_tpl_vars['detail']['short']; ?>
 </textarea>
@@ -95,7 +95,7 @@ unset($_smarty_tpl_vars);
                 <div class="item">
                   <div class="title">Mô tả chi tiết</div>
                   <div class="meta">
-                    <textarea id="content_<?php echo $this->_tpl_vars['lang']['id']; ?>
+                    <textarea class="ckeditor" id="content_<?php echo $this->_tpl_vars['lang']['id']; ?>
 " name="languages[<?php echo $this->_tpl_vars['lang']['id']; ?>
 ][content]"><?php echo $this->_tpl_vars['detail']['content']; ?>
 </textarea>
@@ -139,7 +139,7 @@ unset($_smarty_tpl_vars);
 
               <?php if ($this->_tpl_vars['tinhnang']['nhomcon'] == 1): ?>
               <div class="item">
-                <div class="title">Danh mục sản phẩm</div>
+                <div class="title">Danh mục</div>
                 <div class="selectlist tab-mirror">
                   <?php $_from = $this->_tpl_vars['languages']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['lang']):

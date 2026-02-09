@@ -4,13 +4,13 @@
          {include file="left.tpl"}
       </aside>
       <section class="right_content">
-         <!-- <div class="divright">
+         <div class="divright">
             <div class="acti2">
                <button class="add" type="button" id="btnDelete" data-comp="">
                   <i class="fa fa-trash"></i> Xóa
                </button>
             </div>
-         </div> -->
+         </div>
          <div class="right_content-wrap">
             <form class="form-all" method="post" action="">
                <table class="br1 w-full border-collapse">
@@ -44,7 +44,9 @@
                             {$item.created_at|date_format:"%H:%M:%S  %d-%m-%Y"}
                         </td>
                         <td align="center">
-                           <a href="javascript:void(0)" class="btn-view" data-id="{$item.id}"> <i class="fa fa-eye"></i> Xem chi tiết</a>
+                           <!-- <a href="javascript:void(0)" class="btn-view" data-id="{$item.id}"> <i class="fa fa-eye"></i> Xem chi tiết</a> -->
+                           <a href="javascript:void(0)" class="btn-order-view" data-popup="index.php?do=register_info&act=popup&id={$item.id}"><i class="fa fa-eye"></i> Chi tiết
+                           </a>
                         </td>
                      </tr>
                      {/foreach}
@@ -54,15 +56,10 @@
             <div class="pagination-wrapper">
                {$pagination nofilter}
             </div>
-            <div class="modal-overlay" id="modalView">
+            <div id="globalModal" class="modal">
                <div class="modal-box">
-                  <div class="modal-header">
-                     <h3>CHI TIẾT</h3>
-                     <span class="modal-close">&times;</span>
-                  </div>
-                  <div class="modal-body" id="modalContent">
-                     Đang tải dữ liệu...
-                  </div>
+                  <span class="modal-close">&times;</span>
+                  <div id="globalModalContent">Loading...</div>
                </div>
             </div>
          </div>

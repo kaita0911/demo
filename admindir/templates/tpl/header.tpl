@@ -70,7 +70,10 @@
         {/if}
       </a>
       {/if}
-      <a class="box-register__btn" href="index.php?do=contact&comp=23"><i class="fa-solid fa-address-book"></i> Form liên hệ</a>
+      <a class="box-register__btn" href="index.php?do=contact&comp=23"><i class="fa-solid fa-address-book"></i> Form liên hệ 
+      {if $new_contact_count > 0}
+        <span class="icon-new"></span>
+        {/if}</a>
       {if $showform.open eq 1}
         <a class="box-register__btn" href="index.php?do=register_info"><i class="fa-solid fa-address-book"></i> Form đăng ký tư vấn
         {if $new_register_count > 0}

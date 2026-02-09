@@ -62,7 +62,7 @@
                         <div class="item">
                            <div class="title">Mô tả chi tiết</div>
                            <div class="meta">
-                              <textarea id="content_{$lang.id}]" name="languages[{$lang.id}][content]">{$detail.content}</textarea>
+                              <textarea class="ckeditor" id="content_{$lang.id}]" name="languages[{$lang.id}][content]">{$detail.content}</textarea>
                            </div>
                         </div>
 

@@ -44,14 +44,15 @@
                         </div> {if $tinhnang.short == 1}
                         <div class="item">
                            <div class="title">Mô tả ngắn</div>
-                           <textarea name="languages[{$lang.id}][short]" id="short_$lang.id}"></textarea>
+
+                           <textarea name="languages[{$lang.id}][short]" id="short_$lang.id}" class="InputTextarea"></textarea>
                         </div>
                         {/if}
 
                         {if $tinhnang.des == 1}
                         <div class="item">
                            <div class="title">Mô tả chi tiết</div>
-                           <textarea name="languages[{$lang.id}][content]" id="content_$lang.id}"></textarea>
+                           <textarea class="ckeditor" name="languages[{$lang.id}][content]" id="content_$lang.id}"></textarea>
                         </div>
                         {/if}
 
@@ -77,7 +78,7 @@
 
                      {if $tinhnang.nhomcon == 1}
                      <div class="item">
-                        <div class="title">Danh mục sản phẩm</div>
+                        <div class="title">Danh mục</div>
                         <!-- <div class="tab {if $lang.id==$currentLang}active{/if}" data-lang="{$lang.id}">
                               <div class="selectlist">
                                  <ul class="category-tree">
@@ -245,8 +246,8 @@
                      </div>
                      {/if}
                      <div class="item">
-                        <div class="title">Show</div>
-                        <input type="checkbox" name="active" value="active" {if $edit.active eq 1 || $smarty.request.act eq 'add' }checked{/if}>
+                        <div class="title">Show   <input type="checkbox" name="active" value="active" {if $edit.active eq 1 || $smarty.request.act eq 'add' }checked{/if}></div>
+                      
                      </div>
                   </div>
                </div>

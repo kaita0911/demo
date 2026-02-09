@@ -82,8 +82,8 @@
                         <th align="center" class="width-image">Giá</th>
                         {/if} -->
 
-                        <!-- <th align="center" class="width-image">Ngày tạo</th>
-                        <th align="center" class="width-image">Ngày sửa</th> -->
+                        <!-- <th align="center" class="width-image">Ngày tạo</th> -->
+                        <th align="center" class="width-date">Ngày</th>
 
                         {if $tinhnang.new == 1}
                         <th align="center" class="width-show">Mới</th>
@@ -172,11 +172,11 @@
 
                         <!-- <td align="center">
                            {$item.dated|date_format:"%d/%m/%Y %H:%M"}
-                        </td>
+                        </td>-->
 
                         <td align="center">
-                           {$item.dated_edit|date_format:"%d/%m/%Y %H:%M"}
-                        </td> -->
+                           {$item.dated_edit|date_format:"%H:%M - %d/%m/%Y"}
+                        </td> 
 
                         {if $tinhnang.new == 1}
                         <td align="center">
@@ -254,10 +254,10 @@
                               <a class="act-btn btnEdit" title="Chỉnh sửa" href="index.php?do=articlelist&act=edit&id={$item.id}&comp={$smarty.request.comp}">
                                  <i class="fa fa-edit"></i>
                               </a>
-                              <button class="act-btn btnUpdateNum" title="Làm mới" data-id="{$item.id}" data-comp="{$smarty.request.comp}">
+                              <button type="button" class="act-btn btnUpdateNum" title="Làm mới" data-id="{$item.id}" data-comp="{$smarty.request.comp}">
                                  <i class="fa fa-refresh"></i>
                               </button>
-                              <button class="act-btn btnDeleteRow" title="Xoá" data-id="{$item.id}" data-comp="{$smarty.request.comp}">
+                              <button  type="button" class="act-btn btnDeleteRow" title="Xoá" data-id="{$item.id}" data-comp="{$smarty.request.comp}">
                                  <i class="fa fa-trash"></i>
                               </button>
                               <!-- <span class="act-btn btnPassword"

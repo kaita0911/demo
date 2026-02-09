@@ -5,20 +5,34 @@
     const currentUrl = window.location.href;
 
     // ==================== CKEditor ====================
-    ["content", "short"].forEach(function (baseId) {
-      var textareas = document.querySelectorAll(
-        "textarea[id^='" + baseId + "']"
-      );
+    // ["content", "short"].forEach(function (baseId) {
+    //   var textareas = document.querySelectorAll(
+    //     "textarea[id^='" + baseId + "']"
+    //   );
 
-      textareas.forEach(function (el) {
-        var langId = el.id.split("_").pop();
-        CKEDITOR.replace(el.id, {
-          language: langId === "2" ? "en" : "vi", // tùy theo lang_id
-          removePlugins: "exportpdf",
-          height: 300,
-        });
-      });
+    //   textareas.forEach(function (el) {
+    //     var langId = el.id.split("_").pop();
+    //     CKEDITOR.replace(el.id, {
+    //       language: langId === "2" ? "en" : "vi", // tùy theo lang_id
+    //       removePlugins: "exportpdf",
+    //       height: 300,
+    //     });
+    //   });
+    // });
+   CKEDITOR.config.removePlugins = "exportpdf";
+
+  document.querySelectorAll("textarea.ckeditor").forEach(function (el) {
+    if (!el.id) {
+      el.id = "ckeditor_" + Math.random().toString(36).slice(2);
+    }
+
+    if (CKEDITOR.instances[el.id]) return;
+
+    CKEDITOR.replace(el.id, {
+      language: el.dataset.langId == 2 ? "en" : "vi",
+      height: 300,
     });
+  });
 
     // ==================== Slug ====================
     function slugify(str) {
@@ -142,31 +156,6 @@
       this.value = number ? Number(number).toLocaleString("vi-VN") : "";
     });
 
-    // // ==================== Countdown ====================
-    // (function () {
-    //   const countDownDate = new Date("May 15, 2026 11:00:00").getTime();
-    //   const timer = setInterval(() => {
-    //     const now = new Date().getTime();
-    //     const distance = countDownDate - now;
-    //     if (distance < 0) {
-    //       clearInterval(timer);
-    //       $("#demo").text("EXPIRED");
-    //       $(".bgleft").addClass("hide");
-    //       $(".popupqc").addClass("show");
-    //       return;
-    //     }
-    //     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    //     const hours = Math.floor(
-    //       (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    //     );
-    //     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    //     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    //     $("#demo").text(
-    //       `${days} Ngày ${hours} Giờ ${minutes} Phút ${seconds} Giây`
-    //     );
-    //   }, 1000);
-    // })();
-
     // ==================== Button actions ====================
     function ajaxButton(selector, urlSuffix, dataMapper, onSuccess) {
       $(document).on("click", selector, function () {
@@ -195,75 +184,82 @@
     }
 
     // --- XÓA 1 DÒNG ---
+    let deleteRowId = null;
+    let deleteRowBtn = null;
+    let allowDeleteRow = false;
     ajaxButton(
       ".btnDeleteRow",
       "&act=dellistajax",
       (btn) => {
-        if (!confirm("Bạn có chắc muốn xoá mục này không?")) return false;
-        return { cid: btn.data("id") };
+        if (!allowDeleteRow) {
+          deleteContext = "row";
+          deleteRowId = btn.data("id");
+          deleteRowBtn = btn;
+    
+          if (!deleteRowId) {
+            showPopupMessage("Không xác định được mục cần xoá!");
+            return false;
+          }
+    
+          $("#confirmPopup").fadeIn(200);
+          return false;
+        }
+    
+        allowDeleteRow = false;
+        return { cid: deleteRowId };
       },
       function (res, btn) {
         if (res.success) {
-          $("#orderMsg")
-            .addClass("show")
-            .html('<span><i class="fa fa-check"></i> Xoá thành công!</span>');
-          location.reload();
-          let row = btn.closest("tr");
-          if (!row.length) row = btn.closest(".item");
-          if (!row.length) row = btn.closest(".gallery-item");
-
-          if (row.length) {
-            row.fadeOut(300, function () {
-              $(this).remove();
-            });
-          } else {
-            console.warn("Không tìm thấy phần tử để xoá");
-          }
-
-          setTimeout(() => $("#orderMsg").removeClass("show"), 2000);
+          let row = btn.closest("tr,.item,.gallery-item");
+          row.fadeOut(300, () => row.remove());
         } else {
-          alert(res.message || "Lỗi khi xoá!");
+          showPopupMessage(res.message || "Lỗi khi xoá!");
         }
       }
     );
-
+    
+  
     // --- XÓA NHIỀU DÒNG ---
+
+    let deleteIds = [];
+    let allowDelete = false;
     ajaxButton(
       "#btnDelete",
       "&act=dellistajax",
       () => {
-        const ids = $('input[name="cid[]"]:checked')
-          .map((_, el) => $(el).val())
-          .get();
-
-        if (ids.length === 0) {
-          alert("Vui lòng chọn ít nhất một mục để xoá!");
+        if (!allowDelete) {
+          deleteContext = "multi";
+          deleteIds = $('input[name="cid[]"]:checked')
+            .map((_, el) => el.value)
+            .get();
+    
+          if (!deleteIds.length) {
+            showPopupMessage("Vui lòng chọn ít nhất một mục!");
+            return false;
+          }
+    
+          $("#confirmPopup").fadeIn(200);
           return false;
         }
-
-        if (!confirm("Bạn có chắc muốn xoá các mục đã chọn không?"))
-          return false;
-
-        return { cid: ids.join(",") };
+    
+        allowDelete = false;
+        return { cid: deleteIds.join(",") };
       },
       function (res) {
         if (res.success) {
-          location.reload();
-          $('input[name="cid[]"]:checked').each(function () {
-            const id = $(this).val();
-            const row = $('tr[data-id="' + id + '"]');
-            if (row.length) {
-              row.fadeOut(300, function () {
-                $(this).remove();
-              });
-            }
-          });
+          deleteIds.forEach(id =>
+            $(`tr[data-id="${id}"]`).fadeOut(300, function () {
+              $(this).remove();
+            })
+          );
         } else {
-          alert(res.message || "Không thể xoá các mục đã chọn!");
+          showPopupMessage(res.message || "Không thể xoá!");
         }
       }
     );
-
+  
+    
+    ///////
     ajaxButton(
       "#btnRefresh",
       "&act=refreshlistajax",
@@ -284,57 +280,82 @@
       window.location.href =
         currentUrl + "&act=add" + (comp ? "&comp=" + comp : "");
     });
-
+    /////LÀM MỚI 1 DÒNG
+    let updateNumConfirm = false;
+    let updateNumBtn = null;
     ajaxButton(
       ".btnUpdateNum",
       "&act=updatenumajax",
       (btn) => {
-        // 🟡 Thông báo xác nhận
-        if (!confirm("Bạn có chắc muốn làm mới không?")) return false;
-
-        // Lấy toàn bộ giá trị trong các input class="numInput"
+    
+        // CHƯA xác nhận → mở popup
+        if (!updateNumConfirm) {
+          deleteContext = "updateNum";
+          updateNumBtn = btn;
+    
+          $("#confirmPopup .popup-title").text("Xác nhận làm mới");
+          $("#confirmPopup .popup-content").text(
+            "Bạn có chắc muốn cập nhật lại thứ tự không?"
+          );
+    
+          $("#confirmPopup").fadeIn(200);
+          return false;
+        }
+    
+        // ĐÃ xác nhận → cho ajax chạy
+        updateNumConfirm = false;
+    
         const nums = $(".numInput")
           .map((_, el) => $(el).val())
           .get();
-
-        // Lấy id của nút bấm (nếu có)
+    
         const id = btn.data("id") || 0;
-
+    
         return {
-          id, // gửi id của nút
-          num: nums, // gửi mảng num[]
+          id: id,
+          num: nums,
         };
       },
       function (res) {
         if (res.success) {
-          $("#orderMsg")
-            .addClass("show")
-            .html(
-              '<span><i class="fa fa-check"></i> ✅ Cập nhật thành công!</span>'
-            );
-
-          setTimeout(() => $("#orderMsg").removeClass("show"), 1000);
-          location.reload();
+            location.reload();
         } else {
-          alert(res.message || "Lỗi khi cập nhật num!");
+          showPopupMessage(res.message || "Lỗi khi cập nhật num!");
         }
       }
     );
+  
+    ///SAP XEP NHIỀU DÒNG
+    let orderConfirm = false;
     ajaxButton(
       "#saveOrderBtn",
       "&act=order",
       (btn) => {
-        // 🟡 Thông báo xác nhận
-        if (!confirm("Bạn có chắc muốn làm mới không?")) return false;
-
-        // Lấy toàn bộ giá trị trong các input class="numInput"
+    
+        // CHƯA xác nhận → mở popup
+        if (!orderConfirm) {
+          deleteContext = "order";
+    
+          $("#confirmPopup .popup-title").text("Xác nhận cập nhật");
+          $("#confirmPopup .popup-content").text(
+            "Bạn có chắc muốn cập nhật lại thứ tự không?"
+          );
+    
+          $("#confirmPopup").fadeIn(200);
+          return false;
+        }
+    
+        // ĐÃ xác nhận → cho ajax chạy
+        orderConfirm = false;
+    
         const ids = $(".numInput")
           .map((_, el) => $(el).closest("tr").data("id"))
           .get();
-
+    
         const nums = $(".numInput")
           .map((_, el) => $(el).val())
           .get();
+    
         return {
           id: ids,
           num: nums,
@@ -342,19 +363,63 @@
       },
       function (res) {
         if (res.success) {
-          $("#orderMsg")
-            .addClass("show")
-            .html(
-              '<span><i class="fa fa-check"></i> ✅ Cập nhật thành công!</span>'
-            );
-
-          setTimeout(() => $("#orderMsg").removeClass("show"), 1000);
           location.reload();
         } else {
-          alert(res.message || "Lỗi khi cập nhật num!");
+          showPopupMessage(res.message || "Lỗi khi cập nhật thứ tự!");
         }
       }
     );
+
+     ////xac nhan xoa
+    // Click ra ngoài overlay → đóng popup
+    $("#confirmPopup").on("click", function () {
+      $(this).fadeOut(200);
+      deleteContext = null;
+    });
+
+    // Click bên trong popup-box → không đóng
+    $("#confirmPopup .popup-box").on("click", function (e) {
+      e.stopPropagation();
+    });
+
+    // Nút Huỷ
+    $("#popupCancel").on("click", function () {
+      $("#confirmPopup").fadeOut(200);
+      deleteContext = null;
+    });
+
+    // Nút Xác nhận
+    $("#popupOk").on("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      $("#confirmPopup").fadeOut(200);
+
+      if (deleteContext === "row") {
+        allowDeleteRow = true;
+        deleteRowBtn.trigger("click");
+      }
+
+      if (deleteContext === "multi") {
+        allowDelete = true;
+        $("#btnDelete").trigger("click");
+      }
+
+      if (deleteContext === "order") {
+        orderConfirm = true;
+        $("#saveOrderBtn").trigger("click");
+      }
+
+      if (deleteContext === "updateNum") {
+        updateNumConfirm = true;
+        updateNumBtn.trigger("click");
+      }
+    
+
+      deleteContext = null;
+    });
+
+    
     //=======upload image đại diện======================
 
     const inputs = document.querySelectorAll(".img-thumb-input");
@@ -1255,36 +1320,36 @@ document.querySelectorAll('.month-tabs li').forEach(function(tab){
   });
 });
   // popup xem chi tiet mail
-  document.addEventListener("DOMContentLoaded", function () {
+//   document.addEventListener("DOMContentLoaded", function () {
 
-    const modal = document.getElementById("modalView");
-    if (!modal) return; // 👈 CỰC KỲ QUAN TRỌNG
+//     const modal = document.getElementById("modalView");
+//     if (!modal) return; // 👈 CỰC KỲ QUAN TRỌNG
  
-    const closeBtn = modal.querySelector(".modal-close");
-    const content  = modal.querySelector("#modalContent");
+//     const closeBtn = modal.querySelector(".modal-close");
+//     const content  = modal.querySelector("#modalContent");
  
-    document.querySelectorAll(".btn-view").forEach(btn => {
-       btn.addEventListener("click", function () {
-          const id = this.dataset.id;
+//     document.querySelectorAll(".btn-view").forEach(btn => {
+//        btn.addEventListener("click", function () {
+//           const id = this.dataset.id;
  
-          modal.style.display = "flex";
-          content.innerHTML = "Đang tải dữ liệu...";
+//           modal.style.display = "flex";
+//           content.innerHTML = "Đang tải dữ liệu...";
  
-          fetch("index.php?do=register_info&act=popup&id=" + id)
-             .then(res => res.text())
-             .then(html => content.innerHTML = html);
-       });
-    });
+//           fetch("index.php?do=register_info&act=popup&id=" + id)
+//              .then(res => res.text())
+//              .then(html => content.innerHTML = html);
+//        });
+//     });
  
-    closeBtn.onclick = () => {
-       modal.style.display = "none";
-    };
+//     closeBtn.onclick = () => {
+//        modal.style.display = "none";
+//     };
  
-    modal.onclick = (e) => {
-       if (e.target === modal) modal.style.display = "none";
-    };
+//     modal.onclick = (e) => {
+//        if (e.target === modal) modal.style.display = "none";
+//     };
  
- });
+//  });
 
 
  ////

@@ -56,7 +56,7 @@
                 <div class="item">
                   <div class="title">Mô tả ngắn</div>
                   <div class="meta">
-                    <textarea id="short_{$lang.id}" name="languages[{$lang.id}][short]">{$detail.short}</textarea>
+                    <textarea class="InputTextarea"  id="short_{$lang.id}" name="languages[{$lang.id}][short]">{$detail.short}</textarea>
                   </div>
                 </div>
                 {/if}
@@ -64,7 +64,7 @@
                 <div class="item">
                   <div class="title">Mô tả chi tiết</div>
                   <div class="meta">
-                    <textarea id="content_{$lang.id}" name="languages[{$lang.id}][content]">{$detail.content}</textarea>
+                    <textarea class="ckeditor" id="content_{$lang.id}" name="languages[{$lang.id}][content]">{$detail.content}</textarea>
                   </div>
 
                 </div>
@@ -96,7 +96,7 @@
 
               {if $tinhnang.nhomcon == 1}
               <div class="item">
-                <div class="title">Danh mục sản phẩm</div>
+                <div class="title">Danh mục</div>
                 <div class="selectlist tab-mirror">
                   {foreach from=$languages item=lang}
                   <ul class="tab category-tree {if $lang.id==$currentLang}active{/if}" data-lang="{$lang.id}">

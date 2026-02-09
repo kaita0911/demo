@@ -8,6 +8,17 @@ $type = intval(isset($_REQUEST['type']) ? $_REQUEST['type'] : 0);
 global $db_sp, $sp, $smarty;
 
 switch ($act) {
+	case "popup":
+		$id = (int)$_GET['id'];
+	 
+		$edit = $GLOBALS["sp"]->getRow("SELECT * FROM {$GLOBALS['db_sp']}.contact WHERE id = $id LIMIT 1");
+	 
+		    // đánh dấu đã đọc
+		$GLOBALS["sp"]->execute("UPDATE {$GLOBALS['db_sp']}.contact SET is_read = 1 WHERE id = ?", array($id));
+
+		$smarty->assign("edit", $edit);
+		$smarty->display("contact/popup.tpl");
+		exit;
 	// ==========================
 	// EDIT CONTACT
 	// ==========================

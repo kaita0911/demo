@@ -26,6 +26,9 @@ select#comp {
   border: 1px solid #d1d1d1;
   width: 100%;
 }
+button{
+  font-family: "Open Sans", sans-serif
+}
 .popupqc {
   position: absolute;
   left: 0;
@@ -196,6 +199,7 @@ span.iconlist:hover {
 .logo img {
   max-height: 50px;
   max-width: 70%;
+  filter: brightness(0) invert(1);
 }
 .change_p {
   width: auto;
@@ -842,6 +846,7 @@ p.previewimg img {
   font-size: 13px;
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 .btnseo button:hover {
   background: #0089ff;
@@ -870,15 +875,11 @@ p.previewimg img {
 .title input {
   vertical-align: middle;
 }
-.title input {
-  float: left;
-  margin-right: 10px !important;
-}
+
 .meta {
   clear: both;
 }
 .title span {
-  margin-top: 6px;
   vertical-align: middle;
   display: inline-block;
 }
@@ -1076,7 +1077,7 @@ td.titles.paleft.brbottom.brleft {
 }
 .left_sidebar .nav-item .nav-toggle, .nav-normal {
   color: #ccccccbd;
-  font-size: 14px;
+  font-size: 13px;
   padding: 6px 8px 6px 10px;
   align-items: center;
   overflow: hidden;
@@ -1848,7 +1849,7 @@ form#f table tr td a img {
   width: 15px;
   height: 15px;
 }
-/* TÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚Â»ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ng thÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚Â»Ãƒâ€ Ã¢â‚¬â„¢ bÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚ÂºÃƒâ€šÃ‚Â£ng */
+/* TÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ng thÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ bÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚ÂºÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â£ng */
 .br1 {
   width: 100%;
   border-collapse: collapse;
@@ -1857,15 +1858,16 @@ form#f table tr td a img {
   border: 1px solid #ddd;
 }
 
-/* Header bÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚ÂºÃƒâ€šÃ‚Â£ng */
+/* Header bÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚ÂºÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â£ng */
 .br1 th {
   background: #f1f1f1;
   color: #111;
   font-weight: normal !important;
-  text-align: center;
   padding: 6px 8px;
   border-bottom: 1px solid #ccc;
   font-size: 13px;
+  vertical-align: middle;
+  text-align: center;
 }
 th.width-order {
   width: 6%;
@@ -1908,7 +1910,7 @@ th.width-ttl {
   font-size: 13px;
 }
 
-/* Hover hÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â ng */
+/* Hover hÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â ng */
 .br1 tbody tr:hover {
   background-color: #f1faff;
   transition: background 0.2s;
@@ -1931,7 +1933,7 @@ th.width-ttl {
   color: #fff;
 }
 
-/* Input thÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚Â»Ãƒâ€šÃ‚Â© tÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚Â»Ãƒâ€šÃ‚Â± */
+/* Input thÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â© tÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â± */
 .InputOrder {
   width: 50px;
   text-align: center;
@@ -1966,7 +1968,7 @@ th.width-ttl {
   margin-right: 5px;
 }
 
-/* ÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚ÂºÃƒâ€šÃ‚Â¨n cÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚Â»ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢t responsive */
+/* ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚ÂºÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨n cÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢t responsive */
 .hidden-xs {
   display: table-cell;
 }
@@ -1985,7 +1987,7 @@ th.width-ttl {
   border-radius: 4px;
 }
 
-/* Link sÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚Â»Ãƒâ€šÃ‚Â­a xÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³a trong table */
+/* Link sÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­a xÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³a trong table */
 .br1 td a {
   color: #007bff;
   text-decoration: none;
@@ -1993,47 +1995,46 @@ th.width-ttl {
   background: none;
 }
 
-/* Checkbox cÃƒÆ’Ã¢â‚¬Å¾Ãƒâ€ Ã¢â‚¬â„¢n giÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚Â»Ãƒâ€šÃ‚Â¯a */
-.br1 input[type="checkbox"] {
-  transform: scale(1.2);
-  cursor: pointer;
-  margin-top: 10px;
-  color: #fff;
-}
-.br1 input[type="checkbox"] {
+/* Checkbox cÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢n giÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯a */
+
+input[type="checkbox"] {
   appearance: none;
   -webkit-appearance: none;
-  width: 13px;
-  height: 13px;
-  background: #fff;          /* ðŸ‘ˆ ná»n tráº¯ng */
-  border: 1px solid #007bff; /* viá»n xÃ¡m */
-  border-radius: 1px;
-  cursor: pointer;
+  background: #fff;          /* ÃƒÂ°Ã…Â¸Ã¢â‚¬ËœÃ‹â€  nÃƒÂ¡Ã‚Â»Ã‚Ân trÃƒÂ¡Ã‚ÂºÃ‚Â¯ng */
+  border: 1px solid #007bff; /* viÃƒÂ¡Ã‚Â»Ã‚Ân xÃƒÆ’Ã‚Â¡m */
   position: relative;
   \: none;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  display: block;
+  margin: auto;
+  cursor: pointer;
 }
-
+.title input {
+    margin: 0;
+}
 /* khi hover */
-.br1 input[type="checkbox"]:hover {
+input[type="checkbox"]:hover {
   border-color: #3b82f6;
 }
 
 /* khi checked */
-.br1 input[type="checkbox"]:checked {
-  background: #007bff;          /* ðŸ‘ˆ váº«n tráº¯ng */
+input[type="checkbox"]:checked {
+  background: #007bff;          /* ÃƒÂ°Ã…Â¸Ã¢â‚¬ËœÃ‹â€  vÃƒÂ¡Ã‚ÂºÃ‚Â«n trÃƒÂ¡Ã‚ÂºÃ‚Â¯ng */
   border-color: #007bff;
 }
 
-/* dáº¥u tick */
-.br1 input[type="checkbox"]:checked::after {
+/* dÃƒÂ¡Ã‚ÂºÃ‚Â¥u tick */
+input[type="checkbox"]:checked::after {
   content: "";
   position: absolute;
-  width: 3px;
+  width: 4px;
   height: 6px;
-  border: solid #fff;     /* ðŸ‘ˆ tick mÃ u xanh (ná»•i trÃªn ná»n tráº¯ng) */
+  border: solid #fff;     /* ÃƒÂ°Ã…Â¸Ã¢â‚¬ËœÃ‹â€  tick mÃƒÆ’Ã‚Â u xanh (nÃƒÂ¡Ã‚Â»Ã¢â‚¬Â¢i trÃƒÆ’Ã‚Âªn nÃƒÂ¡Ã‚Â»Ã‚Ân trÃƒÂ¡Ã‚ÂºÃ‚Â¯ng) */
   border-width: 0 2px 2px 0;
-  left: 3px;
-  top: 1px;
+  left: 4px;
+  top: 2px;
   transform: rotate(45deg);
 }
 
@@ -2045,7 +2046,7 @@ th.width-ttl {
     white-space: nowrap;
   }
 }
-/* =================== Layout cÃƒÆ’Ã¢â‚¬Â Ãƒâ€šÃ‚Â¡ bÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚ÂºÃƒâ€šÃ‚Â£n =================== */
+/* =================== Layout cÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ bÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚ÂºÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â£n =================== */
 .contentmain {
   margin-top: 0px;
 }
@@ -2100,12 +2101,6 @@ textarea {
 
 .coltype {
   flex: 1 1 200px;
-}
-
-.CheckBox {
-  margin-left: 10px;
-  transform: scale(1.2);
-  cursor: pointer;
 }
 
 .btnseo {
@@ -2169,7 +2164,7 @@ ul.tab-list li.active {
 .nav-tabs {
   /* border-bottom: 1px solid #e0e0e0; */
   display: flex;
-  gap: 5px; /* khoÃƒÂ¡Ã‚ÂºÃ‚Â£ng cÃƒÆ’Ã‚Â¡ch giÃƒÂ¡Ã‚Â»Ã‚Â¯a cÃƒÆ’Ã‚Â¡c tab */
+  gap: 5px; /* khoÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚ÂºÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â£ng cÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ch giÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯a cÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡c tab */
   padding: 0;
   margin: 0;
 }
@@ -2191,18 +2186,18 @@ ul.tab-list li.active {
 
 /* Tab active */
 .nav-tabs li.active {
-  background: #007bff; /* mÃƒÆ’Ã‚Â u chÃƒÂ¡Ã‚Â»Ã‚Â§ Ãƒâ€žÃ¢â‚¬ËœÃƒÂ¡Ã‚ÂºÃ‚Â¡o */
+  background: #007bff; /* mÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â u chÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§ ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¹Ã…â€œÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚ÂºÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡o */
   color: #fff;
-  /* viÃƒÂ¡Ã‚Â»Ã‚Ân trÃƒÆ’Ã‚Âªn vÃƒÆ’Ã‚Â  hai bÃƒÆ’Ã‚Âªn */
+  /* viÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Ân trÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âªn vÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  hai bÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âªn */
 }
 
-/* Hover hiÃƒÂ¡Ã‚Â»Ã¢â‚¬Â¡u ÃƒÂ¡Ã‚Â»Ã‚Â©ng */
+/* Hover hiÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¡u ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©ng */
 .nav-tabs li a:hover {
   background: #e0e0e0;
   color: #007bff;
 }
 
-/* Responsive nhÃƒÂ¡Ã‚Â»Ã‚Â mÃƒÆ’Ã‚Â n hÃƒÆ’Ã‚Â¬nh */
+/* Responsive nhÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â mÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â n hÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬nh */
 @media (max-width: 576px) {
   .nav-tabs {
     flex-direction: column;
@@ -2281,7 +2276,7 @@ ul.tab-list li.active {
   background: #007bff;
   color: #fff;
 }
-/* ===== Tooltip cho cÃƒÆ’Ã‚Â¡c nÃƒÆ’Ã‚Âºt hÃƒÆ’Ã‚Â nh Ãƒâ€žÃ¢â‚¬ËœÃƒÂ¡Ã‚Â»Ã¢â€žÂ¢ng ===== */
+/* ===== Tooltip cho cÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡c nÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âºt hÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â nh ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¹Ã…â€œÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ng ===== */
 .act-btn {
   position: relative;
   cursor: pointer;
@@ -2292,7 +2287,7 @@ ul.tab-list li.active {
 .act-btn[title]:hover::after {
   content: attr(title);
   position: absolute;
-  bottom: 130%; /* hiÃƒÂ¡Ã‚Â»Ã¢â‚¬Â¡n phÃƒÆ’Ã‚Â­a trÃƒÆ’Ã‚Âªn nÃƒÆ’Ã‚Âºt */
+  bottom: 130%; /* hiÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¡n phÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­a trÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âªn nÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âºt */
   left: 50%;
   transform: translateX(-50%) translateY(6px);
   background: #eee;
@@ -2312,7 +2307,7 @@ ul.tab-list li.active {
   animation: tooltip-fade-in 0.3s forwards ease-out;
 }
 
-/* MÃƒâ€¦Ã‚Â©i tÃƒÆ’Ã‚Âªn nhÃƒÂ¡Ã‚Â»Ã‚Â chÃƒÂ¡Ã‚Â»Ã¢â‚¬Â° xuÃƒÂ¡Ã‚Â»Ã¢â‚¬Ëœng */
+/* MÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©i tÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âªn nhÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â chÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â° xuÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¹Ã…â€œng */
 .act-btn[title]:hover::before {
   content: "";
   position: absolute;
@@ -2327,7 +2322,7 @@ ul.tab-list li.active {
   animation: tooltip-fade-in 0.3s forwards ease-out;
 }
 
-/* Animation mÃƒâ€ Ã‚Â°ÃƒÂ¡Ã‚Â»Ã‚Â£t */
+/* Animation mÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â°ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â£t */
 @keyframes tooltip-fade-in {
   0% {
     opacity: 0;
@@ -2374,7 +2369,7 @@ ul.tab-list li.active {
   padding-left: 15px;
 }
 
-/* TÃƒÂ¡Ã‚Â»Ã¢â‚¬Â¢ng thÃƒÂ¡Ã‚Â»Ã†â€™ danh sÃƒÆ’Ã‚Â¡ch */
+/* TÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¢ng thÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ danh sÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ch */
 ul.category-tree,
 ul.category-tree ul {
   list-style: none;
@@ -2383,7 +2378,7 @@ ul.category-tree ul {
   padding: 0;
 }
 
-/* MÃƒÂ¡Ã‚Â»Ã¢â‚¬â€i mÃƒÂ¡Ã‚Â»Ã‚Â¥c danh mÃƒÂ¡Ã‚Â»Ã‚Â¥c */
+/* MÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Âi mÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¥c danh mÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¥c */
 .category-tree li {
   position: relative;
   color: #333;
@@ -2392,7 +2387,7 @@ ul.category-tree ul {
   margin: 0;
 }
 
-/* Label hiÃƒÂ¡Ã‚Â»Ã†â€™n thÃƒÂ¡Ã‚Â»Ã¢â‚¬Â¹ tÃƒÆ’Ã‚Âªn */
+/* Label hiÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢n thÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¹ tÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âªn */
 .category-tree label {
   display: flex;
   align-items: center;
@@ -2405,7 +2400,7 @@ ul.category-tree ul {
   transition: background 0.2s, color 0.2s;
 }
 
-/* HiÃƒÂ¡Ã‚Â»Ã¢â‚¬Â¡u ÃƒÂ¡Ã‚Â»Ã‚Â©ng hover */
+/* HiÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¡u ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©ng hover */
 .category-tree label:hover {
   background: #f5f8ff;
   color: #1a73e8;
@@ -2413,19 +2408,20 @@ ul.category-tree ul {
 
 /* Checkbox */
 .category-tree input[type="checkbox"] {
-  width: 15px;
-  height: 15px;
-  accent-color: #007bff; /* MÃƒÆ’Ã‚Â u xanh Google */
+  width: 16px;
+  height: 16px;
+  accent-color: #007bff; /* MÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â u xanh Google */
   cursor: pointer;
+  margin: 0;
 }
 
-/* TÃƒÆ’Ã‚Âªn danh mÃƒÂ¡Ã‚Â»Ã‚Â¥c */
+/* TÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âªn danh mÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¥c */
 .category-tree label span,
 .category-tree label {
   user-select: none;
 }
 
-/* CÃƒÂ¡Ã‚ÂºÃ‚Â¥p sÃƒÆ’Ã‚Â¢u hÃƒâ€ Ã‚Â¡n: chÃƒÂ¡Ã‚Â»Ã‚Â¯ nhÃƒÂ¡Ã‚Â»Ã‚Â hÃƒâ€ Ã‚Â¡n vÃƒÆ’Ã‚Â  nhÃƒÂ¡Ã‚ÂºÃ‚Â¡t mÃƒÆ’Ã‚Â u dÃƒÂ¡Ã‚ÂºÃ‚Â§n */
+/* CÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚ÂºÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¥p sÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢u hÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡n: chÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ nhÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â hÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡n vÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  nhÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚ÂºÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡t mÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â u dÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚ÂºÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§n */
 .category-tree li:nth-child(n) label {
   font-size: 13px;
   color: #444;
@@ -2435,9 +2431,9 @@ ul.category-tree ul {
   font-size: 13px;
   color: #555;
 }
-/* Container ÃƒÂ¡Ã‚ÂºÃ‚Â£nh cÃƒâ€¦Ã‚Â© */
+/* Container ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚ÂºÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â£nh cÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â© */
 
-/* ThÃƒÂ¡Ã‚ÂºÃ‚Â» ÃƒÂ¡Ã‚ÂºÃ‚Â£nh + nÃƒÆ’Ã‚Âºt xÃƒÆ’Ã‚Â³a */
+/* ThÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚ÂºÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â» ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚ÂºÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â£nh + nÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âºt xÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³a */
 .preview-gallery {
   display: flex;
   flex-wrap: wrap;
@@ -2588,12 +2584,12 @@ input#img_thumb_vn, input#multiimages,input#img_vn {
   padding: 8px 36px 8px 12px;
   font-size: 14px;
   color: #111827;
-  appearance: none; /* áº©n mÅ©i tÃªn máº·c Ä‘á»‹nh */
+  appearance: none; /* ÃƒÂ¡Ã‚ÂºÃ‚Â©n mÃƒâ€¦Ã‚Â©i tÃƒÆ’Ã‚Âªn mÃƒÂ¡Ã‚ÂºÃ‚Â·c Ãƒâ€žÃ¢â‚¬ËœÃƒÂ¡Ã‚Â»Ã¢â‚¬Â¹nh */
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
-/* hiá»‡u á»©ng hover/focus */
+/* hiÃƒÂ¡Ã‚Â»Ã¢â‚¬Â¡u ÃƒÂ¡Ã‚Â»Ã‚Â©ng hover/focus */
 #language-select:hover {
   border-color: #2563eb;
   background-color: #f0f7ff;
@@ -2605,9 +2601,9 @@ input#img_thumb_vn, input#multiimages,input#img_vn {
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
 }
 
-/* táº¡o icon mÅ©i tÃªn custom */
+/* tÃƒÂ¡Ã‚ÂºÃ‚Â¡o icon mÃƒâ€¦Ã‚Â©i tÃƒÆ’Ã‚Âªn custom */
 .select-languages::after {
-  content: "â–¼";
+  content: "ÃƒÂ¢Ã¢â‚¬â€œÃ‚Â¼";
   position: absolute;
   right: 12px;
   top: 50%;
@@ -2666,9 +2662,9 @@ input#img_thumb_vn, input#multiimages,input#img_vn {
 }
 
 .card:nth-child(1) span{ color: #28a745; } /* Online */
-.card:nth-child(2) span{ color: #17a2b8; } /* Tuáº§n */
-.card:nth-child(3) span{ color: #ffc107; } /* ThÃ¡ng */
-.card:nth-child(4) span{ color: #dc3545; } /* Tá»•ng */
+.card:nth-child(2) span{ color: #17a2b8; } /* TuÃƒÂ¡Ã‚ÂºÃ‚Â§n */
+.card:nth-child(3) span{ color: #ffc107; } /* ThÃƒÆ’Ã‚Â¡ng */
+.card:nth-child(4) span{ color: #dc3545; } /* TÃƒÂ¡Ã‚Â»Ã¢â‚¬Â¢ng */
 
 .wrap-analytic {
   display: flex;
@@ -2747,17 +2743,17 @@ input#img_thumb_vn, input#multiimages,input#img_vn {
 
 /* ===== SCROLLBAR CHO FIREFOX ===== */
 
-/* Thanh cuá»™n */
+/* Thanh cuÃƒÂ¡Ã‚Â»Ã¢â€žÂ¢n */
 .menusidebar::-webkit-scrollbar {
   width: 2px;
 }
 
-/* Track (ná»n) */
+/* Track (nÃƒÂ¡Ã‚Â»Ã‚Ân) */
 .menusidebar::-webkit-scrollbar-track {
   background: #222d32;
   border-radius: 2px;
 }
-/* Thumb (tay kÃ©o) */
+/* Thumb (tay kÃƒÆ’Ã‚Â©o) */
 .menusidebar::-webkit-scrollbar-thumb {
   background: #fff;
   border-radius: 2px;
@@ -3113,12 +3109,12 @@ select.status-select {
   transition: opacity 0.2s;
 }
 
-/* hover mÃ£ sáº£n pháº©m */
+/* hover mÃƒÆ’Ã‚Â£ sÃƒÂ¡Ã‚ÂºÃ‚Â£n phÃƒÂ¡Ã‚ÂºÃ‚Â©m */
 .product-code:hover .product-handle {
   opacity: 1;
 }
 
-/* hover mÃ u */
+/* hover mÃƒÆ’Ã‚Â u */
 .variant-item:hover .variant-handle {
   opacity: 1;
 }
@@ -3232,9 +3228,9 @@ select.status-select {
   opacity: 1;
 }
 
-/* icon camera (náº¿u chÆ°a cÃ³ icon lib) */
+/* icon camera (nÃƒÂ¡Ã‚ÂºÃ‚Â¿u chÃƒâ€ Ã‚Â°a cÃƒÆ’Ã‚Â³ icon lib) */
 .icon-camera::before {
-  content: "ðŸ“·";
+  content: "ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â·";
   font-size: 20px;
   margin-bottom: 4px;
 }
@@ -3309,7 +3305,7 @@ select.status-select {
 .browser-legend .item {
   display: flex;
   align-items: center;
-  margin-bottom: 6px;   /* ðŸ‘ˆ má»—i browser 1 dÃ²ng */
+  margin-bottom: 6px;   /* ÃƒÂ°Ã…Â¸Ã¢â‚¬ËœÃ‹â€  mÃƒÂ¡Ã‚Â»Ã¢â‚¬â€i browser 1 dÃƒÆ’Ã‚Â²ng */
   font-size: 13px;
   width: 100%;
   position: relative;
@@ -3332,17 +3328,17 @@ span.card-num {
     max-height: 195px;
     padding-right: 15px;
 }
-/* Thanh cuá»™n */
+/* Thanh cuÃƒÂ¡Ã‚Â»Ã¢â€žÂ¢n */
 .box-browers__tk::-webkit-scrollbar {
   width: 3px;
 }
 
-/* Track (ná»n) */
+/* Track (nÃƒÂ¡Ã‚Â»Ã‚Ân) */
 .box-browers__tk::-webkit-scrollbar-track {
   background: #ddd;
   border-radius: 3px;
 }
-/* Thumb (tay kÃ©o) */
+/* Thumb (tay kÃƒÆ’Ã‚Â©o) */
 .box-browers__tk::-webkit-scrollbar-thumb {
   background: #007bff;
   border-radius: 3px;
@@ -3462,11 +3458,6 @@ span.card-num {
   overflow-y: auto;
 }
 
-.modal-close {
-  cursor: pointer;
-  font-size: 22px;
-}
-
 @keyframes fadeIn {
   from {transform: scale(.95); opacity: 0;}
   to {transform: scale(1); opacity: 1;}
@@ -3497,6 +3488,7 @@ span.card-num {
   padding: 15px;
   padding-right: 0;
   padding-bottom: 0;
+  padding-top: 0;
 }
 .welcome {
   display: flex;
@@ -3547,10 +3539,17 @@ span.card-num {
 }
 .modal-close {
   position: absolute;
-  top: 0px;
-  right: 5px;
+  top: -12px;
+  right: -12px;
   font-size: 22px;
   cursor: pointer;
+  background: #ccc;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
 }
 
 .table-popup {
@@ -3588,14 +3587,82 @@ span.card-num {
   color: #111827;
 }
 
-/* Tá»•ng tiá»n */
+/* TÃƒÂ¡Ã‚Â»Ã¢â‚¬Â¢ng tiÃƒÂ¡Ã‚Â»Ã‚Ân */
 .table-popup td[style*="color:red"] {
   color: #dc2626 !important;
   font-size: 15px;
   font-weight: 600;
 }
 
-/* Hover nháº¹, khÃ´ng Ä‘á»• bÃ³ng */
+/* Hover nhÃƒÂ¡Ã‚ÂºÃ‚Â¹, khÃƒÆ’Ã‚Â´ng Ãƒâ€žÃ¢â‚¬ËœÃƒÂ¡Ã‚Â»Ã¢â‚¬Â¢ bÃƒÆ’Ã‚Â³ng */
 .table-popup tr:hover td {
   background: #f9fafb;
 }
+
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.4);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.popup-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  width: 360px;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 10000;
+  text-align: center;
+}
+
+.popup-box h3 {
+  margin: 0 0 10px;
+}
+
+.popup-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.btn-cancel {
+  padding: 8px 16px;
+  background: #ddd;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-ok {
+  padding: 8px 16px;
+  background: #007bff;
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.btn-ok:hover {
+  opacity: 0.7;
+}
+
+
+@keyframes popupIn {
+  from {
+    transform: scale(.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+

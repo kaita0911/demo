@@ -113,6 +113,15 @@ $smarty->assign("ListMenuLeft", $listMenuLeft);
 // }
 $new_register = $GLOBALS['sp']->getRow("
     SELECT COUNT(*) AS total
+    FROM {$GLOBALS['db_sp']}.contact
+    WHERE is_read = 0
+");
+
+$smarty->assign('new_contact_count', (int)$new_register['total']);
+
+///
+$new_register = $GLOBALS['sp']->getRow("
+    SELECT COUNT(*) AS total
     FROM {$GLOBALS['db_sp']}.register_info
     WHERE is_read = 0
 ");

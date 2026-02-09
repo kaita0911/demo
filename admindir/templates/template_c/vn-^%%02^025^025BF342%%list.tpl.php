@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2026-02-05 10:19:28
+<?php /* Smarty version 2.6.30, created on 2026-02-08 12:21:00
          compiled from articlelist/list.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'articlelist/list.tpl', 21, false),array('modifier', 'count', 'articlelist/list.tpl', 54, false),array('modifier', 'escape', 'articlelist/list.tpl', 155, false),array('modifier', 'date_format', 'articlelist/list.tpl', 174, false),)), $this); ?>
@@ -105,8 +105,8 @@ unset($_smarty_tpl_vars);
                         <th align="center" class="width-image">Giá</th>
                         <?php endif; ?> -->
 
-                        <!-- <th align="center" class="width-image">Ngày tạo</th>
-                        <th align="center" class="width-image">Ngày sửa</th> -->
+                        <!-- <th align="center" class="width-image">Ngày tạo</th> -->
+                        <th align="center" class="width-date">Ngày</th>
 
                         <?php if ($this->_tpl_vars['tinhnang']['new'] == 1): ?>
                         <th align="center" class="width-show">Mới</th>
@@ -218,12 +218,12 @@ if ($this->_foreach['loop']['total'] > 0):
                         <!-- <td align="center">
                            <?php echo ((is_array($_tmp=$this->_tpl_vars['item']['dated'])) ? $this->_run_mod_handler('date_format', true, $_tmp, "%d/%m/%Y %H:%M") : smarty_modifier_date_format($_tmp, "%d/%m/%Y %H:%M")); ?>
 
-                        </td>
+                        </td>-->
 
                         <td align="center">
-                           <?php echo ((is_array($_tmp=$this->_tpl_vars['item']['dated_edit'])) ? $this->_run_mod_handler('date_format', true, $_tmp, "%d/%m/%Y %H:%M") : smarty_modifier_date_format($_tmp, "%d/%m/%Y %H:%M")); ?>
+                           <?php echo ((is_array($_tmp=$this->_tpl_vars['item']['dated_edit'])) ? $this->_run_mod_handler('date_format', true, $_tmp, "%H:%M - %d/%m/%Y") : smarty_modifier_date_format($_tmp, "%H:%M - %d/%m/%Y")); ?>
 
-                        </td> -->
+                        </td> 
 
                         <?php if ($this->_tpl_vars['tinhnang']['new'] == 1): ?>
                         <td align="center">
@@ -317,12 +317,12 @@ if ($this->_foreach['loop']['total'] > 0):
 ">
                                  <i class="fa fa-edit"></i>
                               </a>
-                              <button class="act-btn btnUpdateNum" title="Làm mới" data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
+                              <button type="button" class="act-btn btnUpdateNum" title="Làm mới" data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
 " data-comp="<?php echo $_REQUEST['comp']; ?>
 ">
                                  <i class="fa fa-refresh"></i>
                               </button>
-                              <button class="act-btn btnDeleteRow" title="Xoá" data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
+                              <button  type="button" class="act-btn btnDeleteRow" title="Xoá" data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
 " data-comp="<?php echo $_REQUEST['comp']; ?>
 ">
                                  <i class="fa fa-trash"></i>

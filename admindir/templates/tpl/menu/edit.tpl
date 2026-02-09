@@ -58,16 +58,7 @@
                </div>
                {/foreach}
 
-               <div class="item">
-                  <div class="title">Thứ tự</div>
-                  <div class="info-title">
-                     <input type="text"
-                        name="num"
-                        class="InputNum num-order"
-                        value="{$edit.num|default:0|escape:'html':'UTF-8'}">
-                  </div>
-               </div>
-
+              
                <div class="item">
                   <div class="title">Liên kết</div>
                   <div class="option_link">
@@ -97,22 +88,30 @@
                </div>
 
                <div class="item">
-                  <label>
+               <div class="title">
                      <input type="checkbox"
                         name="menucon"
                         value="menucon"
                         class="CheckBox"
                         {if $edit.has_sub==1}checked{/if}>
                      Có menucon
-                  </label>
-                  <label>
+                        </div>
+                  <div class="title">
                      <input type="checkbox"
                         name="active"
                         value="active"
                         class="CheckBox"
                         {if $edit.active==1 || $smarty.request.act=='add' }checked{/if}>
                      Show
-                  </label>
+                  </div>
+                  <div class="item">
+                  <div class="title">Thứ tự<input type="text"
+                        name="num"
+                        class="InputNum num-order"
+                        value="{$edit.num|default:0|escape:'html':'UTF-8'}"></div>
+                 
+                  </div>
+
                </div>
             </div>
          </form>

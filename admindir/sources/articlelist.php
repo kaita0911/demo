@@ -584,13 +584,13 @@ switch ($act) {
     case 'editsm':
         saveArticle();
         // 👉 Nếu là AJAX upload ảnh
-        if (!empty($_FILES['img_thumb_vn'])) {
-            ob_clean();
-            echo json_encode([
-                'success' => true
-            ]);
-            exit;
-        }
+        // if (!empty($_FILES['img_thumb_vn'])) {
+        //     ob_clean();
+        //     echo json_encode([
+        //         'success' => true
+        //     ]);
+        //     exit;
+        // }
         page_transfer2("index.php?do=articlelist&comp={$comp}");
         break;
 

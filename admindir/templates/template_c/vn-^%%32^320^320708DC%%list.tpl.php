@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2026-02-06 12:13:59
+<?php /* Smarty version 2.6.30, created on 2026-02-08 11:32:13
          compiled from orders/list.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'orders/list.tpl', 76, false),array('modifier', 'number_format', 'orders/list.tpl', 80, false),)), $this); ?>
@@ -156,7 +156,6 @@ $this->_sections['s']['last']       = ($this->_sections['s']['iteration'] == $th
                   <div id="globalModalContent">Loading...</div>
                </div>
             </div>
-
          </div>
       </div>
    </div>

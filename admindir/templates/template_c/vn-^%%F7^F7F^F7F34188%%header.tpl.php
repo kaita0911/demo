@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.30, created on 2026-02-06 09:59:30
+<?php /* Smarty version 2.6.30, created on 2026-02-08 14:38:13
          compiled from header.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'header.tpl', 85, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'header.tpl', 88, false),)), $this); ?>
 <!DOCTYPE html>
 <html lang="vi" xmlns="http://www.w3.org/1999/xhtml">
 
@@ -75,7 +75,10 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format
         <?php endif; ?>
       </a>
       <?php endif; ?>
-      <a class="box-register__btn" href="index.php?do=contact&comp=23"><i class="fa-solid fa-address-book"></i> Form liên hệ</a>
+      <a class="box-register__btn" href="index.php?do=contact&comp=23"><i class="fa-solid fa-address-book"></i> Form liên hệ 
+      <?php if ($this->_tpl_vars['new_contact_count'] > 0): ?>
+        <span class="icon-new"></span>
+        <?php endif; ?></a>
       <?php if ($this->_tpl_vars['showform']['open'] == 1): ?>
         <a class="box-register__btn" href="index.php?do=register_info"><i class="fa-solid fa-address-book"></i> Form đăng ký tư vấn
         <?php if ($this->_tpl_vars['new_register_count'] > 0): ?>

@@ -110,7 +110,6 @@
                   <div id="globalModalContent">Loading...</div>
                </div>
             </div>
-
          </div>
       </div>
    </div>

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2026-02-06 12:16:17
+<?php /* Smarty version 2.6.30, created on 2026-02-08 10:47:55
          compiled from register_info/list.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'register_info/list.tpl', 44, false),)), $this); ?>
@@ -12,13 +12,13 @@ unset($_smarty_tpl_vars);
  ?>
       </aside>
       <section class="right_content">
-         <!-- <div class="divright">
+         <div class="divright">
             <div class="acti2">
                <button class="add" type="button" id="btnDelete" data-comp="">
                   <i class="fa fa-trash"></i> Xóa
                </button>
             </div>
-         </div> -->
+         </div>
          <div class="right_content-wrap">
             <form class="form-all" method="post" action="">
                <table class="br1 w-full border-collapse">
@@ -61,8 +61,11 @@ if ($this->_foreach['loop']['total'] > 0):
 
                         </td>
                         <td align="center">
-                           <a href="javascript:void(0)" class="btn-view" data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
-"> <i class="fa fa-eye"></i> Xem chi tiết</a>
+                           <!-- <a href="javascript:void(0)" class="btn-view" data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
+"> <i class="fa fa-eye"></i> Xem chi tiết</a> -->
+                           <a href="javascript:void(0)" class="btn-order-view" data-popup="index.php?do=register_info&act=popup&id=<?php echo $this->_tpl_vars['item']['id']; ?>
+"><i class="fa fa-eye"></i> Chi tiết
+                           </a>
                         </td>
                      </tr>
                      <?php endforeach; endif; unset($_from); ?>
@@ -73,15 +76,10 @@ if ($this->_foreach['loop']['total'] > 0):
                <?php echo $this->_tpl_vars['pagination']; ?>
 
             </div>
-            <div class="modal-overlay" id="modalView">
+            <div id="globalModal" class="modal">
                <div class="modal-box">
-                  <div class="modal-header">
-                     <h3>CHI TIẾT</h3>
-                     <span class="modal-close">&times;</span>
-                  </div>
-                  <div class="modal-body" id="modalContent">
-                     Đang tải dữ liệu...
-                  </div>
+                  <span class="modal-close">&times;</span>
+                  <div id="globalModalContent">Loading...</div>
                </div>
             </div>
          </div>

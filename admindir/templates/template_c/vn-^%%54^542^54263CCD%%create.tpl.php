@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2026-01-08 11:24:24
+<?php /* Smarty version 2.6.30, created on 2026-02-08 11:43:31
          compiled from categories/create.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'categories/create.tpl', 11, false),array('modifier', 'count', 'categories/create.tpl', 25, false),)), $this); ?>
@@ -80,7 +80,7 @@ unset($_smarty_tpl_vars);
                         <div class="item">
                            <div class="title">Mô tả chi tiết</div>
                            <div class="meta">
-                              <textarea id="content_<?php echo $this->_tpl_vars['lang']['id']; ?>
+                              <textarea class="ckeditor" id="content_<?php echo $this->_tpl_vars['lang']['id']; ?>
 " name="languages[<?php echo $this->_tpl_vars['lang']['id']; ?>
 ][content]"></textarea>
                            </div>

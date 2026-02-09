@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2025-11-28 09:57:14
+<?php /* Smarty version 2.6.30, created on 2026-02-08 14:52:11
          compiled from menu/edit.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'menu/edit.tpl', 11, false),array('modifier', 'count', 'menu/edit.tpl', 27, false),array('modifier', 'escape', 'menu/edit.tpl', 46, false),)), $this); ?>
@@ -85,17 +85,7 @@ unset($_smarty_tpl_vars);
                </div>
                <?php endforeach; endif; unset($_from); ?>
 
-               <div class="item">
-                  <div class="title">Thứ tự</div>
-                  <div class="info-title">
-                     <input type="text"
-                        name="num"
-                        class="InputNum num-order"
-                        value="<?php echo ((is_array($_tmp=((is_array($_tmp=@$this->_tpl_vars['edit']['num'])) ? $this->_run_mod_handler('default', true, $_tmp, 0) : smarty_modifier_default($_tmp, 0)))) ? $this->_run_mod_handler('escape', true, $_tmp, 'html', 'UTF-8') : smarty_modifier_escape($_tmp, 'html', 'UTF-8')); ?>
-">
-                  </div>
-               </div>
-
+              
                <div class="item">
                   <div class="title">Liên kết</div>
                   <div class="option_link">
@@ -130,22 +120,31 @@ unset($_smarty_tpl_vars);
                </div>
 
                <div class="item">
-                  <label>
+               <div class="title">
                      <input type="checkbox"
                         name="menucon"
                         value="menucon"
                         class="CheckBox"
                         <?php if ($this->_tpl_vars['edit']['has_sub'] == 1): ?>checked<?php endif; ?>>
                      Có menucon
-                  </label>
-                  <label>
+                        </div>
+                  <div class="title">
                      <input type="checkbox"
                         name="active"
                         value="active"
                         class="CheckBox"
                         <?php if ($this->_tpl_vars['edit']['active'] == 1 || $_REQUEST['act'] == 'add'): ?>checked<?php endif; ?>>
                      Show
-                  </label>
+                  </div>
+                  <div class="item">
+                  <div class="title">Thứ tự<input type="text"
+                        name="num"
+                        class="InputNum num-order"
+                        value="<?php echo ((is_array($_tmp=((is_array($_tmp=@$this->_tpl_vars['edit']['num'])) ? $this->_run_mod_handler('default', true, $_tmp, 0) : smarty_modifier_default($_tmp, 0)))) ? $this->_run_mod_handler('escape', true, $_tmp, 'html', 'UTF-8') : smarty_modifier_escape($_tmp, 'html', 'UTF-8')); ?>
+"></div>
+                 
+                  </div>
+
                </div>
             </div>
          </form>

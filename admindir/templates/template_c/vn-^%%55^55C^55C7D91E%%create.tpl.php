@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.30, created on 2026-01-10 10:15:06
+<?php /* Smarty version 2.6.30, created on 2026-02-08 11:42:49
          compiled from articlelist/create.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'articlelist/create.tpl', 10, false),array('modifier', 'count', 'articlelist/create.tpl', 22, false),array('modifier', 'escape', 'articlelist/create.tpl', 115, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'articlelist/create.tpl', 10, false),array('modifier', 'count', 'articlelist/create.tpl', 22, false),array('modifier', 'escape', 'articlelist/create.tpl', 116, false),)), $this); ?>
 <div class="contentmain">
    <div class="main">
       <div class="left_sidebar padding10">
@@ -68,15 +68,16 @@ unset($_smarty_tpl_vars);
                         </div> <?php if ($this->_tpl_vars['tinhnang']['short'] == 1): ?>
                         <div class="item">
                            <div class="title">Mô tả ngắn</div>
+
                            <textarea name="languages[<?php echo $this->_tpl_vars['lang']['id']; ?>
-][short]" id="short_$lang.id}"></textarea>
+][short]" id="short_$lang.id}" class="InputTextarea"></textarea>
                         </div>
                         <?php endif; ?>
 
                         <?php if ($this->_tpl_vars['tinhnang']['des'] == 1): ?>
                         <div class="item">
                            <div class="title">Mô tả chi tiết</div>
-                           <textarea name="languages[<?php echo $this->_tpl_vars['lang']['id']; ?>
+                           <textarea class="ckeditor" name="languages[<?php echo $this->_tpl_vars['lang']['id']; ?>
 ][content]" id="content_$lang.id}"></textarea>
                         </div>
                         <?php endif; ?>
@@ -110,7 +111,7 @@ unset($_smarty_tpl_vars);
 
                      <?php if ($this->_tpl_vars['tinhnang']['nhomcon'] == 1): ?>
                      <div class="item">
-                        <div class="title">Danh mục sản phẩm</div>
+                        <div class="title">Danh mục</div>
                         <!-- <div class="tab <?php if ($this->_tpl_vars['lang']['id'] == $this->_tpl_vars['currentLang']): ?>active<?php endif; ?>" data-lang="<?php echo $this->_tpl_vars['lang']['id']; ?>
 ">
                               <div class="selectlist">
@@ -305,8 +306,8 @@ unset($_smarty_tpl_vars);
                      </div>
                      <?php endif; ?>
                      <div class="item">
-                        <div class="title">Show</div>
-                        <input type="checkbox" name="active" value="active" <?php if ($this->_tpl_vars['edit']['active'] == 1 || $_REQUEST['act'] == 'add'): ?>checked<?php endif; ?>>
+                        <div class="title">Show   <input type="checkbox" name="active" value="active" <?php if ($this->_tpl_vars['edit']['active'] == 1 || $_REQUEST['act'] == 'add'): ?>checked<?php endif; ?>></div>
+                      
                      </div>
                   </div>
                </div>

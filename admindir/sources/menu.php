@@ -89,7 +89,7 @@ switch ($act) {
     // =====================
     // SẮP XẾP MENU
     // =====================
-    case 'updateOrder':
+    case 'order':
         ob_clean(); // Xóa toàn bộ output trước đó (tránh lỗi JSON)
         header('Content-Type: application/json; charset=utf-8');
 
@@ -146,7 +146,7 @@ switch ($act) {
     // =====================
     default:
         //$lang_id = intval(isset($_SESSION['admin_lang']) ? $_SESSION['admin_lang'] : 1);
-        $menus = $GLOBALS["sp"]->getAll("SELECT * FROM {$GLOBALS['db_sp']}.menu");
+        $menus = $GLOBALS["sp"]->getAll("SELECT * FROM {$GLOBALS['db_sp']}.menu order by num asc");
         $details = $GLOBALS["sp"]->getAll("SELECT * FROM {$GLOBALS['db_sp']}.menu_detail");
 
         $menuDetail = [];

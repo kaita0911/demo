@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2025-11-23 11:40:00
+<?php /* Smarty version 2.6.30, created on 2026-02-08 14:46:58
          compiled from menu/list.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'menu/list.tpl', 16, false),array('modifier', 'count', 'menu/list.tpl', 29, false),)), $this); ?>
@@ -141,54 +141,56 @@ if ($this->_foreach['menuLoop']['total'] > 0):
       </div>
    </div>
 </div>
-<?php echo '
+<!-- <?php echo '
 <script>
-   document.addEventListener("DOMContentLoaded", function() {
-      const saveOrderBtn = document.getElementById("saveOrderBtn");
+   let menuOrderConfirm = false;
+   // document.addEventListener("DOMContentLoaded", function() {
+   //    const saveOrderBtn = document.getElementById("saveOrderBtn");
 
-      if (saveOrderBtn) {
-         saveOrderBtn.addEventListener("click", function() {
-            const rows = document.querySelectorAll("tbody tr");
-            const ids = [];
-            const nums = [];
+   //    if (saveOrderBtn) {
+   //       saveOrderBtn.addEventListener("click", function() {
+   //          const rows = document.querySelectorAll("tbody tr");
+   //          const ids = [];
+   //          const nums = [];
 
-            rows.forEach(row => {
-               const id = row.dataset.id;
-               const numInput = row.querySelector(".numInput");
-               if (id && numInput) {
-                  ids.push(id);
-                  nums.push(numInput.value.trim() || 0);
-               }
-            });
+   //          rows.forEach(row => {
+   //             const id = row.dataset.id;
+   //             const numInput = row.querySelector(".numInput");
+   //             if (id && numInput) {
+   //                ids.push(id);
+   //                nums.push(numInput.value.trim() || 0);
+   //             }
+   //          });
 
-            if (ids.length === 0) {
-               alert("Không có dữ liệu để sắp xếp!");
-               return;
-            }
+   //          if (ids.length === 0) {
+   //             alert("Không có dữ liệu để sắp xếp!");
+   //             return;
+   //          }
 
-            // Gửi AJAX bằng fetch
-            fetch("index.php?do=menu&act=updateOrder", {
-                  method: "POST",
-                  headers: {
-                     "Content-Type": "application/x-www-form-urlencoded"
-                  },
-                  body: `id[]=${ids.join("&id[]=")}&num[]=${nums.join("&num[]=")}`
-               })
-               .then(response => response.json())
-               .then(data => {
-                  if (data.success) {
-                     alert("✅ Đã lưu thứ tự thành công!");
-                     location.reload(); // refresh để cập nhật lại
-                  } else {
-                     alert("❌ " + (data.message || "Cập nhật thất bại!"));
-                  }
-               })
-               .catch(() => {
-                  alert("⚠️ Lỗi kết nối server! Vui lòng thử lại sau.");
-               });
-         });
-      }
-   });
+   //          // Gửi AJAX bằng fetch
+   //          fetch("index.php?do=menu&act=updateOrder", {
+   //                method: "POST",
+   //                headers: {
+   //                   "Content-Type": "application/x-www-form-urlencoded"
+   //                },
+   //                body: `id[]=${ids.join("&id[]=")}&num[]=${nums.join("&num[]=")}`
+   //             })
+   //             .then(response => response.json())
+   //             .then(data => {
+   //                if (data.success) {
+   //                   alert("✅ Đã lưu thứ tự thành công!");
+   //                   location.reload(); // refresh để cập nhật lại
+   //                } else {
+   //                   alert("❌ " + (data.message || "Cập nhật thất bại!"));
+   //                }
+   //             })
+   //             .catch(() => {
+   //                alert("⚠️ Lỗi kết nối server! Vui lòng thử lại sau.");
+   //             });
+   //       });
+   //    }
+   // });
 </script>
 
 '; ?>
+ -->
