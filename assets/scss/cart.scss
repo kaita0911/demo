@@ -132,11 +132,11 @@
 
     &__ttl {
         font-size: 1.5rem;
-        font-weight: 600;
+        font-weight: 500;
         margin-bottom: 1rem;
 
         @include mq('md', min) {
-            font-size: 2rem;
+            font-size: 1.7rem;
         }
 
     }
@@ -213,7 +213,7 @@
                     font-size: 1.3rem;
 
                     @include mq('md', min) {
-                        font-size: 1.8rem;
+                        font-size: 1.6rem;
                     }
                 }
 
@@ -269,7 +269,7 @@
         @include mq('md', min) {
             position: sticky;
             top: 3%;
-            height: 20vw;
+            height: 21vw;
         }
 
         .cart-summary {
@@ -313,7 +313,7 @@
                 font-size: 1.6rem;
 
                 @include mq('md', min) {
-                    font-size: 2rem;
+                    font-size: 1.7rem;
                 }
             }
         }
@@ -371,9 +371,10 @@
         &-ttl {
             font-size: 1.5rem;
             margin-bottom: 1rem;
+            font-weight: 500;
 
             @include mq('md', min) {
-                font-size: 1.8rem;
+                font-size: 1.7rem;
                 margin-bottom: 2rem;
             }
         }

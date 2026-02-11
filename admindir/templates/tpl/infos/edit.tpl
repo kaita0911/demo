@@ -53,11 +53,9 @@
 
             {* ================== CHECKBOX CHUNG ================== *}
             <div class="item">
-               <div class="title">Hiển thị</div>
-               <div class="info-title">
-                  <input type="checkbox" class="CheckBox" name="active" value="active"
-                     {if $edit.active eq 1 || $smarty.request.act eq 'add' }checked{/if}>
-               </div>
+               <div class="title">Hiển thị<input type="checkbox" class="CheckBox" name="active" value="active"
+               {if $edit.active eq 1 || $smarty.request.act eq 'add' }checked{/if}></div>
+               
             </div>
          </form>
       </div>

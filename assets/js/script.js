@@ -944,7 +944,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /////
 var header = document.getElementById("c-header");
-if (window.innerWidth > 768) {
+if (header && window.innerWidth > 768) {
   window.addEventListener("scroll", function () {
     if (window.scrollY > 50) {
       header.classList.add("fixed");
@@ -1086,3 +1086,4 @@ $(window).on("load", function () {
     activeGalleryByColor(activeColor);
   }
 });
+

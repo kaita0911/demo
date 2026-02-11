@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2025-11-21 09:50:12
+<?php /* Smarty version 2.6.30, created on 2026-02-11 15:34:34
          compiled from infos/list.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'escape', 'infos/list.tpl', 25, false),)), $this); ?>
@@ -37,32 +37,33 @@ unset($_smarty_tpl_vars);
 </td>
                         <?php if ($_SESSION['admin_artseed_username'] == 'kaita'): ?>
                         <td align="center" class="brbottom">
-                           <button type="button"
-                              class="btn_checks btn_toggle"
+                          
+                             
+                           <label class="toggle btn_toggle"
                               data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
 "
                               data-active="<?php echo $this->_tpl_vars['item']['active']; ?>
 "
                               data-column="active"
                               data-table="infos">
-                              <img src="images/<?php echo $this->_tpl_vars['item']['active']; ?>
-.png" alt="Show/Hide">
-                           </button>
+                           <input type="checkbox" <?php if ($this->_tpl_vars['item']['active'] == 1): ?>checked<?php endif; ?>>
+                           <span class="track"></span>
+                           </label>
                         </td>
                         <td align="center" class="brbottom">
                            <?php if ($this->_tpl_vars['item']['id'] == 2 || $this->_tpl_vars['item']['id'] == 12 || $this->_tpl_vars['item']['id'] == 13 || $this->_tpl_vars['item']['id'] == 14 || $this->_tpl_vars['item']['id'] == 15 || $this->_tpl_vars['item']['id'] == 16 || $this->_tpl_vars['item']['id'] == 19 || $this->_tpl_vars['item']['id'] == 20 || $this->_tpl_vars['item']['id'] == 21 || $this->_tpl_vars['item']['id'] == 22 || $this->_tpl_vars['item']['id'] == 23 || $this->_tpl_vars['item']['id'] == 24 || $this->_tpl_vars['item']['id'] == 25 || $this->_tpl_vars['item']['id'] == 26 || $this->_tpl_vars['item']['id'] == 27 || $this->_tpl_vars['item']['id'] == 28 || $this->_tpl_vars['item']['id'] == 30): ?>
 
-                           <button type="button"
-                              class="btn_checks btn_toggle"
+                           
+                           <label class="toggle btn_toggle"
                               data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
 "
                               data-active="<?php echo $this->_tpl_vars['item']['open']; ?>
 "
                               data-column="open"
                               data-table="infos">
-                              <img src="images/<?php echo $this->_tpl_vars['item']['open']; ?>
-.png" alt="Show/Hide">
-                           </button>
+                           <input type="checkbox" <?php if ($this->_tpl_vars['item']['open'] == 1): ?>checked<?php endif; ?>>
+                           <span class="track"></span>
+                           </label>
                            <?php endif; ?>
                         </td>
                         <?php endif; ?>

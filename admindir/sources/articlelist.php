@@ -252,12 +252,37 @@ switch ($act) {
 
             // 🔹 Xóa ảnh đại diện bài viết
             $thumbs = $GLOBALS["sp"]->getAll("SELECT img_thumb_vn FROM {$GLOBALS['db_sp']}.articlelist WHERE id IN ($idList)");
+            // foreach ($thumbs as $row) {
+            //     if (empty($row['img_thumb_vn'])) continue;
+            
+            //     $file = $_SERVER['DOCUMENT_ROOT'] . '/' . $row['img_thumb_vn'];
+            
+            //     if (file_exists($file)) {
+            //         if (!unlink($file)) {
+            //             echo 'KHÔNG XOÁ ĐƯỢC: ' . $file;
+            //         }
+            //     } else {
+            //         echo 'KHÔNG TỒN TẠI: ' . $file;
+            //     }
+            // }
             foreach ($thumbs as $row) {
-                $thumb = $row['img_thumb_vn'];
-                if (!$thumb) continue;
-                $file = '../' . $thumb;
-                if (file_exists($file)) @unlink($file);
+                if (empty($row['img_thumb_vn'])) continue;
+            
+                $dbPath   = $row['img_thumb_vn'];                 // hinh-anh/san-pham/abc.jpg
+                $baseDir  = $_SERVER['DOCUMENT_ROOT'] . '/' . dirname($dbPath) . '/';
+                $basename = basename($dbPath);
+            
+                if (!is_dir($baseDir)) continue;
+            
+                // duyệt file trong folder đó
+                foreach (glob($baseDir . '*') as $file) {
+                    if (basename($file) === $basename) {
+                        unlink($file);
+                        break;
+                    }
+                }
             }
+            
             // 1️⃣ xoá giá + màu (variants)
             $GLOBALS["sp"]->query("DELETE v FROM {$GLOBALS['db_sp']}.articlelist_attributes v INNER JOIN {$GLOBALS['db_sp']}.articlelist_codes c ON c.id = v.code_id  WHERE c.articlelist_id IN ($idList)");
 
@@ -272,10 +297,21 @@ switch ($act) {
 
             // Xóa hình ảnh liên quan
             $images = $GLOBALS["sp"]->getCol("SELECT img_vn FROM {$GLOBALS['db_sp']}.gallery_sp WHERE articlelist_id IN ($idList)");
+            $baseDir = $_SERVER['DOCUMENT_ROOT'] . '/hinh-anh/hinh-san-pham/';
+
             foreach ($images as $img) {
-                $file = '../' . $img;
-                if (file_exists($file)) @unlink($file);
+                if (empty($img)) continue;
+
+                $basename = basename($img); // đề phòng DB có path
+
+                foreach (glob($baseDir . '*') as $file) {
+                    if (basename($file) === $basename) {
+                        unlink($file);
+                        break;
+                    }
+                }
             }
+            
             $GLOBALS["sp"]->query("DELETE FROM {$GLOBALS['db_sp']}.gallery_sp WHERE articlelist_id IN ($idList)");
 
             // ✅ Kiểm tra lại tổng số bài viết còn lại
@@ -595,11 +631,16 @@ switch ($act) {
         break;
 
     default:
-
+        
         // ===== Điều kiện lọc cơ bản =====
         $where = "WHERE a.comp = {$comp}";
         $join = ""; // nếu cần JOIN bảng khác thì thêm
         $order = "GROUP BY a.id ORDER BY a.num DESC";
+        //Tổng bài viết///
+        $sqlTotal = "SELECT COUNT(DISTINCT a.id) FROM {$GLOBALS['db_sp']}.articlelist a $join $where";
+        $totalArticles = (int)$GLOBALS['sp']->getOne($sqlTotal);
+        $smarty->assign('totalArticles', $totalArticles);
+
         // ==== Lấy từ khóa tìm kiếm (nếu có) ====
 
         $keyword = isset($_GET['keyword']) ? trim($_GET['keyword']) : '';
@@ -719,16 +760,16 @@ function saveArticle()
                 $uploadDir_pre = 'hinh-anh/quang-cao/';
                 break;
             case 2:
-                $uploadDir = $predix . 'hinh-anh/thumbs/';
-                $uploadDir_pre = 'hinh-anh/thumbs/';
+                $uploadDir = $predix . 'hinh-anh/san-pham/';
+                $uploadDir_pre = 'hinh-anh/san-pham/';
                 break;
             case 27:
                 $uploadDir = $predix . 'hinh-anh/dich-vu/';
                 $uploadDir_pre = 'hinh-anh/dich-vu/';
                 break;
             case 10:
-                $uploadDir = $predix . 'hinh-anh/du-an/';
-                $uploadDir_pre = 'hinh-anh/du-an/';
+                $uploadDir = $predix . 'hinh-anh/san-pham/';
+                $uploadDir_pre = 'hinh-anh/san-pham/';
                 break;
             case 1:
                 $uploadDir = $predix . 'hinh-anh/tin-tuc/';

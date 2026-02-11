@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2025-11-21 09:48:38
+<?php /* Smarty version 2.6.30, created on 2026-02-11 15:49:05
          compiled from language/list.tpl */ ?>
 <div class="contentmain">
    <div class="main">
@@ -42,47 +42,47 @@ unset($_smarty_tpl_vars);
                   </thead>
                   <tbody>
                      <?php $_from = $this->_tpl_vars['view']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
-    foreach ($_from as $this->_tpl_vars['row']):
+    foreach ($_from as $this->_tpl_vars['item']):
 ?>
-                     <tr data-id="<?php echo $this->_tpl_vars['row']['id']; ?>
+                     <tr data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
 ">
                         <td align="center">
-                           <input type="checkbox" value="<?php echo $this->_tpl_vars['row']['id']; ?>
+                           <input type="checkbox" value="<?php echo $this->_tpl_vars['item']['id']; ?>
 " name="cid[]" class="c-item">
                         </td>
-                        <td align="center" class="hidden-xs"><?php echo $this->_tpl_vars['row']['code']; ?>
+                        <td align="center" class="hidden-xs"><?php echo $this->_tpl_vars['item']['code']; ?>
 </td>
-                        <td align="left"><?php echo $this->_tpl_vars['row']['name']; ?>
+                        <td align="left"><?php echo $this->_tpl_vars['item']['name']; ?>
 </td>
                         <td align="center">
-                           <button type="button"
-                              class="btn_checks btn_toggle"
-                              data-id="<?php echo $this->_tpl_vars['row']['id']; ?>
+                           
+                           <label class="toggle btn_toggle"
+                              data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
 "
-                              data-active="<?php echo $this->_tpl_vars['row']['is_default']; ?>
+                              data-active="<?php echo $this->_tpl_vars['item']['is_default']; ?>
 "
                               data-column="is_default"
                               data-table="language">
-                              <img src="images/<?php echo $this->_tpl_vars['row']['is_default']; ?>
-.png" alt="Show/Hide">
-                           </button>
+                           <input type="checkbox" <?php if ($this->_tpl_vars['item']['is_default'] == 1): ?>checked<?php endif; ?>>
+                           <span class="track"></span>
+                           </label>
                         </td>
                         <td align="center">
-                           <button type="button"
-                              class="btn_checks btn_toggle"
-                              data-id="<?php echo $this->_tpl_vars['row']['id']; ?>
+                          
+                           <label class="toggle btn_toggle"
+                              data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
 "
-                              data-active="<?php echo $this->_tpl_vars['row']['active']; ?>
+                              data-active="<?php echo $this->_tpl_vars['item']['active']; ?>
 "
                               data-column="active"
                               data-table="language">
-                              <img src="images/<?php echo $this->_tpl_vars['row']['active']; ?>
-.png" alt="Show/Hide">
-                           </button>
+                           <input type="checkbox" <?php if ($this->_tpl_vars['item']['active'] == 1): ?>checked<?php endif; ?>>
+                           <span class="track"></span>
+                           </label>
                         </td>
                         <td align="center">
                            <div class="flex-btn">
-                              <a class="act-btn btnEdit" href="index.php?do=language&act=edit&id=<?php echo $this->_tpl_vars['row']['id']; ?>
+                              <a class="act-btn btnEdit" href="index.php?do=language&act=edit&id=<?php echo $this->_tpl_vars['item']['id']; ?>
 " title="Edit">
                                  <i class="fa fa-edit"></i>
                               </a>

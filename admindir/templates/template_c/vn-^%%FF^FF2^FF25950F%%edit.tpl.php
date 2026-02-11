@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2025-11-21 09:52:35
+<?php /* Smarty version 2.6.30, created on 2026-02-11 15:35:49
          compiled from infos/edit.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'escape', 'infos/edit.tpl', 23, false),)), $this); ?>
@@ -110,11 +110,9 @@ unset($_smarty_tpl_vars);
             <?php endif; ?>
 
                         <div class="item">
-               <div class="title">Hiển thị</div>
-               <div class="info-title">
-                  <input type="checkbox" class="CheckBox" name="active" value="active"
-                     <?php if ($this->_tpl_vars['edit']['active'] == 1 || $_REQUEST['act'] == 'add'): ?>checked<?php endif; ?>>
-               </div>
+               <div class="title">Hiển thị<input type="checkbox" class="CheckBox" name="active" value="active"
+               <?php if ($this->_tpl_vars['edit']['active'] == 1 || $_REQUEST['act'] == 'add'): ?>checked<?php endif; ?>></div>
+               
             </div>
          </form>
       </div>

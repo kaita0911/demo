@@ -138,6 +138,7 @@ $infos_ids = [
     17 => 'headerscript',
     18 => 'bodyscript',
     20 => 'searchengine',
+    21 => 'quickview',
     22 => 'makm'
 ];
 
@@ -334,4 +335,20 @@ ORDER BY a.num ASC
 ";
 $commit = $GLOBALS['sp']->getAll($sql);
 $smarty->assign("commit", $commit);
-///
+///wishlist
+$session_id = session_id();
+$wishlist_ids = $GLOBALS['sp']->getCol("
+    SELECT product_id
+    FROM {$GLOBALS['db_sp']}.wishlist
+    WHERE session_id = '{$session_id}'
+");
+$smarty->assign("wishlist_ids", $wishlist_ids);
+
+$row = $GLOBALS['sp']->getRow("
+    SELECT COUNT(*) AS total
+    FROM {$GLOBALS['db_sp']}.wishlist
+    WHERE session_id = '{$session_id}'
+");
+
+$wishlist_total = (int)$row['total'];
+$smarty->assign("wishlist_total", $wishlist_total);

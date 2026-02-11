@@ -25,14 +25,16 @@
                         <td class="paleft brbottom linkblack">{$item.name_vn|escape}</td>
                         {if $smarty.session.admin_artseed_username == 'kaita'}
                         <td align="center" class="brbottom">
-                           <button type="button"
-                              class="btn_checks btn_toggle"
+                          
+                             
+                           <label class="toggle btn_toggle"
                               data-id="{$item.id}"
                               data-active="{$item.active}"
                               data-column="active"
                               data-table="infos">
-                              <img src="images/{$item.active}.png" alt="Show/Hide">
-                           </button>
+                           <input type="checkbox" {if $item.active == 1}checked{/if}>
+                           <span class="track"></span>
+                           </label>
                         </td>
                         <td align="center" class="brbottom">
                            {if $item.id == 2
@@ -53,14 +55,15 @@
                            or $item.id == 28
                            or $item.id == 30}
 
-                           <button type="button"
-                              class="btn_checks btn_toggle"
+                           
+                           <label class="toggle btn_toggle"
                               data-id="{$item.id}"
                               data-active="{$item.open}"
                               data-column="open"
                               data-table="infos">
-                              <img src="images/{$item.open}.png" alt="Show/Hide">
-                           </button>
+                           <input type="checkbox" {if $item.open == 1}checked{/if}>
+                           <span class="track"></span>
+                           </label>
                            {/if}
                         </td>
                         {/if}

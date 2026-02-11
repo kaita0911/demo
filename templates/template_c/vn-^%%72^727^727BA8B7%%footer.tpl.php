@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2026-01-29 09:48:42
+<?php /* Smarty version 2.6.30, created on 2026-02-11 14:54:50
          compiled from ./footer.tpl */ ?>
 <footer class="p-footer">
   <div class="container">
@@ -75,6 +75,7 @@
     <p class="copyright">© Bản quyền thuộc Tấn Phát Mobile</p>
   </div>
 </footer>
+<div id="wishlist-toast"></div>
 <div id="cart-popup"></div>
 <div id="c-loading" class="<?php if ($_SESSION['contact_success']): ?> hide<?php endif; ?>">
   <div id="orderLoading"><svg width="50" height="50" viewBox="0 0 50 50" role="status" aria-label="Đang tải">
@@ -89,6 +90,13 @@
           repeatCount="indefinite" />
       </g>
     </svg>
+  </div>
+</div>
+<div id="quickview-modal" class="quickview-modal">
+  <div class="quickview-overlay"></div>
+  <div class="quickview-content">
+    <button class="quickview-close">×</button>
+    <div id="quickview-body"></div>
   </div>
 </div>
 <a href="#" class="back-to-top" id="backToTop"><i class="fa-solid fa-angle-up"></i></a>

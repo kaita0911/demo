@@ -33,7 +33,7 @@ function determineRoute($cat1, $unique_key, $menu_list, $langid)
         'unique_key' => ''
     ];
 
-    $fixed_pages = ['404', 'pay', 'finish', 'order', 'cart', 'mua-nhanh', 'addajax', 'lien-he', 'tim-kiem'];
+    $fixed_pages = ['404', 'pay', 'finish', 'order', 'cart', 'mua-nhanh', 'wishlist', 'lien-he', 'tim-kiem'];
 
     // Kiểm tra menu
     foreach ($menu_list as $item) {
@@ -72,6 +72,11 @@ function determineRoute($cat1, $unique_key, $menu_list, $langid)
                         $result['do'] = 'cart';
                         $result['act'] = 'finish';
                         $result['menu_name'] = 'Hoàn tất';
+                        break;
+                    case 'wishlist':
+                        $result['do'] = 'wishlist';
+                        $result['act'] = 'list';
+                        $result['menu_name'] = 'Yêu thích';
                         break;
                 }
                 $result['page_flag'] = $result['do'];
@@ -127,6 +132,11 @@ function determineRoute($cat1, $unique_key, $menu_list, $langid)
                 $result['do'] = 'cart';
                 $result['act'] = 'finish';
                 $result['menu_name'] = 'Hoàn tất';
+                break;
+            case 'wishlist':
+                $result['do'] = 'wishlist';
+                $result['act'] = 'list';
+                $result['menu_name'] = 'Yêu thích';
                 break;
         }
         $result['page_flag'] = $result['do'];

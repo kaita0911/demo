@@ -87,12 +87,18 @@
             <span>Hotline</span> {$hotline.phone}
           </div>
         </div>
-        <!-- {if $showcart.open eq 1}
-        <a class="header-cart" href="{$path_url}/cart" class="cart-popover btn" title="Shopping Cart">
+        {if $quickview.open eq 1}
+        <a class="wishlist-icon" href="{$path_url}/wishlist/">
+          <i class="fa-regular fa-heart"></i>
+          <span id="wishlist-count">{$wishlist_total}</span>
+        </a>
+        {/if}
+        {if $showcart.open eq 1}
+        <a class="header-cart" href="{$path_url}/cart/" class="cart-popover btn" title="Shopping Cart">
           <i class="fa-solid fa-cart-shopping"></i>
           <span id="num-cart">0</span>
         </a>
-        {/if} -->
+        {/if}
       </div>
     </div>
   </div>

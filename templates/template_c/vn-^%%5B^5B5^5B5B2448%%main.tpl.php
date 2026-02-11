@@ -1,5 +1,7 @@
-<?php /* Smarty version 2.6.30, created on 2026-01-29 09:56:32
+<?php /* Smarty version 2.6.30, created on 2026-02-11 15:38:38
          compiled from main/main.tpl */ ?>
+<?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'main/main.tpl', 43, false),)), $this); ?>
 <main>
    <div class="container">
       <div class="wrap-top">
@@ -62,6 +64,31 @@
 </span>
                      <?php endif; ?>
                   </div>
+                  <?php if ($this->_tpl_vars['quickview']['open'] == 1): ?>
+                     <div class="product-item__action">
+                        <div class="product-item__action__btn btn-add-cart"
+                              data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
+"
+                              data-name="<?php echo $this->_tpl_vars['item']['name_detail']; ?>
+"
+                              data-price="<?php echo ((is_array($_tmp=@$this->_tpl_vars['item']['price'])) ? $this->_run_mod_handler('default', true, $_tmp, 0) : smarty_modifier_default($_tmp, 0)); ?>
+"
+                              data-img="<?php echo $this->_tpl_vars['item']['img_thumb_vn']; ?>
+">
+                              <i class="fa-solid fa-cart-arrow-down"></i>
+                        </div>
+                        <div class="product-item__action__btn btn-quickview" data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
+">
+                           <i class="fa-regular fa-eye"></i>
+                        </div>
+                        <div class="product-item__action__btn btn-wishlist <?php if (in_array ( $this->_tpl_vars['item']['id'] , $this->_tpl_vars['wishlist_ids'] )): ?>active<?php endif; ?>"
+                           data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
+"
+                           title="Thêm vào yêu thích">
+                           <i class="fa-regular fa-heart"></i>
+                        </div>
+                     </div>
+                  <?php endif; ?>
                </div>
                <?php endforeach; endif; unset($_from); ?>
             </div>
@@ -115,7 +142,7 @@
 " alt="<?php echo $this->_tpl_vars['item']['name_detail']; ?>
 " class="img-cover" loading="lazy">
                </a>
-               <h3><a class="product-item__ttl hover" href="<?php echo $this->_tpl_vars['itemath_url']; ?>
+               <h3><a class="product-item__ttl hover" href="<?php echo $this->_tpl_vars['path_url']; ?>
 /<?php echo $this->_tpl_vars['lang_prefix']; ?>
 <?php echo $this->_tpl_vars['item']['unique_key']; ?>
 .html" title="<?php echo $this->_tpl_vars['item']['name_detail']; ?>
@@ -129,6 +156,31 @@
 </span>
                   <?php endif; ?>
                </div>
+               <?php if ($this->_tpl_vars['quickview']['open'] == 1): ?>
+               <div class="product-item__action">
+                  <div class="product-item__action__btn btn-add-cart"
+                        data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
+"
+                        data-name="<?php echo $this->_tpl_vars['item']['name_detail']; ?>
+"
+                        data-price="<?php echo ((is_array($_tmp=@$this->_tpl_vars['item']['price'])) ? $this->_run_mod_handler('default', true, $_tmp, 0) : smarty_modifier_default($_tmp, 0)); ?>
+"
+                        data-img="<?php echo $this->_tpl_vars['item']['img_thumb_vn']; ?>
+">
+                        <i class="fa-solid fa-cart-arrow-down"></i>
+                  </div>
+                  <div class="product-item__action__btn btn-quickview" data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
+">
+                     <i class="fa-regular fa-eye"></i>
+                  </div>
+                  <div class="product-item__action__btn btn-wishlist <?php if (in_array ( $this->_tpl_vars['item']['id'] , $this->_tpl_vars['wishlist_ids'] )): ?>active<?php endif; ?>"
+                     data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
+"
+                     title="Thêm vào yêu thích">
+                     <i class="fa-regular fa-heart"></i>
+                  </div>
+               </div>
+               <?php endif; ?>
             </div>
             <?php endforeach; endif; unset($_from); ?>
          </div>

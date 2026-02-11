@@ -41,14 +41,15 @@
                         <td class="paleft">{$item.do}</td>
                         <td class="paleft">{$item.detail_name|escape}</td>
                         <td align="center" class="hidden-xs">
-                           <button type="button"
-                              class="btn_checks btn_toggle"
+                          
+                           <label class="toggle btn_toggle"
                               data-id="{$item.id}"
                               data-active="{$item.active}"
                               data-column="active"
                               data-table="component">
-                              <img src="images/{$item.active}.png" alt="Show/Hide">
-                           </button>
+                           <input type="checkbox" {if $item.active == 1}checked{/if}>
+                           <span class="track"></span>
+                           </label>
                         </td>
                         <td align="center">
                            <div class="flex-btn">

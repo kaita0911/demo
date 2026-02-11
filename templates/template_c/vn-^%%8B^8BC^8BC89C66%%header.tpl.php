@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2026-01-13 14:32:52
+<?php /* Smarty version 2.6.30, created on 2026-02-11 15:38:38
          compiled from ./header.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'escape', './header.tpl', 23, false),array('modifier', 'count', './header.tpl', 28, false),)), $this); ?>
@@ -122,13 +122,21 @@ unset($_smarty_tpl_vars);
 
           </div>
         </div>
-        <!-- <?php if ($this->_tpl_vars['showcart']['open'] == 1): ?>
+        <?php if ($this->_tpl_vars['quickview']['open'] == 1): ?>
+        <a class="wishlist-icon" href="<?php echo $this->_tpl_vars['path_url']; ?>
+/wishlist/">
+          <i class="fa-regular fa-heart"></i>
+          <span id="wishlist-count"><?php echo $this->_tpl_vars['wishlist_total']; ?>
+</span>
+        </a>
+        <?php endif; ?>
+        <?php if ($this->_tpl_vars['showcart']['open'] == 1): ?>
         <a class="header-cart" href="<?php echo $this->_tpl_vars['path_url']; ?>
-/cart" class="cart-popover btn" title="Shopping Cart">
+/cart/" class="cart-popover btn" title="Shopping Cart">
           <i class="fa-solid fa-cart-shopping"></i>
           <span id="num-cart">0</span>
         </a>
-        <?php endif; ?> -->
+        <?php endif; ?>
       </div>
     </div>
   </div>

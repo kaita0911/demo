@@ -282,6 +282,21 @@
         }
     }
 
+    .wishlist-icon {
+        position: relative;
+
+        #wishlist-count {
+            position: absolute;
+            top: -1.3rem;
+            background: $hover;
+            right: -1.5rem;
+            width: 2rem;
+            height: 2rem;
+            font-size: 1.4rem;
+        }
+    }
+
+
     .lang-switch {
         display: flex;
         align-items: center;

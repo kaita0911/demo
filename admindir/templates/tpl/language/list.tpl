@@ -35,36 +35,38 @@
                      </tr>
                   </thead>
                   <tbody>
-                     {foreach from=$view item=row}
-                     <tr data-id="{$row.id}">
+                     {foreach from=$view item=item}
+                     <tr data-id="{$item.id}">
                         <td align="center">
-                           <input type="checkbox" value="{$row.id}" name="cid[]" class="c-item">
+                           <input type="checkbox" value="{$item.id}" name="cid[]" class="c-item">
                         </td>
-                        <td align="center" class="hidden-xs">{$row.code}</td>
-                        <td align="left">{$row.name}</td>
+                        <td align="center" class="hidden-xs">{$item.code}</td>
+                        <td align="left">{$item.name}</td>
                         <td align="center">
-                           <button type="button"
-                              class="btn_checks btn_toggle"
-                              data-id="{$row.id}"
-                              data-active="{$row.is_default}"
+                           
+                           <label class="toggle btn_toggle"
+                              data-id="{$item.id}"
+                              data-active="{$item.is_default}"
                               data-column="is_default"
                               data-table="language">
-                              <img src="images/{$row.is_default}.png" alt="Show/Hide">
-                           </button>
+                           <input type="checkbox" {if $item.is_default == 1}checked{/if}>
+                           <span class="track"></span>
+                           </label>
                         </td>
                         <td align="center">
-                           <button type="button"
-                              class="btn_checks btn_toggle"
-                              data-id="{$row.id}"
-                              data-active="{$row.active}"
+                          
+                           <label class="toggle btn_toggle"
+                              data-id="{$item.id}"
+                              data-active="{$item.active}"
                               data-column="active"
                               data-table="language">
-                              <img src="images/{$row.active}.png" alt="Show/Hide">
-                           </button>
+                           <input type="checkbox" {if $item.active == 1}checked{/if}>
+                           <span class="track"></span>
+                           </label>
                         </td>
                         <td align="center">
                            <div class="flex-btn">
-                              <a class="act-btn btnEdit" href="index.php?do=language&act=edit&id={$row.id}" title="Edit">
+                              <a class="act-btn btnEdit" href="index.php?do=language&act=edit&id={$item.id}" title="Edit">
                                  <i class="fa fa-edit"></i>
                               </a>
                            </div>

@@ -35,6 +35,25 @@
                      <span class="price-old">{$item.priceold_formatted}</span>
                      {/if}
                   </div>
+                  {if $quickview.open eq 1}
+                     <div class="product-item__action">
+                        <div class="product-item__action__btn btn-add-cart"
+                              data-id="{$item.id}"
+                              data-name="{$item.name_detail}"
+                              data-price="{$item.price|default:0}"
+                              data-img="{$item.img_thumb_vn}">
+                              <i class="fa-solid fa-cart-arrow-down"></i>
+                        </div>
+                        <div class="product-item__action__btn btn-quickview" data-id="{$item.id}">
+                           <i class="fa-regular fa-eye"></i>
+                        </div>
+                        <div class="product-item__action__btn btn-wishlist {if in_array($item.id, $wishlist_ids)}active{/if}"
+                           data-id="{$item.id}"
+                           title="Thêm vào yêu thích">
+                           <i class="fa-regular fa-heart"></i>
+                        </div>
+                     </div>
+                  {/if}
                </div>
                {/foreach}
             </div>
@@ -71,13 +90,32 @@
                <a class="product-item__img hover-img" href="{$path_url}/{$lang_prefix}{$item.unique_key}.html" title="{$item.name_detail}">
                   <img src="{$item.img_thumb_vn}" alt="{$item.name_detail}" class="img-cover" loading="lazy">
                </a>
-               <h3><a class="product-item__ttl hover" href="{$itemath_url}/{$lang_prefix}{$item.unique_key}.html" title="{$item.name_detail}">{$item.name_detail}</a></h3>
+               <h3><a class="product-item__ttl hover" href="{$path_url}/{$lang_prefix}{$item.unique_key}.html" title="{$item.name_detail}">{$item.name_detail}</a></h3>
                <div class="product-price">
                   <span class="price-current">{$item.price_formatted}</span>
                   {if $item.priceold_formatted}
                   <span class="price-old">{$item.priceold_formatted}</span>
                   {/if}
                </div>
+               {if $quickview.open eq 1}
+               <div class="product-item__action">
+                  <div class="product-item__action__btn btn-add-cart"
+                        data-id="{$item.id}"
+                        data-name="{$item.name_detail}"
+                        data-price="{$item.price|default:0}"
+                        data-img="{$item.img_thumb_vn}">
+                        <i class="fa-solid fa-cart-arrow-down"></i>
+                  </div>
+                  <div class="product-item__action__btn btn-quickview" data-id="{$item.id}">
+                     <i class="fa-regular fa-eye"></i>
+                  </div>
+                  <div class="product-item__action__btn btn-wishlist {if in_array($item.id, $wishlist_ids)}active{/if}"
+                     data-id="{$item.id}"
+                     title="Thêm vào yêu thích">
+                     <i class="fa-regular fa-heart"></i>
+                  </div>
+               </div>
+               {/if}
             </div>
             {/foreach}
          </div>

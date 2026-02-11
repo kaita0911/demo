@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2025-11-21 09:47:29
+<?php /* Smarty version 2.6.30, created on 2026-02-11 15:46:57
          compiled from component/list.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'escape', 'component/list.tpl', 42, false),)), $this); ?>
@@ -56,17 +56,17 @@ unset($_smarty_tpl_vars);
                         <td class="paleft"><?php echo ((is_array($_tmp=$this->_tpl_vars['item']['detail_name'])) ? $this->_run_mod_handler('escape', true, $_tmp) : smarty_modifier_escape($_tmp)); ?>
 </td>
                         <td align="center" class="hidden-xs">
-                           <button type="button"
-                              class="btn_checks btn_toggle"
+                          
+                           <label class="toggle btn_toggle"
                               data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
 "
                               data-active="<?php echo $this->_tpl_vars['item']['active']; ?>
 "
                               data-column="active"
                               data-table="component">
-                              <img src="images/<?php echo $this->_tpl_vars['item']['active']; ?>
-.png" alt="Show/Hide">
-                           </button>
+                           <input type="checkbox" <?php if ($this->_tpl_vars['item']['active'] == 1): ?>checked<?php endif; ?>>
+                           <span class="track"></span>
+                           </label>
                         </td>
                         <td align="center">
                            <div class="flex-btn">
