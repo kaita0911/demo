@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.30, created on 2026-02-08 11:12:54
+<?php /* Smarty version 2.6.30, created on 2026-02-12 14:43:39
          compiled from articlelist/edit.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'count', 'articlelist/edit.tpl', 25, false),array('modifier', 'escape', 'articlelist/edit.tpl', 44, false),array('modifier', 'replace', 'articlelist/edit.tpl', 198, false),array('modifier', 'is_array', 'articlelist/edit.tpl', 245, false),array('modifier', 'default', 'articlelist/edit.tpl', 286, false),array('modifier', 'number_format', 'articlelist/edit.tpl', 314, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'count', 'articlelist/edit.tpl', 25, false),array('modifier', 'escape', 'articlelist/edit.tpl', 44, false),array('modifier', 'replace', 'articlelist/edit.tpl', 199, false),array('modifier', 'is_array', 'articlelist/edit.tpl', 247, false),array('modifier', 'default', 'articlelist/edit.tpl', 288, false),array('modifier', 'number_format', 'articlelist/edit.tpl', 316, false),)), $this); ?>
 <div class="contentmain">
   <div class="main">
     <div class="left_sidebar padding10">
@@ -252,43 +252,45 @@ unset($_smarty_tpl_vars);
                     <?php endforeach; endif; unset($_from); ?>
                   </div>
                 </div>
-                <?php $_from = $this->_tpl_vars['articlelist_attributes']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+                <?php if ($this->_tpl_vars['tinhnang']['attribute'] == 1): ?>
+                  <?php $_from = $this->_tpl_vars['articlelist_attributes']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['attr']):
 ?>
-                <div class="color-upload-box">
-                  <h4>
-                    Ảnh màu <?php echo $this->_tpl_vars['attr']['color_name']; ?>
+                  <div class="color-upload-box">
+                    <h4>
+                      Ảnh màu <?php echo $this->_tpl_vars['attr']['color_name']; ?>
 
-                  </h4>
-                  <input type="file"
-                    name="images[<?php echo ((is_array($_tmp=$this->_tpl_vars['attr']['color_code'])) ? $this->_run_mod_handler('replace', true, $_tmp, '#', '') : smarty_modifier_replace($_tmp, '#', '')); ?>
+                    </h4>
+                    <input type="file"
+                      name="images[<?php echo ((is_array($_tmp=$this->_tpl_vars['attr']['color_code'])) ? $this->_run_mod_handler('replace', true, $_tmp, '#', '') : smarty_modifier_replace($_tmp, '#', '')); ?>
 ][]"
-                    data-color-code="<?php echo $this->_tpl_vars['attr']['color_code']; ?>
+                      data-color-code="<?php echo $this->_tpl_vars['attr']['color_code']; ?>
 "
-                    multiple
-                    accept="image/*">
-                </div>
-                <!-- ảnh đã upload -->
-                <div class="preview-gallery">
-                  <?php $_from = $this->_tpl_vars['multiimages']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+                      multiple
+                      accept="image/*">
+                  </div>
+                  <!-- ảnh đã upload -->
+                  <div class="preview-gallery">
+                    <?php $_from = $this->_tpl_vars['multiimages']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['img']):
 ?>
-                  <?php if ($this->_tpl_vars['img']['color_code'] == $this->_tpl_vars['attr']['color_code']): ?>
-                  <div class="gallery-item" data-id="<?php echo $this->_tpl_vars['img']['id']; ?>
+                    <?php if ($this->_tpl_vars['img']['color_code'] == $this->_tpl_vars['attr']['color_code']): ?>
+                    <div class="gallery-item" data-id="<?php echo $this->_tpl_vars['img']['id']; ?>
 ">
-                    <img src="/<?php echo $this->_tpl_vars['img']['img_vn']; ?>
+                      <img src="/<?php echo $this->_tpl_vars['img']['img_vn']; ?>
 ?width=100&height=100&mode=contain" />
-                    <button type="button"
-                      class="btn-delete-image remove-image"
-                      data-id="<?php echo $this->_tpl_vars['img']['id']; ?>
+                      <button type="button"
+                        class="btn-delete-image remove-image"
+                        data-id="<?php echo $this->_tpl_vars['img']['id']; ?>
 ">
-                      ✖
-                    </button>
+                        &times;
+                      </button>
+                    </div>
+                    <?php endif; ?>
+                    <?php endforeach; endif; unset($_from); ?>
                   </div>
-                  <?php endif; ?>
                   <?php endforeach; endif; unset($_from); ?>
-                </div>
-                <?php endforeach; endif; unset($_from); ?>
+                <?php endif; ?>
               </div>
               <?php endif; ?>
 

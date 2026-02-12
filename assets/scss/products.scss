@@ -99,9 +99,10 @@
         pointer-events: none;
         transition: 0.4s ease;
 
+
         &__btn {
-            width: 42px;
-            height: 42px;
+            width: 4rem;
+            height: 4rem;
             background: #fff;
             border-radius: 50%;
             display: flex;
@@ -112,11 +113,52 @@
             opacity: 0;
             transition: all 0.3s ease;
 
+            &:after {
+                content: attr(data-tooltip);
+                position: absolute;
+                bottom: 120%;
+                /* nằm phía trên */
+                left: 50%;
+                transform: translateX(-50%) translateY(10px);
+
+                background: #111;
+                color: #fff;
+                padding: 0.5rem 1rem;
+                border-radius: 0.5rem;
+                font-size: 1.3rem;
+                white-space: nowrap;
+
+                opacity: 0;
+                pointer-events: none;
+                transition: 0.25s ease;
+            }
+
+            &:before {
+                content: "";
+                position: absolute;
+                bottom: 92%;
+                left: 50%;
+                transform: translateX(-50%) translateY(10px);
+
+                border-width: 0.6rem;
+                border-style: solid;
+                border-color: #111 transparent transparent transparent;
+
+                opacity: 0;
+                transition: 0.25s ease;
+            }
+
             &:hover {
                 background: $primary;
                 color: #FFF;
                 transition: initial !important;
+
                 //transform: translateY(0) scale(1.1);
+                &:after,
+                &:before {
+                    opacity: 1;
+                    transform: translateX(-50%) translateY(0);
+                }
             }
         }
     }

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2026-02-11 14:54:50
+<?php /* Smarty version 2.6.30, created on 2026-02-12 10:44:20
          compiled from ./footer.tpl */ ?>
 <footer class="p-footer">
   <div class="container">
@@ -76,7 +76,6 @@
   </div>
 </footer>
 <div id="wishlist-toast"></div>
-<div id="cart-popup"></div>
 <div id="c-loading" class="<?php if ($_SESSION['contact_success']): ?> hide<?php endif; ?>">
   <div id="orderLoading"><svg width="50" height="50" viewBox="0 0 50 50" role="status" aria-label="Đang tải">
       <circle cx="25" cy="25" r="20" fill="none" stroke="#e9eef6" stroke-width="4" />
@@ -92,6 +91,10 @@
     </svg>
   </div>
 </div>
+<?php if ($this->_tpl_vars['showcart']['open'] == 1): ?>
+<div id="cart-popup"></div>
+<?php endif; ?>
+<?php if ($this->_tpl_vars['quickview']['open'] == 1): ?>
 <div id="quickview-modal" class="quickview-modal">
   <div class="quickview-overlay"></div>
   <div class="quickview-content">
@@ -99,6 +102,8 @@
     <div id="quickview-body"></div>
   </div>
 </div>
+<?php endif; ?>
+<div class="loader"></div>
 <a href="#" class="back-to-top" id="backToTop"><i class="fa-solid fa-angle-up"></i></a>
 <div class="bg-overlay"></div>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;

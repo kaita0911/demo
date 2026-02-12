@@ -10,7 +10,7 @@
 <script src="{$path_url}/assets/js/search_engine.js"></script>
 {/if}
 <script src="{$path_url}/assets/js/script.js"></script>
-{if $do == 'cart'}
+{if $showcart.open eq 1}
 <script src="{$path_url}/assets/js/cart.js"></script>
 {/if}
 {if $quickview.open eq 1}

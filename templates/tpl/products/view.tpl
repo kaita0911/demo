@@ -3,6 +3,17 @@
       <ul class="breadcumb">{include file='breadcumb.tpl'}</ul>
       <div class="c-filter">
          <h1 class="ttl01"> {$c_ttl}</h1>
+         {if $filter_product.open eq 1}
+         <div class="sort-wrapper">
+            <select id="sort-product">
+               <option value="">Sắp xếp</option>
+               <option value="name_asc">Tên A - Z</option>
+               <option value="name_desc">Tên Z - A</option>
+               <option value="price_asc">Giá thấp - cao</option>
+               <option value="price_desc">Giá cao - thấp</option>
+            </select>
+         </div>
+         {/if}
       </div>
       {if $view|@count > 0}
       {include file='products/list.tpl'}

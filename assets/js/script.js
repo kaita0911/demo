@@ -141,13 +141,7 @@ $(document).on("click", ".ic-close", function () {
   // clearTimeout(cartPopupTimeout);
   $("#cart-popup").fadeOut(200);
 });
-////sap xep theo sort
-const sortSelect = document.getElementById("sortSelect");
-if (sortSelect) {
-  sortSelect.addEventListener("change", function () {
-    document.getElementById("filterForm").submit();
-  });
-}
+
 
 ////form dang ky
 $("#registerForm").on("submit", function (e) {
@@ -179,26 +173,35 @@ $("#registerForm").on("submit", function (e) {
     showError('input[name="phone"]', "Số điện thoại không hợp lệ.");
     isValid = false;
   }
+  $(".loader").fadeIn();
   if (!isValid) return;
-
-  $("#c-loading").fadeIn(200);
   $.ajax({
     url: baseUrl + "ajax/register_form.php",
     type: "POST",
     data: form.serialize(),
     dataType: "json",
     success: function (res) {
+      $("#c-loading").fadeOut(200);
+    
       if (res.success) {
-        $("#c-loading").fadeOut(200); // ẩn loading
-        showPopup("✅ " + res.message, "success");
+        $(".loader").fadeOut();
         $("#registerForm")[0].reset();
+        $("#successPopup").addClass("active");
+        setTimeout(function () {
+    
+          $("#successPopup").removeClass("active");
+          $(".register-form").removeClass("active");
+          document.documentElement.classList.remove("noscroll");
+    
+        }, 3000);
+    
       } else {
-        showPopup("⚠️ " + res.message, "error");
+        alert(res.message);
       }
     },
     error: function (xhr) {
       $("#c-loading").fadeOut(200);
-      showPopup("❌ Lỗi máy chủ: " + xhr.statusText, "error");
+      alert("Lỗi máy chủ: " + xhr.statusText);
     },
   });
 });
@@ -272,36 +275,41 @@ $('input[name="phone"]').on("keypress", function (e) {
   }
 });
 // --- Hàm hiển thị popup ---
-function showPopup(message, type = "success") {
-  const $popup = $("#popupMessage");
-  const $text = $("#popupText");
+document.addEventListener("DOMContentLoaded", function () {
 
-  $text.html(message);
-  $popup
-    .removeClass("popup-success popup-error")
-    .addClass(type === "success" ? "popup-success" : "popup-error")
-    .fadeIn(200)
-    .css("display", "flex"); // đảm bảo dùng flex để căn giữa
+    const popup = document.querySelector(".register-form");
+    const closeBtn = document.querySelector(".register-form-close");
+    const html = document.documentElement; // thẻ <html>
 
-  // Tự động ẩn sau 3 giây
-  setTimeout(() => {
-    $popup.fadeOut(300);
-  }, 30000000);
-}
+    function openPopup() {
+        popup.classList.add("active");
+        html.classList.add("noscroll");
+    }
 
-// --- Nút đóng thủ công ---
-$("#popupClose").on("click", function () {
-  $("#popupMessage").fadeOut(300);
-  $(".register-form").removeClass("show");
-  document.documentElement.classList.remove("stopscroll");
+    function closePopup() {
+        popup.classList.remove("active");
+        html.classList.remove("noscroll");
+    }
+
+    // Hiện sau 5 giây
+    setTimeout(() => {
+        openPopup();
+    }, 5000);
+
+    // Nút đóng
+    closeBtn.addEventListener("click", closePopup);
+
+    // Click ra ngoài đóng
+    popup.addEventListener("click", (e) => {
+        if (e.target === popup) {
+            closePopup();
+        }
+    });
+
 });
-$(document).on("click", "#popupMessage", function (e) {
-  if (!$(e.target).closest(".popup-content").length) {
-    $("#popupMessage").fadeOut(300);
-    $(".register-form").removeClass("show");
-    document.documentElement.classList.remove("stopscroll");
-  }
-});
+
+
+
 
 // Ghi đè jQuery event listener để thêm passive
 jQuery.event.special.touchstart = {
@@ -709,32 +717,32 @@ window.onload = function () {
   }
 };
 
-document.addEventListener("DOMContentLoaded", function () {
-  setTimeout(function () {
-    const popup = document.querySelector(".register-form");
-    if (popup) {
-      popup.classList.add("show");
-      document.documentElement.classList.add("stopscroll"); // <html>
-    }
-  }, 60000);
-  const popup = document.querySelector(".register-form");
-  const popupWrap = document.querySelector(".register-form-wrap");
-  const closeBtn = document.querySelector(".register-form-close");
-  if (closeBtn) {
-    closeBtn.addEventListener("click", function () {
-      document.documentElement.classList.remove("stopscroll");
-      document.querySelector(".register-form").classList.remove("show");
-    });
-  }
-  if (popup) {
-    popup.addEventListener("click", function (e) {
-      if (!popupWrap.contains(e.target)) {
-        popup.classList.remove("show");
-        document.documentElement.classList.remove("stopscroll");
-      }
-    });
-  }
-});
+// document.addEventListener("DOMContentLoaded", function () {
+//   setTimeout(function () {
+//     const popup = document.querySelector(".register-form");
+//     if (popup) {
+//       popup.classList.add("show");
+//       document.documentElement.classList.add("stopscroll"); // <html>
+//     }
+//   }, 60000);
+//   const popup = document.querySelector(".register-form");
+//   const popupWrap = document.querySelector(".register-form-wrap");
+//   const closeBtn = document.querySelector(".register-form-close");
+//   if (closeBtn) {
+//     closeBtn.addEventListener("click", function () {
+//       document.documentElement.classList.remove("stopscroll");
+//       document.querySelector(".register-form").classList.remove("show");
+//     });
+//   }
+//   if (popup) {
+//     popup.addEventListener("click", function (e) {
+//       if (!popupWrap.contains(e.target)) {
+//         popup.classList.remove("show");
+//         document.documentElement.classList.remove("stopscroll");
+//       }
+//     });
+//   }
+// });
 ///backtotop
 const backToTop = document.getElementById("backToTop");
 if (backToTop) {
@@ -1087,3 +1095,32 @@ $(window).on("load", function () {
   }
 });
 
+///sort
+$(document).on("change", "#sort-product", function () {
+
+  let sort = $(this).val();
+  let url  = new URL(window.location.href);
+
+  url.searchParams.set("sort", sort);
+  url.searchParams.set("page", 1); // reset về trang 1 khi sort
+
+  $.ajax({
+      url: url.toString(),
+      type: "GET",
+      beforeSend: function () {
+          $("#product-list").css("opacity", "0.5");
+          $(".loader").fadeIn();
+      },
+      success: function (res) {
+
+          // Lấy đúng phần product-list từ HTML trả về
+          let html = $(res).find("#product-list").html();
+          $("#product-list").html(html).css("opacity", "1");
+          $(".loader").fadeOut();
+          // Cập nhật URL mà không reload
+          window.history.pushState({}, '', url);
+
+      }
+  });
+
+});

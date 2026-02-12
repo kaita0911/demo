@@ -69,7 +69,7 @@ try {
         <p><b>Họ tên:</b> {$fullname}</p>
         <p><b>Email:</b> {$email}</p>
         <p><b>Điện thoại:</b> {$phone}</p>
-        <p><b>Điện thoại:</b> {$address}</p>
+        <p><b>Địa chỉ:</b> {$address}</p>
         <p><b>Nội dung:</b> {$message}</p>
         <p><i>Gửi lúc:</i> " . date("d/m/Y H:i") . "</p>
     ";
@@ -91,7 +91,7 @@ try {
         <ul>
             <li><b>Email:</b> {$email}</li>
             <li><b>Điện thoại:</b> {$phone}</li>
-            <li><b>Điện thoại:</b> {$address}</li>
+            <li><b>Địa chỉ:</b> {$address}</li>
             <li><b>Nội dung:</b> {$message}</li>
         </ul>
         <p>Trân trọng!</p>

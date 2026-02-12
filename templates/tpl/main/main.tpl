@@ -37,19 +37,18 @@
                   </div>
                   {if $quickview.open eq 1}
                      <div class="product-item__action">
-                        <div class="product-item__action__btn btn-add-cart"
+                        <div data-tooltip="Thêm vào giỏ hàng" class="product-item__action__btn btn-add-cart"
                               data-id="{$item.id}"
                               data-name="{$item.name_detail}"
                               data-price="{$item.price|default:0}"
                               data-img="{$item.img_thumb_vn}">
                               <i class="fa-solid fa-cart-arrow-down"></i>
                         </div>
-                        <div class="product-item__action__btn btn-quickview" data-id="{$item.id}">
+                        <div data-tooltip="Xem nhanh" class="product-item__action__btn btn-quickview" data-id="{$item.id}">
                            <i class="fa-regular fa-eye"></i>
                         </div>
-                        <div class="product-item__action__btn btn-wishlist {if in_array($item.id, $wishlist_ids)}active{/if}"
-                           data-id="{$item.id}"
-                           title="Thêm vào yêu thích">
+                        <div data-tooltip="Thêm vào yêu thích" class="product-item__action__btn btn-wishlist {if in_array($item.id, $wishlist_ids)}active{/if}"
+                           data-id="{$item.id}">
                            <i class="fa-regular fa-heart"></i>
                         </div>
                      </div>
@@ -98,24 +97,23 @@
                   {/if}
                </div>
                {if $quickview.open eq 1}
-               <div class="product-item__action">
-                  <div class="product-item__action__btn btn-add-cart"
-                        data-id="{$item.id}"
-                        data-name="{$item.name_detail}"
-                        data-price="{$item.price|default:0}"
-                        data-img="{$item.img_thumb_vn}">
-                        <i class="fa-solid fa-cart-arrow-down"></i>
-                  </div>
-                  <div class="product-item__action__btn btn-quickview" data-id="{$item.id}">
-                     <i class="fa-regular fa-eye"></i>
-                  </div>
-                  <div class="product-item__action__btn btn-wishlist {if in_array($item.id, $wishlist_ids)}active{/if}"
-                     data-id="{$item.id}"
-                     title="Thêm vào yêu thích">
-                     <i class="fa-regular fa-heart"></i>
-                  </div>
-               </div>
-               {/if}
+                     <div class="product-item__action">
+                        <div data-tooltip="Thêm vào giỏ hàng" class="product-item__action__btn btn-add-cart"
+                              data-id="{$item.id}"
+                              data-name="{$item.name_detail}"
+                              data-price="{$item.price|default:0}"
+                              data-img="{$item.img_thumb_vn}">
+                              <i class="fa-solid fa-cart-arrow-down"></i>
+                        </div>
+                        <div data-tooltip="Xem nhanh" class="product-item__action__btn btn-quickview" data-id="{$item.id}">
+                           <i class="fa-regular fa-eye"></i>
+                        </div>
+                        <div data-tooltip="Thêm vào yêu thích" class="product-item__action__btn btn-wishlist {if in_array($item.id, $wishlist_ids)}active{/if}"
+                           data-id="{$item.id}">
+                           <i class="fa-regular fa-heart"></i>
+                        </div>
+                     </div>
+                  {/if}
             </div>
             {/foreach}
          </div>

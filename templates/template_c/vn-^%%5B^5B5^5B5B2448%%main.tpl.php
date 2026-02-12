@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2026-02-11 15:38:38
+<?php /* Smarty version 2.6.30, created on 2026-02-12 10:14:13
          compiled from main/main.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'main/main.tpl', 43, false),)), $this); ?>
@@ -66,7 +66,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', '
                   </div>
                   <?php if ($this->_tpl_vars['quickview']['open'] == 1): ?>
                      <div class="product-item__action">
-                        <div class="product-item__action__btn btn-add-cart"
+                        <div data-tooltip="Thêm vào giỏ hàng" class="product-item__action__btn btn-add-cart"
                               data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
 "
                               data-name="<?php echo $this->_tpl_vars['item']['name_detail']; ?>
@@ -77,14 +77,13 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', '
 ">
                               <i class="fa-solid fa-cart-arrow-down"></i>
                         </div>
-                        <div class="product-item__action__btn btn-quickview" data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
+                        <div data-tooltip="Xem nhanh" class="product-item__action__btn btn-quickview" data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
 ">
                            <i class="fa-regular fa-eye"></i>
                         </div>
-                        <div class="product-item__action__btn btn-wishlist <?php if (in_array ( $this->_tpl_vars['item']['id'] , $this->_tpl_vars['wishlist_ids'] )): ?>active<?php endif; ?>"
+                        <div data-tooltip="Thêm vào yêu thích" class="product-item__action__btn btn-wishlist <?php if (in_array ( $this->_tpl_vars['item']['id'] , $this->_tpl_vars['wishlist_ids'] )): ?>active<?php endif; ?>"
                            data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
-"
-                           title="Thêm vào yêu thích">
+">
                            <i class="fa-regular fa-heart"></i>
                         </div>
                      </div>
@@ -157,30 +156,29 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', '
                   <?php endif; ?>
                </div>
                <?php if ($this->_tpl_vars['quickview']['open'] == 1): ?>
-               <div class="product-item__action">
-                  <div class="product-item__action__btn btn-add-cart"
-                        data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
+                     <div class="product-item__action">
+                        <div data-tooltip="Thêm vào giỏ hàng" class="product-item__action__btn btn-add-cart"
+                              data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
 "
-                        data-name="<?php echo $this->_tpl_vars['item']['name_detail']; ?>
+                              data-name="<?php echo $this->_tpl_vars['item']['name_detail']; ?>
 "
-                        data-price="<?php echo ((is_array($_tmp=@$this->_tpl_vars['item']['price'])) ? $this->_run_mod_handler('default', true, $_tmp, 0) : smarty_modifier_default($_tmp, 0)); ?>
+                              data-price="<?php echo ((is_array($_tmp=@$this->_tpl_vars['item']['price'])) ? $this->_run_mod_handler('default', true, $_tmp, 0) : smarty_modifier_default($_tmp, 0)); ?>
 "
-                        data-img="<?php echo $this->_tpl_vars['item']['img_thumb_vn']; ?>
+                              data-img="<?php echo $this->_tpl_vars['item']['img_thumb_vn']; ?>
 ">
-                        <i class="fa-solid fa-cart-arrow-down"></i>
-                  </div>
-                  <div class="product-item__action__btn btn-quickview" data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
+                              <i class="fa-solid fa-cart-arrow-down"></i>
+                        </div>
+                        <div data-tooltip="Xem nhanh" class="product-item__action__btn btn-quickview" data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
 ">
-                     <i class="fa-regular fa-eye"></i>
-                  </div>
-                  <div class="product-item__action__btn btn-wishlist <?php if (in_array ( $this->_tpl_vars['item']['id'] , $this->_tpl_vars['wishlist_ids'] )): ?>active<?php endif; ?>"
-                     data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
-"
-                     title="Thêm vào yêu thích">
-                     <i class="fa-regular fa-heart"></i>
-                  </div>
-               </div>
-               <?php endif; ?>
+                           <i class="fa-regular fa-eye"></i>
+                        </div>
+                        <div data-tooltip="Thêm vào yêu thích" class="product-item__action__btn btn-wishlist <?php if (in_array ( $this->_tpl_vars['item']['id'] , $this->_tpl_vars['wishlist_ids'] )): ?>active<?php endif; ?>"
+                           data-id="<?php echo $this->_tpl_vars['item']['id']; ?>
+">
+                           <i class="fa-regular fa-heart"></i>
+                        </div>
+                     </div>
+                  <?php endif; ?>
             </div>
             <?php endforeach; endif; unset($_from); ?>
          </div>

@@ -543,7 +543,7 @@
               <div class="gallery-item" data-name="${file.name}">
                 <img src="${e.target.result}">
                 <div class="overlay">
-                  <button type="button" class="remove-image">X</button>
+                  <button type="button" class="remove-image">&times;</button>
                 </div>
               </div>
             `;

@@ -2485,18 +2485,28 @@ ul.category-tree ul {
 .gallery-item:hover .overlay {
   opacity: 1;
 }
-
-.gallery-item .remove-image {
-  /* background: red; */
-  /* color: #fff; */
-  /* border: none; */
-  /* border-radius: 50%; */
-  /* width: 22px; */
-  /* height: 22px; */
-  /* font-size: 16px; */
-  /* cursor: pointer; */
+.gallery-item .overlay .remove-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: none;
+    font-size: 17px;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    line-height: 1;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    background: #fff;
+    cursor: pointer;
 }
 
+.gallery-item .overlay .remove-image:hover {
+    background: #007bff;
+    color: #fff;
+}
 .gallery-item .num {
   background: rgba(0, 0, 0, 0.5);
   color: #fff;

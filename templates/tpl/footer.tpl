@@ -57,7 +57,6 @@
   </div>
 </footer>
 <div id="wishlist-toast"></div>
-<div id="cart-popup"></div>
 <div id="c-loading" class="{if $smarty.session.contact_success} hide{/if}">
   <div id="orderLoading"><svg width="50" height="50" viewBox="0 0 50 50" role="status" aria-label="Đang tải">
       <circle cx="25" cy="25" r="20" fill="none" stroke="#e9eef6" stroke-width="4" />
@@ -73,6 +72,10 @@
     </svg>
   </div>
 </div>
+{if $showcart.open eq 1}
+<div id="cart-popup"></div>
+{/if}
+{if $quickview.open eq 1}
 <div id="quickview-modal" class="quickview-modal">
   <div class="quickview-overlay"></div>
   <div class="quickview-content">
@@ -80,6 +83,8 @@
     <div id="quickview-body"></div>
   </div>
 </div>
+{/if}
+<div class="loader"></div>
 <a href="#" class="back-to-top" id="backToTop"><i class="fa-solid fa-angle-up"></i></a>
 <div class="bg-overlay"></div>
 {include file="social.tpl"}

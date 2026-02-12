@@ -1,10 +1,8 @@
-<?php /* Smarty version 2.6.30, created on 2025-11-21 09:45:35
+<?php /* Smarty version 2.6.30, created on 2026-02-12 15:24:25
          compiled from popup.tpl */ ?>
 <?php if ($this->_tpl_vars['formdangky']['open'] == 1): ?>
 <div class="register-form">
    <div class="register-form-wrap">
-      <div class="register-form__img"><img src="<?php echo $this->_tpl_vars['img_popup']['img_thumb_vn']; ?>
-" alt="popup"></div>
       <div class="register-form__meta">
          <h3 class="register-form__ttl">Đăng ký nhận báo giá</h3>
          <p class="register-form__txt">Đơn vị thiết kế và thi công trên toàn quốc<br><span>(Đặt lịch để được tư vấn và nhận báo giá)</span></p>
@@ -31,27 +29,22 @@
          </form>
          <div id=" formMessage" class="msg-box">
          </div>
-         <p class="register-form__txt">Hoặc gọi hotline để được tư vấn ngay</p>
-         <div class="register-form__contact">
-            <a class="tel" href="http://tel:<?php echo $this->_tpl_vars['hotline']['domain']; ?>
-"><?php echo $this->_tpl_vars['hotline']['domain']; ?>
-</a>
-            <a href="http://zalo.me/<?php echo $this->_tpl_vars['hotline']['domain']; ?>
-"><img src="<?php echo $this->_tpl_vars['path_url']; ?>
-/assets/images/zalo.png" alt="zalo"></a>
-            <a href="https://m.me/shouse.official"><img src="<?php echo $this->_tpl_vars['path_url']; ?>
-/assets/images/messenger.jpg" alt="messenger"></a>
-         </div>
       </div>
-      <span class="register-form-close">X</span>
+      <span class="register-form-close">&times;</span>
    </div>
-
 </div>
 <!-- Popup thông báo -->
-<div id="popupMessage" class="popup-message">
+<!-- <div id="popupMessage" class="popup-message">
    <div class="popup-content">
       <span id="popupText"></span>
-      <button id="popupClose">X</button>
+      <button id="popupClose">&times;</button>
    </div>
+</div> -->
+
+<div id="successPopup" class="success-popup">
+    <div class="success-popup__box">
+        <div class="success-icon">✓</div>
+        <div class="success-text">Gửi thông tin thành công!</div>
+    </div>
 </div>
-<?php endif; ?>
+<?php endif; ?>

@@ -123,3 +123,12 @@
   <div class="cart-empty" style="display: none;"> <img src="/assets/images/ic_buy.svg" class="img-responsive" alt="{$logoHome.name_vn}"><br>Giỏ hàng hiện đang trống, cùng mua sắm ngay nhé!<br><a class="btn-home" href="/">Mua sắm ngay !</a></div>
   {/if}
 </div>
+<div id="popup-confirm" class="popup-overlay">
+  <div class="popup-box">
+    <p>Bạn có chắc muốn xoá sản phẩm khỏi giỏ hàng không?</p>
+    <div class="popup-actions">
+      <button class="btn-confirm">Xoá</button>
+      <button class="btn-cancel">Huỷ</button>
+    </div>
+  </div>
+</div>

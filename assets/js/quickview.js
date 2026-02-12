@@ -108,49 +108,62 @@ function updateWishlistCount(total) {
     }, 2500);
   }
   ///quickview
-  const modal = document.getElementById("quickview-modal");
-  const modalBody = document.getElementById("quickview-body");
-  
-  document.addEventListener("click", function (e) {
-  
-    const btn = e.target.closest(".btn-quickview");
-    if (btn) {
-  
-      const id = btn.dataset.id;
-  
-      fetch("/ajax/quickview.php?id=" + id)
-        .then(res => res.text())
-        .then(html => {
-  
-          modalBody.innerHTML = html;
-          modal.classList.add("active");
-  
-          document.documentElement.classList.add("noscroll");
-  
-          // focus vào popup
-          const content = modal.querySelector(".quickview-content");
-          content.setAttribute("tabindex", "-1");
-          content.focus();
-        });
-    }
-  
-    if (e.target.classList.contains("quickview-overlay") ||
-        e.target.classList.contains("quickview-close")) {
-      closeQuickView();
-    }
-  
-  });
-  
-  // ESC đóng popup
-  document.addEventListener("keydown", function(e){
-    if (e.key === "Escape") {
-      closeQuickView();
-    }
-  });
-  
-  function closeQuickView() {
-    modal.classList.remove("active");
-  
-    // ✅ bỏ class noscroll
-    document.documentElement.classList.remove("noscroll");
+
+const modal = document.getElementById("quickview-modal");
+const modalBody = document.getElementById("quickview-body");
+
+let scrollPosition = 0;
+
+document.addEventListener("click", function (e) {
+
+  const btn = e.target.closest(".btn-quickview");
+  if (btn) {
+
+    const id = btn.dataset.id;
+
+    fetch("/ajax/quickview.php?id=" + id)
+      .then(res => res.text())
+      .then(html => {
+
+        modalBody.innerHTML = html;
+        modal.classList.add("active");
+
+        // ✅ Lưu vị trí scroll
+        scrollPosition = window.pageYOffset;
+
+        // ✅ Khóa scroll nhưng giữ nguyên vị trí
+        document.body.style.position = "fixed";
+        document.body.style.top = `-${scrollPosition}px`;
+        document.body.style.width = "100%";
+
+        const content = modal.querySelector(".quickview-content");
+        content.setAttribute("tabindex", "-1");
+        content.focus();
+      });
   }
+
+  if (e.target.classList.contains("quickview-overlay") ||
+      e.target.classList.contains("quickview-close")) {
+    closeQuickView();
+  }
+
+});
+
+// ESC đóng popup
+document.addEventListener("keydown", function(e){
+  if (e.key === "Escape") {
+    closeQuickView();
+  }
+});
+
+function closeQuickView() {
+
+  modal.classList.remove("active");
+
+  // ✅ Mở lại scroll đúng vị trí
+  document.body.style.position = "";
+  document.body.style.top = "";
+  document.body.style.width = "";
+
+  window.scrollTo(0, scrollPosition);
+}

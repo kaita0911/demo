@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi-vn">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
   <meta name="robots" content="INDEX, FOLLOW, NOODP">
   <meta name="Author" content="{$domain.domain}" />
-  <meta rel="canonical" href="{$path_url}{$smarty.server.REQUEST_URI}"/>
   <link rel="shortcut icon" href="{$path_url}/favicon.ico" type="image/x-icon">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{$path_url}{$smarty.server.REQUEST_URI}">  
   <meta property="og:site_name" content="{$domain.domain}">
+  <link rel="canonical" href="{$path_url}{$smarty.server.REQUEST_URI}" />
+  <link rel="alternate" href="{$path_url}{$smarty.server.REQUEST_URI}" hreflang="vi-vn" />
+  <link rel="alternate" href="{$path_url}{$smarty.server.REQUEST_URI}" hreflang="x-default" />
   {if $is_home eq 1}
   <title>{$seo.name_vn}</title>
   <meta name="keywords" content="{$seo.keyword}">
@@ -37,6 +39,8 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- Fancybox CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css"> -->
+
   {literal}
   <script type="application/ld+json">
     {

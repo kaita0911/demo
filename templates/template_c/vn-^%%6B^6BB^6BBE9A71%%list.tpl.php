@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2026-01-07 09:25:40
+<?php /* Smarty version 2.6.30, created on 2026-02-12 09:55:34
          compiled from cart/list.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'count', 'cart/list.tpl', 8, false),array('modifier', 'number_format', 'cart/list.tpl', 46, false),array('modifier', 'default', 'cart/list.tpl', 67, false),array('modifier', 'replace', 'cart/list.tpl', 67, false),array('modifier', 'intval', 'cart/list.tpl', 69, false),array('function', 'math', 'cart/list.tpl', 77, false),)), $this); ?>
@@ -157,4 +157,13 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'count', 'ca
   <div class="cart-empty" style="display: none;"> <img src="/assets/images/ic_buy.svg" class="img-responsive" alt="<?php echo $this->_tpl_vars['logoHome']['name_vn']; ?>
 "><br>Giỏ hàng hiện đang trống, cùng mua sắm ngay nhé!<br><a class="btn-home" href="/">Mua sắm ngay !</a></div>
   <?php endif; ?>
+</div>
+<div id="popup-confirm" class="popup-overlay">
+  <div class="popup-box">
+    <p>Bạn có chắc muốn xoá sản phẩm khỏi giỏ hàng không?</p>
+    <div class="popup-actions">
+      <button class="btn-confirm">Xoá</button>
+      <button class="btn-cancel">Huỷ</button>
+    </div>
+  </div>
 </div>

@@ -189,33 +189,35 @@
                     {/foreach}
                   </div>
                 </div>
-                {foreach from=$articlelist_attributes item=attr}
-                <div class="color-upload-box">
-                  <h4>
-                    Ảnh màu {$attr.color_name}
-                  </h4>
-                  <input type="file"
-                    name="images[{$attr.color_code|replace:'#':''}][]"
-                    data-color-code="{$attr.color_code}"
-                    multiple
-                    accept="image/*">
-                </div>
-                <!-- ảnh đã upload -->
-                <div class="preview-gallery">
-                  {foreach from=$multiimages item=img}
-                  {if $img.color_code == $attr.color_code}
-                  <div class="gallery-item" data-id="{$img.id}">
-                    <img src="/{$img.img_vn}?width=100&height=100&mode=contain" />
-                    <button type="button"
-                      class="btn-delete-image remove-image"
-                      data-id="{$img.id}">
-                      ✖
-                    </button>
+                {if $tinhnang.attribute == 1}
+                  {foreach from=$articlelist_attributes item=attr}
+                  <div class="color-upload-box">
+                    <h4>
+                      Ảnh màu {$attr.color_name}
+                    </h4>
+                    <input type="file"
+                      name="images[{$attr.color_code|replace:'#':''}][]"
+                      data-color-code="{$attr.color_code}"
+                      multiple
+                      accept="image/*">
                   </div>
-                  {/if}
+                  <!-- ảnh đã upload -->
+                  <div class="preview-gallery">
+                    {foreach from=$multiimages item=img}
+                    {if $img.color_code == $attr.color_code}
+                    <div class="gallery-item" data-id="{$img.id}">
+                      <img src="/{$img.img_vn}?width=100&height=100&mode=contain" />
+                      <button type="button"
+                        class="btn-delete-image remove-image"
+                        data-id="{$img.id}">
+                        &times;
+                      </button>
+                    </div>
+                    {/if}
+                    {/foreach}
+                  </div>
                   {/foreach}
-                </div>
-                {/foreach}
+                {/if}
               </div>
               {/if}
 

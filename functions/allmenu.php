@@ -137,6 +137,7 @@ $infos_ids = [
     15 => 'seo',
     17 => 'headerscript',
     18 => 'bodyscript',
+    19 => 'filter_product',
     20 => 'searchengine',
     21 => 'quickview',
     22 => 'makm'

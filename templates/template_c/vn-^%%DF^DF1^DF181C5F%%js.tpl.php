@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.30, created on 2026-02-11 15:40:43
+<?php /* Smarty version 2.6.30, created on 2026-02-12 09:23:58
          compiled from ./js.tpl */ ?>
 <script>
   const PATH_URL = "<?php echo $this->_tpl_vars['path_url']; ?>
@@ -18,7 +18,7 @@
 <?php endif; ?>
 <script src="<?php echo $this->_tpl_vars['path_url']; ?>
 /assets/js/script.js"></script>
-<?php if ($this->_tpl_vars['do'] == 'cart'): ?>
+<?php if ($this->_tpl_vars['showcart']['open'] == 1): ?>
 <script src="<?php echo $this->_tpl_vars['path_url']; ?>
 /assets/js/cart.js"></script>
 <?php endif; ?>

@@ -1,51 +1,60 @@
 $(document).ready(function () {
   /////////////XOÁ/////////////
+  let removeKey = null;
+  let removeItem = null;
+  // Mở
   $(document).on("click", ".btn-remove-item", function (e) {
     e.preventDefault();
 
-    const key = $(this).data("key");
-    const $item = $(this).closest(".cart-item");
-    // 🔹 Hỏi xác nhận trước khi xoá
-    if (!confirm(`Bạn có chắc muốn xoá sản phẩm khỏi giỏ hàng không?`)) {
-      return; // ❌ Dừng lại nếu người dùng bấm "Hủy"
+    removeKey = $(this).data("key");
+    removeItem = $(this).closest(".cart-item");
+
+    $("#popup-confirm").addClass("active");
+  });
+
+  // Huỷ
+  $(document).on("click", ".btn-cancel", function () {
+    $("#popup-confirm").removeClass("active");
+  });
+
+  // Click overlay
+  $(document).on("click", "#popup-confirm", function (e) {
+    if ($(e.target).is("#popup-confirm")) {
+      $(this).removeClass("active");
     }
+  });
+  $(document).on("click", ".btn-confirm", function () {
+    $("#popup-confirm").removeClass("active"); 
     $.ajax({
       url: baseUrl + "ajax/remove_cart_item.php",
       type: "POST",
-      data: { key: key },
+      data: { key: removeKey },
       dataType: "json",
       success: function (res) {
         if (res.success) {
-          // 🔹 Ẩn và xoá sản phẩm khỏi DOM
-          $item.fadeOut(300, function () {
+          removeItem.fadeOut(300, function () {
             $(this).remove();
-
-            setTimeout(() => {
-              updateCartSummary();
-
-              // Cập nhật số lượng trên icon
-              $("#num-cart").text(res.total_items);
-
-              // Nếu giỏ trống
-              if (res.total_items == 0) {
-                $(".cart-box").hide();
-                $(".cart-empty").show();
-              }
-            }, 100);
+  
+            updateCartSummary();
+            $("#num-cart").text(res.total_items);
+  
+            if (res.total_items == 0) {
+              $(".cart-box").hide();
+              $(".cart-empty").show();
+            }
           });
-
-          // ✅ Hiển thị thông báo
+  
           showSuccessMessage("🗑️ Sản phẩm đã được xoá khỏi giỏ hàng!");
         } else {
           alert(res.message || "Không thể xoá sản phẩm.");
         }
       },
-      error: function (xhr, status, error) {
-        console.error("AJAX error:", status, error);
+      error: function () {
         alert("⚠️ Không thể gọi remove_cart_item.php");
       },
     });
   });
+  
 
   // 🔸 Hàm hiển thị thông báo thành công
   function showSuccessMessage(message) {

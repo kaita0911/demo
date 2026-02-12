@@ -1,7 +1,6 @@
 {if $formdangky.open eq 1}
 <div class="register-form">
    <div class="register-form-wrap">
-      <div class="register-form__img"><img src="{$img_popup.img_thumb_vn}" alt="popup"></div>
       <div class="register-form__meta">
          <h3 class="register-form__ttl">Đăng ký nhận báo giá</h3>
          <p class="register-form__txt">Đơn vị thiết kế và thi công trên toàn quốc<br><span>(Đặt lịch để được tư vấn và nhận báo giá)</span></p>
@@ -28,22 +27,22 @@
          </form>
          <div id=" formMessage" class="msg-box">
          </div>
-         <p class="register-form__txt">Hoặc gọi hotline để được tư vấn ngay</p>
-         <div class="register-form__contact">
-            <a class="tel" href="http://tel:{$hotline.domain}">{$hotline.domain}</a>
-            <a href="http://zalo.me/{$hotline.domain}"><img src="{$path_url}/assets/images/zalo.png" alt="zalo"></a>
-            <a href="https://m.me/shouse.official"><img src="{$path_url}/assets/images/messenger.jpg" alt="messenger"></a>
-         </div>
       </div>
-      <span class="register-form-close">X</span>
+      <span class="register-form-close">&times;</span>
    </div>
-
 </div>
 <!-- Popup thông báo -->
-<div id="popupMessage" class="popup-message">
+<!-- <div id="popupMessage" class="popup-message">
    <div class="popup-content">
       <span id="popupText"></span>
-      <button id="popupClose">X</button>
+      <button id="popupClose">&times;</button>
    </div>
+</div> -->
+
+<div id="successPopup" class="success-popup">
+    <div class="success-popup__box">
+        <div class="success-icon">✓</div>
+        <div class="success-text">Gửi thông tin thành công!</div>
+    </div>
 </div>
 {/if}

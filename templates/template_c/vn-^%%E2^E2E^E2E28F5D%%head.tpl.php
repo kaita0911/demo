@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.30, created on 2026-02-05 11:56:28
+<?php /* Smarty version 2.6.30, created on 2026-02-12 11:11:49
          compiled from ./head.tpl */ ?>
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi-vn">
 
 <head>
   <meta charset="utf-8">
@@ -9,9 +9,6 @@
   <meta name="robots" content="INDEX, FOLLOW, NOODP">
   <meta name="Author" content="<?php echo $this->_tpl_vars['domain']['domain']; ?>
 " />
-  <meta rel="canonical" href="<?php echo $this->_tpl_vars['path_url']; ?>
-<?php echo $_SERVER['REQUEST_URI']; ?>
-"/>
   <link rel="shortcut icon" href="<?php echo $this->_tpl_vars['path_url']; ?>
 /favicon.ico" type="image/x-icon">
   <meta property="og:type" content="website">
@@ -20,6 +17,15 @@
 ">  
   <meta property="og:site_name" content="<?php echo $this->_tpl_vars['domain']['domain']; ?>
 ">
+  <link rel="canonical" href="<?php echo $this->_tpl_vars['path_url']; ?>
+<?php echo $_SERVER['REQUEST_URI']; ?>
+" />
+  <link rel="alternate" href="<?php echo $this->_tpl_vars['path_url']; ?>
+<?php echo $_SERVER['REQUEST_URI']; ?>
+" hreflang="vi-vn" />
+  <link rel="alternate" href="<?php echo $this->_tpl_vars['path_url']; ?>
+<?php echo $_SERVER['REQUEST_URI']; ?>
+" hreflang="x-default" />
   <?php if ($this->_tpl_vars['is_home'] == 1): ?>
   <title><?php echo $this->_tpl_vars['seo']['name_vn']; ?>
 </title>
@@ -71,6 +77,8 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- Fancybox CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css"> -->
+
   <?php echo '
   <script type="application/ld+json">
     {
